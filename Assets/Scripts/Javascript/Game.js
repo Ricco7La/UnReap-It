@@ -1,0 +1,8 @@
+// on crée l'objet principal du jeu
+var Application = {
+	config : {
+		width : 640, // meilleur taille pour le jeu
+		height : 480
+	}
+}
+
