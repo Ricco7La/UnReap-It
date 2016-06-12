@@ -43,8 +43,42 @@
          "width":40,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":40,
+         "name":"EnnemiesWalker",
+         "objects":[
+                {
+                 "height":0,
+                 "id":3,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":324,
+                 "x":362,
+                 "y":718
+                }, 
+                {
+                 "height":94,
+                 "id":4,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":96,
+                 "x":656,
+                 "y":404
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":40,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":1,
+ "nextobjectid":7,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tileheight":32,
