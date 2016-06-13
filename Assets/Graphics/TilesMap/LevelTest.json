@@ -47,12 +47,12 @@
         {
          "draworder":"topdown",
          "height":0,
-         "name":"EnnemiesWalker",
+         "name":"Ennemies",
          "objects":[
                 {
                  "height":0,
                  "id":10,
-                 "name":"A1",
+                 "name":"0-0",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -63,7 +63,7 @@
                 {
                  "height":0,
                  "id":11,
-                 "name":"A2",
+                 "name":"0-1",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -74,7 +74,7 @@
                 {
                  "height":0,
                  "id":12,
-                 "name":"A3",
+                 "name":"0-2",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -85,7 +85,7 @@
                 {
                  "height":0,
                  "id":13,
-                 "name":"A4",
+                 "name":"0-3",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -96,7 +96,7 @@
                 {
                  "height":0,
                  "id":14,
-                 "name":"B1",
+                 "name":"1-0",
                  "rotation":0,
                  "type":"",
                  "visible":true,
@@ -107,13 +107,57 @@
                 {
                  "height":0,
                  "id":15,
-                 "name":"B2",
+                 "name":"1-1",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
                  "x":238,
                  "y":1008
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"2-0",
+                 "rotation":45,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":720,
+                 "y":305
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"2-1",
+                 "rotation":135,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":720,
+                 "y":305
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"2-2",
+                 "rotation":225,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":720,
+                 "y":305
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"2-3",
+                 "rotation":315,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":720,
+                 "y":305
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -121,8 +165,143 @@
          "width":0,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":0,
+         "name":"Interractions",
+         "objects":[
+                {
+                 "height":0,
+                 "id":20,
+                 "name":"Switch-0",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":879,
+                 "y":848
+                }, 
+                {
+                 "height":0,
+                 "id":21,
+                 "name":"Object-0",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1043,
+                 "y":689
+                }, 
+                {
+                 "height":0,
+                 "id":22,
+                 "name":"Switch-1",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1076,
+                 "y":306
+                }, 
+                {
+                 "height":0,
+                 "id":23,
+                 "name":"Object-1",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1073,
+                 "y":272
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":40,
+         "name":"StartPosition",
+         "objects":[
+                {
+                 "height":0,
+                 "id":25,
+                 "name":"Start",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":112,
+                 "y":146
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":40,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":40,
+         "name":"Souls",
+         "objects":[
+                {
+                 "height":0,
+                 "id":26,
+                 "name":"0",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":1,
+                 "x":681,
+                 "y":145
+                }, 
+                {
+                 "height":0,
+                 "id":27,
+                 "name":"1",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":108,
+                 "y":464
+                }, 
+                {
+                 "height":0,
+                 "id":28,
+                 "name":"2",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":525,
+                 "y":1168
+                }, 
+                {
+                 "height":0,
+                 "id":29,
+                 "name":"3",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":1076,
+                 "y":461
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":40,
+         "x":0,
+         "y":0
         }],
- "nextobjectid":16,
+ "nextobjectid":30,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tileheight":32,

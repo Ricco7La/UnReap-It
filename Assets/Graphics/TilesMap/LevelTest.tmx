@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="16">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="30">
  <tileset firstgid="1" name="map" tilewidth="32" tileheight="32" tilecount="32" columns="8">
   <image source="../Tiles/map.png" trans="aa00ff" width="256" height="128"/>
  </tileset>
@@ -179,12 +179,31 @@
 12,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,13
 </data>
  </layer>
- <objectgroup name="EnnemiesWalker">
-  <object id="10" name="A1" x="512" y="640"/>
-  <object id="11" name="A2" x="675" y="640"/>
-  <object id="12" name="A3" x="675" y="740"/>
-  <object id="13" name="A4" x="512" y="740"/>
-  <object id="14" name="B1" x="718" y="1010"/>
-  <object id="15" name="B2" x="238" y="1008"/>
+ <objectgroup name="Ennemies">
+  <object id="10" name="0-0" x="512" y="640"/>
+  <object id="11" name="0-1" x="675" y="640"/>
+  <object id="12" name="0-2" x="675" y="740"/>
+  <object id="13" name="0-3" x="512" y="740"/>
+  <object id="14" name="1-0" x="718" y="1010"/>
+  <object id="15" name="1-1" x="238" y="1008"/>
+  <object id="16" name="2-0" x="720" y="305" rotation="45"/>
+  <object id="17" name="2-1" x="720" y="305" rotation="135"/>
+  <object id="18" name="2-2" x="720" y="305" rotation="225"/>
+  <object id="19" name="2-3" x="720" y="305" rotation="315"/>
+ </objectgroup>
+ <objectgroup name="Interractions">
+  <object id="20" name="Switch-0" x="879" y="848"/>
+  <object id="21" name="Object-0" x="1043" y="689"/>
+  <object id="22" name="Switch-1" x="1076" y="306"/>
+  <object id="23" name="Object-1" x="1073" y="272"/>
+ </objectgroup>
+ <objectgroup name="StartPosition">
+  <object id="25" name="Start" x="112" y="146"/>
+ </objectgroup>
+ <objectgroup name="Souls">
+  <object id="26" name="0" x="681" y="145" width="1"/>
+  <object id="27" name="1" x="108" y="464"/>
+  <object id="28" name="2" x="525" y="1168"/>
+  <object id="29" name="3" x="1076" y="461"/>
  </objectgroup>
 </map>
