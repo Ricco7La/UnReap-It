@@ -6,6 +6,7 @@
 			Phaser.AUTO, 
 			Application.name
 		);
+	Application.Game = Game;
 
 	/*
 		le premier argument est le nom de l'état,
@@ -15,6 +16,7 @@
 	Game.state.add("Preload", Application.Preload);
 	Game.state.add("LevelTest", Application.LevelTest);
 	Game.state.add("Title", Application.Title);
+	Game.state.add("Story", Application.Story);
 
 	// lancer l'ecran de lancement du jeu
 	Game.state.start("Splash");
