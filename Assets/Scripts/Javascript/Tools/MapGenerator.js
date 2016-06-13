@@ -42,11 +42,11 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 		if (prop.collide) 
 		{
 			_Game.physics.p2.convertTilemap(_Map, Layers[prop.layerName]);
-			Layers[prop.layerName].enableBody = true;
+			// Layers[prop.layerName].enableBody = true;
 		}
 		//console.log(prop.layerName);
 		//console.log(Layers[prop.layerName]);
-		Layers[prop.layerName].alpha = 1;
+		// Layers[prop.layerName].alpha = 1;
 	}
 
 	/***** Charge Object Layer from Tiled *****/

@@ -32,6 +32,6 @@ Application.Preload.prototype = {
   	create: function(){
   		console.log("Preload finished")
   		// go to title
-		this.state.start("LevelTest");	
+		this.state.start("Title");	
 	}
 }
