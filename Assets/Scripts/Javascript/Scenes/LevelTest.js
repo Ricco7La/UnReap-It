@@ -26,12 +26,13 @@ Application.LevelTest.prototype = {
 		//MapLayers["ObjectCollide"].debug = true;
 
 		console.log(Application);
-		this.E1 = new Ennemy(this.game,[{x: 0, y:0}])
+		this.E1 = new Ennemy(this.game,[{x: 150, y:150}])
+
 		this.game.camera.follow(this.E1);
 
 	},
 	update : function(){
-
+		//this.E1.body.setZeroVelocity();
 
 	},
 	render : function(){
