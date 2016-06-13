@@ -17,7 +17,7 @@ Application.Preload.prototype = {
 	    // Load TILEMAP
 		this.game.load.tilemap('LevelTest', 'Assets/Graphics/TilesMap/LevelTest.json', null, Phaser.Tilemap.TILED_JSON);
 		//Load Tiles
-		this.game.load.image('Tiles', 'Assets/Graphics/Tiles/map.png', 32, 32);
+		this.game.load.image('Tiles', 'Assets/Graphics/Tiles/All_Tiles.png', 32, 32);
 
 	},
   	create: function(){

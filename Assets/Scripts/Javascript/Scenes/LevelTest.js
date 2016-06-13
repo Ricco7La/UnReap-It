@@ -11,13 +11,15 @@ Application.LevelTest.prototype = {
 
 		var layers = [
 			{layerName: "BackGround", worldSize: true, collide: false },
-			{layerName: "Wall", collide: false },
-			{layerName: "Road" },
+			{layerName: "Wall", collide: true },
+			{layerName: "ObjectCollide", collide: true },
 			{layerName: "Object" }
 		];
-		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'map', 'Tiles', layers);
+		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'All_Tiles', 'Tiles', layers);
 
-		MapLayers["Wall"].debug = true;
+		// in debug add transparency
+		//MapLayers["Wall"].debug = true;
+		//MapLayers["ObjectCollide"].debug = true;
 	},
 	update : function(){
 
