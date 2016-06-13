@@ -13,7 +13,7 @@
 	*/
 	Game.state.add("Splash", Application.Splash);
 	Game.state.add("Preload", Application.Preload);
-	Game.state.add("Level", Application.Level);
+	Game.state.add("LevelTest", Application.LevelTest);
 
 	// lancer l'ecran de lancement du jeu
 	Game.state.start("Splash");

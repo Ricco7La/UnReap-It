@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="left-up" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="7">
+<map version="1.0" orientation="orthogonal" renderorder="left-up" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="16">
  <tileset firstgid="1" name="map" tilewidth="32" tileheight="32" tilecount="32" columns="8">
   <image source="../Tiles/map.png" trans="aa00ff" width="256" height="128"/>
  </tileset>
- <layer name="BackGroud" width="40" height="40">
+ <layer name="BackGround" width="40" height="40">
   <data encoding="csv">
 31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,
 31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,31,
@@ -180,7 +180,11 @@
 </data>
  </layer>
  <objectgroup name="EnnemiesWalker">
-  <object id="3" x="362" y="718" width="324"/>
-  <object id="4" x="656" y="404" width="96" height="94"/>
+  <object id="10" name="A1" x="512" y="640"/>
+  <object id="11" name="A2" x="675" y="640"/>
+  <object id="12" name="A3" x="675" y="740"/>
+  <object id="13" name="A4" x="512" y="740"/>
+  <object id="14" name="B1" x="718" y="1010"/>
+  <object id="15" name="B2" x="238" y="1008"/>
  </objectgroup>
 </map>
