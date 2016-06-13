@@ -13,10 +13,7 @@ function Ennemy (game, path, type) {
     _self.animations.add('move_right', [8,9,10,11]);
     _self.animations.add('move_up', [12,13,14,15]);
     
-    _self.body.setZeroVelocity();
-    //_self.body.damping= 0;
-    _self.body.mass= 10000000000000000000000000000;
-    _self.body.thrust(200)
+    _self.body.thrust(0)
 
     _self.body.collideWorldBounds = true;
 
