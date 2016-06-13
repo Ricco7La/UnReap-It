@@ -5,30 +5,30 @@ Application.LevelTest = function(){}
 Application.LevelTest.prototype = {
 	create: function(){ 
 		console.log('Game Screen');
-		//this.game.physics.startSystem(Phaser.Physics.P2JS);
+		this.game.physics.startSystem(Phaser.Physics.P2JS);
+		this.game.physics.p2.applyGravity = false;
+		this.game.physics.p2.setImpactEvents(true);
+    	this.game.physics.p2.defaultRestitution = 1;
+    	this.game.physics.p2.friction = 1;
 
-		this.game.physics.startSystem(Phaser.Physics.ARCADE);
+		this.Map = {};
 
-		this.map = this.game.add.tilemap('LevelTest');
-		this.map.addTilesetImage('map','Tiles');
-		
-		console.log(this.map);
+		var layers = [
+			{layerName: "BackGround", worldSize: true, collide: false },
+			{layerName: "Wall", collide: true },
+			{layerName: "ObjectCollide", collide: true },
+			{layerName: "Object" }
+		];
+		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'All_Tiles', 'Tiles', layers);
 
-		this.layerBackGround = this.map.createLayer("BackGround");
-		this.layerWall = this.map.createLayer("Wall");
-		this.layerRoad = this.map.createLayer("Road");
-		this.layerObject = this.map.createLayer("Object");
-		
-		this.game.physics.enable(this.layerWall, Phaser.Physics.ARCADE);
-		this.layerWall.debug = true;
-		this.layerWall.enableBody = true;
+		// in debug add transparency
+		//MapLayers["Wall"].debug = true;
+		//MapLayers["ObjectCollide"].debug = true;
 
-		this.layerBackGround.resizeWorld();
+		console.log(Application);
+		this.E1 = new Ennemy(this.game,[{x: 0, y:0}])
+		this.game.camera.follow(this.E1);
 
-		//this.layerEnnemiesWalker = this.map.createLayer("EnnemiesWalker");
-		console.log(this.map.objects.EnnemiesWalker);
-
-		//this.map.setCollisionBetween(0,11,true,this.layerWall);
 	},
 	update : function(){
 
