@@ -22,12 +22,12 @@
 */
 function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLayers ) 
 {
-	console.log(_Game);
+	//console.log(_Game);
 	_Map = _Game.add.tilemap(_tilemap);
 	_Map.addTilesetImage(_tilesetName, _tilesetFile);
 	
-	console.log("Map");
-	console.log(_Map);
+	//console.log("Map");
+	//console.log(_Map);
 
 	/***** Charge Tile Layer from Tiled *****/
 	var Layers = {};
@@ -44,8 +44,8 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 			_Game.physics.p2.convertTilemap(_Map, Layers[prop.layerName]);
 			Layers[prop.layerName].enableBody = true;
 		}
-		console.log(prop.layerName);
-		console.log(Layers[prop.layerName]);
+		//console.log(prop.layerName);
+		//console.log(Layers[prop.layerName]);
 		Layers[prop.layerName].alpha = 1;
 	}
 
