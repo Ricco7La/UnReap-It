@@ -32,7 +32,6 @@ Application.LevelTest.prototype = {
 
 	},
 	update : function(){
-		//this.E1.body.setZeroVelocity();
 
 	},
 	render : function(){

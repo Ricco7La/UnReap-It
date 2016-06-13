@@ -19,7 +19,13 @@ function Ennemy (game, path, type) {
 
     _self.animations.play('move_down', 10, true);
 
-    _self.position.x = 60;
+    console.log(_self.position.x);
+
+    _self.tween = game.add.tween(_self).to( { x: 300 }, 2000, "Linear", true);
+    _self.tween.onComplete.add(function() {
+        console.log("Done", _self.x);
+    }, this);
+    _self.tween.start();
 
     return _self;
 }
