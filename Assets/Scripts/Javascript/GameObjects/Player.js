@@ -4,6 +4,7 @@ function Player (_game, _x, _y)
     var _self = _game.add.sprite(_x, _y, "Player");
     var currentDirection = null;
     _self.nbrSouls = 0;
+    _self.lastSoul = Date.now();
 
     _self.anchor.set(0.5);
 
@@ -94,7 +95,11 @@ function Player (_game, _x, _y)
 
     _self.GetSoul = function(_body1, _body2)
     {
-        _self.nbrSouls +=1;
+        if (_self.lastSoul + 50 < Date.now()) {
+            _self.nbrSouls += 1;
+            _self.lastSoul = Date.now();
+        }
+        
     }
     return _self;
 }
