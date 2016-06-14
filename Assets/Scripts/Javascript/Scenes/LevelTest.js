@@ -21,9 +21,7 @@ Application.LevelTest.prototype = {
 		];
 		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'All_Tiles', 'Tiles', layers);
 
-		this.P1 = new Player(this.game, 150, 150);
-
-		this.game.camera.follow(this.P1);
+		this.P1 = MapLayers["Player"];
 
 	},
 	update : function(){

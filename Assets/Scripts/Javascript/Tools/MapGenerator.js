@@ -75,6 +75,9 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	//console.log(_Map.objects.StartPosition[0]);
 	var StartPosition = _Map.objects.StartPosition[0];
 	console.dir(StartPosition);
+	var P1 = new Player(_Game, StartPosition.x, StartPosition.y, tilesCG);
+
+	Layers["Player"] = P1;
 
 	/* Ennemies */
 	console.log("Ennemies");
