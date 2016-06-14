@@ -9,8 +9,7 @@ Application.Title.prototype = {
 
 	preload : function()
 	{
-		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
-		this.game.load.image('title','Assets/Graphics/Title/Title.PNG')
+
 	},
 
 	create: function()
