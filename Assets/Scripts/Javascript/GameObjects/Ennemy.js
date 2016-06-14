@@ -22,6 +22,9 @@ function Ennemy (_game, _path, _type) {
     _self.animations.add('moveUp', [12,13,14,15]);
     
     _self.body.thrust(0);
+    _self.body.fixedRotation = true;
+    // clear collision so they don't collide with each other
+    _self.body.clearCollision(true);
     _self.body.debug = Application.debugMode;
 
     _self.body.collideWorldBounds = true;
