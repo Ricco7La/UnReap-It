@@ -31,6 +31,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	var tilesCG = _Game.physics.p2.createCollisionGroup();
 	var ennemyCG = _Game.physics.p2.createCollisionGroup();
 	var playerCG = _Game.physics.p2.createCollisionGroup();
+	var soulCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
@@ -105,16 +106,25 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	//console.log(_Map.objects.StartPosition[0]);
 	var StartPosition = _Map.objects.StartPosition[0];
 	console.dir(StartPosition);
-	var P1 = new Player(_Game, StartPosition.x, StartPosition.y);
-	P1.body.setCollisionGroup(playerCG);
-	P1.body.collides([tilesCG, ennemyCG]);
+	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
+	myPlayer.body.setCollisionGroup(playerCG);
+	myPlayer.body.collides([tilesCG, ennemyCG]);
+	myPlayer.body.collides([playerCG]);
 
-	Layers["Player"] = P1;
+
+	Layers["Player"] = myPlayer;
 
 
 	/* Souls */
 	console.log("Souls");
-	var SoulsPositions = _Map.objects.Souls
+	var SoulsPositions = _Map.objects.Souls;
+	var Souls = [];
+	for (p of SoulsPositions) 
+	{
+		var soul = new Soul(_Game, p.x, p.y);
+		soul.body.setCollisionGroup(ennemyCG);
+		soul.body.collides([playerCG],soul.Kill);
+	}
 	console.dir(SoulsPositions);
 
 	/* Interractions */
