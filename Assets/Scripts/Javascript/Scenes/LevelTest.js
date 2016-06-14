@@ -21,14 +21,7 @@ Application.LevelTest.prototype = {
 		];
 		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'All_Tiles', 'Tiles', layers);
 
-		// in debug add transparency
-		//MapLayers["Wall"].body.debug = true;
-		//MapLayers["ObjectCollide"].body.debug = true;
-
-		console.log(Application);
-		//this.E1 = new Ennemy(this.game,[{x: 150, y:150},{x: 750, y:150},{x: 750, y:750},{x: 150, y:750}]);
 		this.P1 = new Player(this.game, 150, 150);
-		//this.E1 = new Ennemy(this.game,[{x: 150, y:150, rotation: 0},{x: 150, y:150, rotation: 90},{x: 150, y:150, rotation: 180},{x: 150, y:150, rotation: 270}]);
 
 		this.game.camera.follow(this.P1);
 

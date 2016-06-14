@@ -30,7 +30,6 @@ function Player (game, x, y)
             || game.input.keyboard.isDown(Phaser.Keyboard.W))
         {
             _self.animations.play('move_up', 7, true);
-            //_self.body.velocity.y -= 1;
             _self.body.moveUp(100);
             _self.body.damping = 0.9;
         }
@@ -39,7 +38,6 @@ function Player (game, x, y)
             || game.input.keyboard.isDown(Phaser.Keyboard.A))
         {
             _self.animations.play('move_left', 7, true);
-            //_self.body.velocity.x -= 1;
             _self.body.moveLeft(100);
             _self.body.damping = 0.9;
         }
@@ -47,7 +45,6 @@ function Player (game, x, y)
             || game.input.keyboard.isDown(Phaser.Keyboard.S))
         {
             _self.animations.play('move_down', 7, true);
-            //_self.body.velocity.y += 1;
             _self.body.moveDown(100);
             _self.body.damping = 0.9;
         }
@@ -55,7 +52,6 @@ function Player (game, x, y)
             || game.input.keyboard.isDown(Phaser.Keyboard.D))
         {
             _self.animations.play('move_right', 7, true);
-            //_self.body.velocity.x += 1;
             _self.body.moveRight(100);
             _self.body.damping = 0.9;
         }
