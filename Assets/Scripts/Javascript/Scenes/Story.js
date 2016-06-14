@@ -133,7 +133,7 @@ function nextWord()
 function actionOnClick () 
 {
 
-    this.state.start("LevelTest");
+    this.state.start("Ante1");
 
 }
 
