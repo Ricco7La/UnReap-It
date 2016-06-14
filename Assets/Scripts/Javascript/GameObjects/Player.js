@@ -18,7 +18,6 @@ function Player (_game, _x, _y)
     _self.body.fixedRotation = true;
     _self.body.collideWorldBounds = true;
 
-
     _game.camera.follow(_self);
 
     _self.body.debug = Application.debugMode;
