@@ -180,16 +180,16 @@
 </data>
  </layer>
  <objectgroup name="Ennemies">
-  <object id="10" name="0-0" x="512" y="640"/>
+  <object id="10" name="0-0" type="Vampire" x="512" y="640"/>
   <object id="11" name="0-1" x="675" y="640"/>
   <object id="12" name="0-2" x="675" y="740"/>
   <object id="13" name="0-3" x="512" y="740"/>
-  <object id="14" name="1-0" x="718" y="1010"/>
+  <object id="14" name="1-0" type="Devil" x="718" y="1010"/>
   <object id="15" name="1-1" x="238" y="1008"/>
-  <object id="16" name="2-0" x="720" y="305" rotation="45"/>
-  <object id="17" name="2-1" x="720" y="305" rotation="135"/>
-  <object id="18" name="2-2" x="720" y="305" rotation="225"/>
-  <object id="19" name="2-3" x="720" y="305" rotation="315"/>
+  <object id="16" name="2-0" type="Medusa" x="720" y="305"/>
+  <object id="17" name="2-1" x="720" y="305" rotation="90"/>
+  <object id="18" name="2-2" x="720" y="305" rotation="180"/>
+  <object id="19" name="2-3" x="720" y="305" rotation="270"/>
  </objectgroup>
  <objectgroup name="Interractions">
   <object id="20" name="Switch-0" x="879" y="848"/>
