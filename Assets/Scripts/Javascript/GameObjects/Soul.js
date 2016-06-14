@@ -24,11 +24,11 @@ function Soul(game,x,y)
     _self.Update = function()
     {
     	var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-	    console.log(spaceKey)
+	    //console.log(spaceKey)
 	    if(spaceKey.isDown)
 	    {
 	    	_self.Kill();
-	    	console.log('ig space')
+	    	//console.log('ig space')
 	    }
     }
     return _self;
