@@ -109,7 +109,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
 	myPlayer.body.collides([tilesCG, ennemyCG]);
-	myPlayer.body.collides([playerCG]);
+	myPlayer.body.collides([soulCG], myPlayer.GetSoul);
 
 
 	Layers["Player"] = myPlayer;
@@ -122,7 +122,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	for (p of SoulsPositions) 
 	{
 		var soul = new Soul(_Game, p.x, p.y);
-		soul.body.setCollisionGroup(ennemyCG);
+		soul.body.setCollisionGroup(soulCG);
 		soul.body.collides([playerCG],soul.Kill);
 	}
 	console.dir(SoulsPositions);

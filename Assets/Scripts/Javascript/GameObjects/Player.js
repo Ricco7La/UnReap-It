@@ -23,14 +23,15 @@ function Player (_game, _x, _y)
 
     _self.body.debug = Application.debugMode;
 
-    
+    _self.scoreSouls = _game.add.text(50, 50, "Souls : 0", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
+    _self.scoreSouls.fixedToCamera = true;
 
     _self.animations.play('move_down', 5, true);
 
 
     _self.Update = function()
     {
-        var scoreSouls = _game.add.text(50, 50, "Souls : " + _self.nbrSouls, { font: "20px Merriweather", fill: "#ff1105", align: "center" });
+        _self.scoreSouls.setText("Souls : " + _self.nbrSouls);
 
         if((_game.input.keyboard.isDown(Phaser.Keyboard.UP) 
                     || _game.input.keyboard.isDown(Phaser.Keyboard.Z) 
@@ -91,9 +92,9 @@ function Player (_game, _x, _y)
         }
     };
 
-    _self.GetSouls = function(_body1, _body2)
+    _self.GetSoul = function(_body1, _body2)
     {
-        this.nbrSouls +=1;
+        _self.nbrSouls +=1;
     }
     return _self;
 }
