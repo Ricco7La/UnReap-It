@@ -78,7 +78,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	{
 		var ennemy = new Ennemy(_Game,p,p[0].type);
 	}
-	Layer["Ennemies"] = Ennemies;
+	Layers["Ennemies"] = Ennemies;
 	console.dir(EnnemiesPaths);
 
 	/* Souls */
