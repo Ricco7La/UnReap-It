@@ -27,16 +27,12 @@ Application.LevelTest.prototype = {
 		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'All_Tiles', 'Tiles', layers);
 
 
-		this.P1 = MapLayers["Player"];
-		this.S1 = new Soul(this.game,200,200);
-		this.S2 = new Soul(this.game,900,800);
-		this.S3 = new Soul(this.game,400,700);
+		this.Player = MapLayers["Player"];
 
 	},
 	update : function()
 	{
-		this.P1.Update();
-		this.S1.Update();
+		this.Player.Update();
 	},
 	render : function(){
 

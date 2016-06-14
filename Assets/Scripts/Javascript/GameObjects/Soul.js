@@ -15,22 +15,13 @@ function Soul(game,x,y)
     {
     	console.log("destroy")
     	_self.loadTexture('AnimeSoul',[0]);
-    	_self.animations.add('take');
-    	_self.animations.play('take',10,false);
+    	var deathAnim = _self.animations.add('take');
+        deathAnim.killOnComplete = true;
+    	_self.animations.play('take',12,false);
     	 // _self.destroy();
 
     }
 
-    _self.Update = function()
-    {
-    	var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-	    //console.log(spaceKey)
-	    if(spaceKey.isDown)
-	    {
-	    	_self.Kill();
-	    	//console.log('ig space')
-	    }
-    }
     return _self;
 
 }
