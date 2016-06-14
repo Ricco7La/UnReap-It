@@ -72,6 +72,13 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 		}
 		EnnemiesPaths[ennemiIndex][pathIndex] = el;
 	}
+
+	var Ennemies = [];
+	for (p of EnnemiesPaths) 
+	{
+		var ennemy = new Ennemy(_Game,p,p[0].type);
+	}
+	Layers["Ennemies"] = Ennemies;
 	console.dir(EnnemiesPaths);
 
 	/* Souls */
@@ -95,6 +102,8 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	}
 	console.log(Interractions);
 	
+
+
 
 	return Layers;
 }

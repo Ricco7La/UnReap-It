@@ -4,7 +4,8 @@ var Application = {
 		width : 640, // meilleur taille pour le jeu
 		height : 480
 	},
-	Game : null 
+	Game : null,
+	debugMode: true 
 
 }
 
