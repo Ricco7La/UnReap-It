@@ -26,8 +26,7 @@ function Ennemy (_game, _path, _collisionGroup, _type) {
     _self.body.fixedRotation = true;
     // clear collision so they don't collide with each other
     _self.body.clearCollision(true);
-    console.log(_collisionGroup);
-    _self.body.collides(_collisionGroup);
+
     _self.body.debug = Application.debugMode;
 
     _self.body.collideWorldBounds = true;

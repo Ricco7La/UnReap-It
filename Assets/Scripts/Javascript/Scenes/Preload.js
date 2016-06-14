@@ -36,5 +36,6 @@ Application.Preload.prototype = {
   		console.log("Preload finished")
   		// go to title
 		this.state.start("Title");	
+
 	}
 }

@@ -1,4 +1,4 @@
-function Player (_game, _x, _y, _collisionGroup)
+function Player (_game, _x, _y)
 {
 
     var _self = _game.add.sprite(_x, _y, "Player");
@@ -16,7 +16,6 @@ function Player (_game, _x, _y, _collisionGroup)
     _self.body.thrust(0)
     _self.body.fixedRotation = true;
     _self.body.collideWorldBounds = true;
-    _self.body.collides(_collisionGroup);
 
 
     _game.camera.follow(_self);

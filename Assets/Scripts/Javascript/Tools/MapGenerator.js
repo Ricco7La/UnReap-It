@@ -29,6 +29,10 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	//console.log("Map");
 	//console.log(_Map);
 	var tilesCG = _Game.physics.p2.createCollisionGroup();
+	var ennemyCG = _Game.physics.p2.createCollisionGroup();
+	var playerCG = _Game.physics.p2.createCollisionGroup();
+
+	_Game.physics.p2.updateBoundsCollisionGroup();
 
 	/***** Charge Tile Layer from Tiled *****/
 	var Layers = {};
@@ -45,8 +49,8 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 		if (prop.collide) 
 		{
 			_Map.setCollisionBetween(1, 800, true, Layers[prop.layerName]);
-			
-			//tilesBodies = tilesBodies.concat(bodies);
+			var bodies = _Game.physics.p2.convertTilemap(_Map, Layers[prop.layerName]);
+			tilesBodies = tilesBodies.concat(bodies);
 		}
 		//console.log(prop.layerName);
 		//console.log(Layers[prop.layerName]);
@@ -54,30 +58,21 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 
 	}
 
+	//_Map.setCollisionBetween(1, 500, true, Layers["Wall"]);
+	//var bodies = _Game.physics.p2.convertTilemap(_Map, Layers["Wall"]);
 
-	var bodies = _Game.physics.p2.convertTilemap(_Map, Layers["Wall"]);
-
-	for (prop of bodies) 
+	for (prop of tilesBodies) 
 	{
 		if (Application.debugMode) 
 		{
-			prop.debug = true;
+			//prop.debug = true;
 		}
 		prop.setCollisionGroup(tilesCG);
+		prop.collides([playerCG,ennemyCG]);
 	}
-	console.log("bodies");
-	console.log(bodies);
+
 
 	/***** Charge Object Layer from Tiled *****/
-	
-	/* Player Start */
-	console.log("StartPosition");
-	//console.log(_Map.objects.StartPosition[0]);
-	var StartPosition = _Map.objects.StartPosition[0];
-	console.dir(StartPosition);
-	var P1 = new Player(_Game, StartPosition.x, StartPosition.y, tilesCG);
-
-	Layers["Player"] = P1;
 
 	/* Ennemies */
 	console.log("Ennemies");
@@ -94,16 +89,28 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 		}
 		EnnemiesPaths[ennemiIndex][pathIndex] = el;
 	}
-
-	
 	var Ennemies = [];
 	for (p of EnnemiesPaths) 
 	{
-		console.log('CG',tilesCG);
-		var ennemy = new Ennemy(_Game, p, tilesCG,p[0].type);
+		var ennemy = new Ennemy(_Game, p, p[0].type);
+		ennemy.body.setCollisionGroup(ennemyCG);
+		ennemy.body.collides([tilesCG, playerCG]);
 	}
 	Layers["Ennemies"] = Ennemies;
 	console.dir(EnnemiesPaths);
+
+	
+	/* Player Start */
+	console.log("StartPosition");
+	//console.log(_Map.objects.StartPosition[0]);
+	var StartPosition = _Map.objects.StartPosition[0];
+	console.dir(StartPosition);
+	var P1 = new Player(_Game, StartPosition.x, StartPosition.y);
+	P1.body.setCollisionGroup(playerCG);
+	P1.body.collides([tilesCG, ennemyCG]);
+
+	Layers["Player"] = P1;
+
 
 	/* Souls */
 	console.log("Souls");
