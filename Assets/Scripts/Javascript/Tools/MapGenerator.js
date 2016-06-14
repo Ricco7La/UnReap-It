@@ -28,9 +28,11 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	
 	//console.log("Map");
 	//console.log(_Map);
+	var tilesCG = _Game.physics.p2.createCollisionGroup();
 
 	/***** Charge Tile Layer from Tiled *****/
 	var Layers = {};
+	var tilesBodies = [];
 	for (prop of _tilesLayers) 
 	{
 		Layers[prop.layerName] = _Map.createLayer(prop.layerName);
@@ -38,25 +40,33 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 		{
 			Layers[prop.layerName].resizeWorld();
 			_Game.physics.p2.setBoundsToWorld(true, true, true, true, false);
+
 		}
 		if (prop.collide) 
 		{
-			_Map.setCollisionBetween(1, 400, true, Layers[prop.layerName])
-			// Layers[prop.layerName].enableBody = true;
+			_Map.setCollisionBetween(1, 800, true, Layers[prop.layerName]);
+			
+			//tilesBodies = tilesBodies.concat(bodies);
 		}
 		//console.log(prop.layerName);
 		//console.log(Layers[prop.layerName]);
 		Layers[prop.layerName].debug = true;
+
 	}
 
-	var bodies = _Game.physics.p2.convertTilemap(_Map, Layers[prop.layerName]);
-	if (Application.debugMode) 
+
+	var bodies = _Game.physics.p2.convertTilemap(_Map, Layers["Wall"]);
+
+	for (prop of bodies) 
 	{
-		for (prop of bodies) 
+		if (Application.debugMode) 
 		{
 			prop.debug = true;
 		}
+		prop.setCollisionGroup(tilesCG);
 	}
+	console.log("bodies");
+	console.log(bodies);
 
 	/***** Charge Object Layer from Tiled *****/
 	
@@ -65,6 +75,9 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 	//console.log(_Map.objects.StartPosition[0]);
 	var StartPosition = _Map.objects.StartPosition[0];
 	console.dir(StartPosition);
+	var P1 = new Player(_Game, StartPosition.x, StartPosition.y, tilesCG);
+
+	Layers["Player"] = P1;
 
 	/* Ennemies */
 	console.log("Ennemies");
@@ -82,10 +95,12 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile, _tilesLa
 		EnnemiesPaths[ennemiIndex][pathIndex] = el;
 	}
 
+	
 	var Ennemies = [];
 	for (p of EnnemiesPaths) 
 	{
-		var ennemy = new Ennemy(_Game,p,p[0].type);
+		console.log('CG',tilesCG);
+		var ennemy = new Ennemy(_Game, p, tilesCG,p[0].type);
 	}
 	Layers["Ennemies"] = Ennemies;
 	console.dir(EnnemiesPaths);

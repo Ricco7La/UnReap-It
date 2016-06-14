@@ -1,5 +1,6 @@
-function Ennemy (_game, _path, _type) {
+function Ennemy (_game, _path, _collisionGroup, _type) {
 
+    //console.log("CG",_path);
     var type = _type || "Vampire";
     var _self = _game.add.sprite(_path[0].x, _path[0].y, type);
 
@@ -25,6 +26,8 @@ function Ennemy (_game, _path, _type) {
     _self.body.fixedRotation = true;
     // clear collision so they don't collide with each other
     _self.body.clearCollision(true);
+    console.log(_collisionGroup);
+    _self.body.collides(_collisionGroup);
     _self.body.debug = Application.debugMode;
 
     _self.body.collideWorldBounds = true;

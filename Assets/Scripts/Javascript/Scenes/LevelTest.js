@@ -21,12 +21,11 @@ Application.LevelTest.prototype = {
 		];
 		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'All_Tiles', 'Tiles', layers);
 
-		this.P1 = new Player(this.game, 150, 150);
+
+		this.P1 = MapLayers["Player"];
 		this.S1 = new Soul(this.game,200,200);
 		this.S2 = new Soul(this.game,900,800);
 		this.S3 = new Soul(this.game,400,700);
-
-		this.game.camera.follow(this.P1);
 
 	},
 	update : function()
