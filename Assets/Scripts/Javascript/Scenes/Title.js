@@ -56,6 +56,6 @@ function over (item)
 {
     item.fill = "#ffff44";
     console.log("ici");
-	this.state.start("LevelTest");
+	this.state.start("Story");
 }
 
