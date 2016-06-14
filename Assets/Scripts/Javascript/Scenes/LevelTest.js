@@ -26,7 +26,7 @@ Application.LevelTest.prototype = {
 		//MapLayers["ObjectCollide"].body.debug = true;
 
 		console.log(Application);
-		this.E1 = new Ennemy(this.game,[{x: 150, y:150},{x: 1000, y:150},{x: 1000, y:1000},{x: 150, y:1000}]);
+		this.E1 = new Ennemy(this.game,[{x: 150, y:150},{x: 750, y:150},{x: 750, y:750},{x: 150, y:750}]);
 		//this.E1 = new Ennemy(this.game,[{x: 150, y:150, rotation: 0},{x: 150, y:150, rotation: 90},{x: 150, y:150, rotation: 180},{x: 150, y:150, rotation: 270}]);
 
 		this.game.camera.follow(this.E1);
