@@ -16,6 +16,7 @@ Application.Preload.prototype = {
 
 	    // Load TILEMAP
 		this.game.load.tilemap('LevelTest', 'Assets/Graphics/TilesMap/LevelTest.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('Ante1', 'Assets/Graphics/TilesMap/Ante1.json', null, Phaser.Tilemap.TILED_JSON);
 		//Load Tiles
 		this.game.load.image('Tiles', 'Assets/Graphics/Tiles/All_Tiles.png', 32, 32);
 		// Load SpriteSheet Personnages

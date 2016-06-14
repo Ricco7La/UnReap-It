@@ -4,6 +4,7 @@ function Player (_game, _x, _y)
     var _self = _game.add.sprite(_x, _y, "Player");
     var currentDirection = null;
     _self.nbrSouls = 0;
+    _self.lastSoul = Date.now();
 
     _self.anchor.set(0.5);
 
@@ -38,7 +39,7 @@ function Player (_game, _x, _y)
         {
             this.currentDirection = "UP";
             _self.animations.play('move_up', 5, true);
-            _self.body.moveUp(100);
+            _self.body.moveUp(300);
             _self.body.damping = 0.9;
         }
         else if((_game.input.keyboard.isDown(Phaser.Keyboard.LEFT) 
@@ -47,7 +48,7 @@ function Player (_game, _x, _y)
         {
             this.currentDirection = "LEFT";
             _self.animations.play('move_left', 5, true);
-            _self.body.moveLeft(100);
+            _self.body.moveLeft(300);
             _self.body.damping = 0.9;
         }
         else if((_game.input.keyboard.isDown(Phaser.Keyboard.DOWN) 
@@ -55,7 +56,7 @@ function Player (_game, _x, _y)
         {
             this.currentDirection = "DOWN";
             _self.animations.play('move_down', 5, true);
-            _self.body.moveDown(100);
+            _self.body.moveDown(300);
             _self.body.damping = 0.9;
         }
         else if((_game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) 
@@ -63,7 +64,7 @@ function Player (_game, _x, _y)
         {
             this.currentDirection = "RIGHT";
             _self.animations.play('move_right', 5, true);
-            _self.body.moveRight(100);
+            _self.body.moveRight(300);
             _self.body.damping = 0.9;
         }
         else
@@ -93,7 +94,11 @@ function Player (_game, _x, _y)
 
     _self.GetSoul = function(_body1, _body2)
     {
-        _self.nbrSouls +=1;
+        if (_self.lastSoul + 50 < Date.now()) {
+            _self.nbrSouls += 1;
+            _self.lastSoul = Date.now();
+        }
+        
     }
     return _self;
 }
