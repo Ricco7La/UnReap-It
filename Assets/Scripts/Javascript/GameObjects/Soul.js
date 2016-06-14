@@ -21,7 +21,7 @@ function Soul(game,x,y)
 
     }
 
-    _self.Update = function()
+    /*_self.Update = function()
     {
     	var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.ONE);
 	    //console.log(spaceKey)
@@ -30,7 +30,7 @@ function Soul(game,x,y)
 	    	_self.Kill();
 	    	//console.log('ig space')
 	    }
-    }
+    }*/
     return _self;
 
 }
