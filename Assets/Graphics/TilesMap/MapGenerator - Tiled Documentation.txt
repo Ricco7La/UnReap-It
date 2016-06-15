@@ -1,0 +1,23 @@
+Tile Layers
+------------
+	- worldSize <optional>: set the world size with the size of the layer
+	- collide <optional>: set collision for the layer
+
+
+Layer Ennemies
+---------------
+	- index : index of the ennemy
+	- pathIndex : the point's index in the path of the ennemy
+
+   Next parameters only for pathIndex = 0
+	- type <optional>: sprite of the ennemy ( Vampire(Default), Medusa, Devil, Octo, Demon )
+	- speed <optional>: the speed of the ennemy (Default = 50)
+	- timeRotation <optional>: time between each rotation (Default = 2500 ms)
+
+
+Layer Interractions
+--------------------
+
+
+Layer Souls
+------------

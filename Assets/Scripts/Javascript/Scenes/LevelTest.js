@@ -25,7 +25,7 @@ Application.LevelTest.prototype = {
 			{layerName: "Object" }
 		];
 		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'All_Tiles', 'Tiles', layers);
-
+		console.log('testEnd');
 
 		this.Player = MapLayers["Player"];
 

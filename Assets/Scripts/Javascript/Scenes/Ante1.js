@@ -14,13 +14,8 @@ Application.Ante1.prototype = {
 
 		this.Map = {};
 
-		var layers = [
-			{layerName: "Background", worldSize: true, collide: false },
-			{layerName: "Wall", collide: true },
-			{layerName: "ObjectCollide", collide: true },
-			{layerName: "Door" }
-		];
-		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles', layers);
+
+		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
 
 
 		this.Player = MapLayers["Player"];
