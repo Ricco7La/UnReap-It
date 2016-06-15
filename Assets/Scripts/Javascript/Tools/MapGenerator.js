@@ -31,6 +31,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var ennemyCG = _Game.physics.p2.createCollisionGroup();
 	var playerCG = _Game.physics.p2.createCollisionGroup();
 	var soulCG = _Game.physics.p2.createCollisionGroup();
+	var exitCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
@@ -112,8 +113,9 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG , exitCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
+
 
 
 	Layers["Player"] = myPlayer;
@@ -156,13 +158,17 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	/*  Exit  */
 	console.log("Exit");
 	var Exit = _Map.objects.Exit[0]; //(x,y,width,height);
+	var out = new Out(_Game,Exit.x,Exit.y,Exit.width,Exit.height);
+		out.body.setCollisionGroup(exitCG);
+		out.body.collides([playerCG], out.Exit);
+
 	console.dir(Exit);
 	
 	//create Exit
 
-	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG]);
-	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
+	// myPlayer.body.setCollisionGroup(playerCG);
+	// myPlayer.body.collides([tilesCG, ennemyCG]);
+	// myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 
 
 
