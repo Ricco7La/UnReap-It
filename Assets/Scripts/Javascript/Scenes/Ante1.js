@@ -25,6 +25,8 @@ Application.Ante1.prototype = {
 
 		this.Player = MapLayers["Player"];
 
+		//this.Switch = new Switch(this.game, 550, 800);
+
 	},
 	update : function()
 	{

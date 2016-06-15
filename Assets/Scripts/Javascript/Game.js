@@ -5,7 +5,8 @@ var Application = {
 		height : 480
 	},
 	Game : null,
-	debugMode: true 
+	debugMode : true,
+	nbrSouls : 0
 
 }
 

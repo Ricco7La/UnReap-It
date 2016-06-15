@@ -29,6 +29,12 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('Vampire', 'Assets/Graphics/Character/Vampire_48_48.png', 48, 48, 16);
 		this.game.load.spritesheet('AnimeSoul', 'Assets/Graphics/SFX/Souls/Soul_96_128.png',96,128,4);
 		this.game.load.spritesheet('Soul', 'Assets/Graphics/SFX/Souls/Soul_47_50.png', 47, 50);
+		// Load interact items
+		this.game.load.spritesheet('Bronze_Lever', 'Assets/Graphics/Interact/Switch/Bronze_Lever_32_32.png', 32, 32, 4);
+		this.game.load.spritesheet('Silver_Lever', 'Assets/Graphics/Interact/Switch/Silver_Lever_32_32.png', 32, 32, 4);
+		this.game.load.spritesheet('Io_Switch', 'Assets/Graphics/Interact/Switch/Io_Switch_32_32.png', 32, 32, 4);
+		this.game.load.spritesheet('Lr_Switch', 'Assets/Graphics/Interact/Switch/Lr_Switch.png', 32, 32, 4);
+
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
 		this.game.load.image('title','Assets/Graphics/Title/Title.PNG')
