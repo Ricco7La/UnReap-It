@@ -17,7 +17,7 @@ Layer Ennemies
 
 Layer Interractions
 --------------------
-
+	-name: Switch , Door
 
 Layer Souls
 ------------
