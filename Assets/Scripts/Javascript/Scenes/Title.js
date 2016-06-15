@@ -33,22 +33,19 @@ Application.Title.prototype = {
 			credit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 
 		var quit = this.game.add.text(30, this.game.world.centerY + 190, "Exit", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
-			quit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
-
-		// start.events.onInputOver.add(this.over, this);
+			quit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);	
 	},
 
 	update : function()
 	{
-
 
 	},
 
 	render : function()
 	{
 
+	},
 
-	}
 }
 
 
@@ -58,4 +55,3 @@ function over (item)
     console.log("ici");
 	this.state.start("Story");
 }
-
