@@ -3,7 +3,6 @@ Application.Preload = function(){}
 Application.Preload.prototype = {
 	preload: function(){ 
 		console.log("Preload preload")
-
 		// on crée un sprite pour la barre de chargement
         var loadingBar = this.add.sprite(Application.config.width / 2, Application.config.height / 2, "loading");
 	        loadingBar.anchor.setTo(0.5,0.5);
@@ -31,14 +30,21 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('Soul', 'Assets/Graphics/SFX/Souls/Soul_47_50.png', 47, 50);
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
-		this.game.load.image('title','Assets/Graphics/Title/Title.PNG')
+		this.game.load.image('title','Assets/Graphics/Title/Title.PNG');
 
+		// Create the Timer(_duration, _repeat, _callback, _game)
+		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
 
 	},
   	create: function(){
   		console.log("Preload finished")
   		// go to title
 		this.state.start("Title");	
+	},
 
-	}
+	updateCounter : function() 
+	{
+		console.log('finis');
+		Application.Timer.Clear();
+	},
 }

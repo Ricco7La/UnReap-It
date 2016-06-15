@@ -24,15 +24,14 @@ Application.Ante1.prototype = {
 
 
 		this.Player = MapLayers["Player"];
-
 	},
 	update : function()
 	{
 		this.Player.Update();
+		Application.Timer.Update();
 	},
 	render : function(){
-
-
+		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
 	}
 }
 
