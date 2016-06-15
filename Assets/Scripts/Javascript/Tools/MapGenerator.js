@@ -160,7 +160,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG, switchCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 
 	Layers["Player"] = myPlayer;
