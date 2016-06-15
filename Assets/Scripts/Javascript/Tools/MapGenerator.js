@@ -25,12 +25,15 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	_Map = _Game.add.tilemap(_tilemap);
 	_Map.addTilesetImage(_tilesetName, _tilesetFile);
 	
-	//console.log("Map");
-	//console.log(_Map);
+	console.log("Map");
+	console.log(_Map);
+
+	//Collision Group
 	var tilesCG = _Game.physics.p2.createCollisionGroup();
 	var ennemyCG = _Game.physics.p2.createCollisionGroup();
 	var playerCG = _Game.physics.p2.createCollisionGroup();
 	var soulCG = _Game.physics.p2.createCollisionGroup();
+	var switchCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
@@ -49,7 +52,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			}
 			if (prop.properties.collide) 
 			{
-				_Map.setCollisionBetween(1, 800, true, Layers[prop.name]);
+				_Map.setCollisionBetween(1, 10000, true, Layers[prop.name]);
 				var bodies = _Game.physics.p2.convertTilemap(_Map, Layers[prop.name]);
 				tilesBodies = tilesBodies.concat(bodies);
 			}
@@ -104,21 +107,6 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	Layers["Ennemies"] = Ennemies;
 	console.dir(EnnemiesPaths);
 
-	
-	/* Player Start */
-	console.log("StartPosition");
-	//console.log(_Map.objects.StartPosition[0]);
-	var StartPosition = _Map.objects.StartPosition[0];
-	console.dir(StartPosition);
-	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
-	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG]);
-	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
-
-
-	Layers["Player"] = myPlayer;
-
-
 	/* Souls */
 	console.log("Souls");
 	var SoulsPositions = _Map.objects.Souls;
@@ -136,22 +124,24 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 
 	/* Interractions */
 	console.log("Interractions");
-	var Interractions = [];
+	var Switches = [];
+	var Objects = [];
 	for (el of _Map.objects.Interractions) 
 	{
 		if (el.visible) 
 		{
-			var array = el.name.split('-');
-			var type = array[0];
-			var index = array[1];
-			if (Interractions[index] == undefined) 
+			var type = el.name;
+			switch (type)
 			{
-				Interractions[index] = []
+				case "Switch":
+					var s = new Switch(_Game, el.x, el.y, el.type);
+					s.body.setCollisionGroup(switchCG);
+					s.body.collides(playerCG, s.Interact);
+					Switches.push(s);
+					break;
 			}
-			Interractions[index].push(el);
 		}
 	}
-	console.log(Interractions);
 
 	/*  Exit  */
 	console.log("Exit");
@@ -159,12 +149,19 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(Exit);
 	
 	//create Exit
-
+	
+	/* Player Start */
+	console.log("StartPosition");
+	//console.log(_Map.objects.StartPosition[0]);
+	var StartPosition = _Map.objects.StartPosition[0];
+	console.dir(StartPosition);
+	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG, switchCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 
 
+	Layers["Player"] = myPlayer;
 
 
 
