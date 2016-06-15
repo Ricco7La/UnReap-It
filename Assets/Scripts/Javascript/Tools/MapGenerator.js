@@ -56,7 +56,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			}
 			//console.log(prop.name);
 			//console.log(Layers[prop.name]);
-			Layers[prop.name].debug = true;
+			Layers[prop.name].debug = Application.debugMode;
 		}
 
 	}
