@@ -7,5 +7,6 @@ var Application = {
 	Game : null,
 	debugMode: true,
 	Timer : null,
+	nbrSouls : 0
 }
 

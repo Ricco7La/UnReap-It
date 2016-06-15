@@ -1,4 +1,4 @@
-function Ennemy (_game, _path, _collisionGroup, _type) {
+function Ennemy (_game, _path, _type, _speed, _timeRotation) {
 
     //console.log("CG",_path);
     var type = _type || "Vampire";
@@ -10,10 +10,10 @@ function Ennemy (_game, _path, _collisionGroup, _type) {
     _self.pathIndex = 1;
 
     // speed in pixel/second
-    _self.speed = 50;
+    _self.speed = _speed || 50;
 
     // time between rotation
-    _self.timeRotation = 2500;
+    _self.timeRotation = _timeRotation || 2500;
 
     _game.physics.p2.enable(_self);
 
@@ -49,7 +49,7 @@ function Ennemy (_game, _path, _collisionGroup, _type) {
         var duration = length * 1000 / _self.speed;
 
         // Ennemy rotating
-        if (Math.abs(nextX - previousX) == 0 && Math.abs(nextY - previousY) == 0) 
+        if (Math.abs(nextX - previousX) <= 16 && Math.abs(nextY - previousY) <= 16) 
         {
             duration = _self.timeRotation;
             switch (_self.Path[_self.pathIndex].rotation) {
