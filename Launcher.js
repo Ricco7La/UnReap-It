@@ -18,6 +18,7 @@
 	Game.state.add("Title", Application.Title);
 	Game.state.add("Story", Application.Story);
 	Game.state.add("Ante1", Application.Ante1);
+	Game.state.add("GameOver", Application.GameOver);
 
 	// lancer l'ecran de lancement du jeu
 	Game.state.start("Splash");
