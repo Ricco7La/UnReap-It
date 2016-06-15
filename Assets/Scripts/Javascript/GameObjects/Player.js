@@ -2,6 +2,7 @@ function Player (_game, _x, _y)
 {
 
     var _self = _game.add.sprite(_x, _y, "Player");
+    _self.scale.setTo(0.75);
     var currentDirection = null;
     _self.lastSoul = _game.time.now;
 

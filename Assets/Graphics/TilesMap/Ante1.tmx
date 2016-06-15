@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="35">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" nextobjectid="42">
  <tileset firstgid="1" name="All_Tiles" tilewidth="32" tileheight="32" tilecount="1200" columns="40">
   <image source="../Tiles/All_Tiles.png" width="1280" height="960"/>
  </tileset>
@@ -85,8 +85,8 @@
 139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,137,
 139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,137,
 139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,137,
-139,577,577,577,577,577,577,577,577,577,577,577,577,577,577,577,577,577,577,0,577,577,577,577,577,577,577,577,577,577,577,577,577,577,577,577,578,579,580,137,
-139,617,617,617,617,617,617,617,617,617,617,617,617,617,617,617,617,617,617,0,617,617,617,617,617,617,617,617,617,617,617,617,617,617,617,617,618,619,620,137,
+139,577,578,578,578,578,578,578,578,578,578,578,578,578,578,578,578,578,579,0,577,578,578,578,578,578,578,578,578,578,578,578,578,578,578,578,578,578,579,137,
+139,617,618,618,618,618,618,618,618,618,618,618,618,618,618,618,618,618,619,0,617,618,618,618,618,618,618,618,618,618,618,618,618,618,618,618,618,618,619,137,
 139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,137,
 139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,137,
 139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,137,
@@ -196,9 +196,32 @@
 </data>
  </layer>
  <objectgroup name="Interractions">
-  <object id="1" name="Switch" x="959.5" y="494.5" width="31" height="31.5"/>
-  <object id="2" name="Switch" x="1172" y="1014.67"/>
+  <object id="1" name="Switch" x="958.5" y="511.5" width="31" height="31.5">
+   <properties>
+    <property name="index" type="int" value="0"/>
+   </properties>
+  </object>
+  <object id="2" name="Switch" x="1172" y="1014.67">
+   <properties>
+    <property name="index" type="int" value="1"/>
+   </properties>
+  </object>
   <object id="33" name="Model" x="751" y="337" visible="0"/>
+  <object id="37" name="Door" x="608" y="896" width="32.3333" height="64">
+   <properties>
+    <property name="switchesIndex" value="1"/>
+   </properties>
+  </object>
+  <object id="38" name="Switch" x="273.333" y="622.667">
+   <properties>
+    <property name="index" type="int" value="2"/>
+   </properties>
+  </object>
+  <object id="39" name="Door" x="671.818" y="223.818" width="32" height="64.3636">
+   <properties>
+    <property name="switchesIndex" value="0,2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Ennemies">
   <object id="5" name="0-0" type="Medusa" x="202" y="1044">
