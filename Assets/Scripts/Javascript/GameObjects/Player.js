@@ -30,7 +30,7 @@ function Player (_game, _x, _y)
     _self.animations.play('move_down', 5, true);
 
 
-    _self.Update = function()
+    _self.update = function()
     {
         _self.scoreSouls.setText("Souls : " + Application.nbrSouls);
 
