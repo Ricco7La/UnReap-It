@@ -16,17 +16,9 @@ Application.Ante1.prototype = {
 
 
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
-
-
-		this.Player = MapLayers["Player"];
-		this.Ennemies = MapLayers["Ennemies"];
-		console.log(this.Ennemies)
-		console.log(MapLayers)
-		//this.Switch = new Switch(this.game, 550, 800);
 	},
 	update : function()
 	{
-		this.Player.Update();
 		Application.Timer.Update();
 
 		

@@ -33,6 +33,10 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('Silver_Lever', 'Assets/Graphics/Interact/Switch/Silver_Lever_32_32.png', 32, 32, 4);
 		this.game.load.spritesheet('Io_Switch', 'Assets/Graphics/Interact/Switch/Io_Switch_32_32.png', 32, 32, 4);
 		this.game.load.spritesheet('Lr_Switch', 'Assets/Graphics/Interact/Switch/Lr_Switch.png', 32, 32, 4);
+		this.game.load.spritesheet('CellLeft', 'Assets/Graphics/Interact/Door/CellLeft_96_64.png', 96, 64, 4);
+		this.game.load.spritesheet('CellRight', 'Assets/Graphics/Interact/Door/CellRight_96_64.png', 96, 64, 4);
+		this.game.load.spritesheet('RockDoorDark', 'Assets/Graphics/Interact/Door/RockDoorDark_96_64.png', 96, 64, 4);
+		this.game.load.spritesheet('RockDoorLight', 'Assets/Graphics/Interact/Door/RockDoorLight_96_64.png', 96, 64, 4);
 
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
@@ -50,7 +54,6 @@ Application.Preload.prototype = {
 
 	updateCounter : function() 
 	{
-		//console.log('finis');
 		Application.Timer.Clear();
 	},
 }

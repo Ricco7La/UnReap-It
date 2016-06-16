@@ -36,6 +36,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var switchCG = _Game.physics.p2.createCollisionGroup();
 	var exitCG = _Game.physics.p2.createCollisionGroup();
 	var fovCG = _Game.physics.p2.createCollisionGroup();
+	var doorCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
@@ -137,24 +138,46 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	{
 		if (el.visible) 
 		{
-			var type = el.name;
-			switch (type)
+			if(el.name == "Switch")
 			{
-				case "Switch":
-					var s = new Switch(_Game, el.x, el.y, el.type);
-					s.body.setCollisionGroup(switchCG);
-					s.body.collides(playerCG, s.Interact);
-					Switches.push(s);
+				var s = new Switch(_Game, el.x, el.y, el.type);
+				s.body.setCollisionGroup(switchCG);
+				s.body.collides(playerCG, s.Interact);
+				Switches[el.properties.index] = s;
+			}
+		}
+	}
+	for (el of _Map.objects.Interractions) 
+	{
+		if (el.visible) 
+		{
+			switch (el.name)
+			{
+				case "Door":
+					var array = [];
+					for (prop of el.properties.switchesIndex.split(",")) 
+					{
+						array.push(Switches[prop]);
+					}
+					var s = new Door(_Game, el.x, el.y,el.width,el.height, array, el.type);
+					var arrayCollision = [playerCG]
+					s.body.setCollisionGroup(doorCG);
+					s.SavedCollision = arrayCollision;
+					s.body.collides(s.SavedCollision);
+					
+					Objects.push(s);
 					break;
 			}
 		}
 	}
+	Layers["InteractObjects"] = Objects;
 
 	/*  Exit  */
 	console.log("Exit");
 	var Exit = _Map.objects.Exit[0]; //(x,y,width,height);
 	var out = new Out(_Game,Exit.x,Exit.y,Exit.width,Exit.height);
 		out.body.setCollisionGroup(exitCG);
+		out.body.static = true;
 		out.body.collides([playerCG], out.Exit);
 
 	console.dir(Exit);
@@ -166,12 +189,10 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG, switchCG, fovCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, fovCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 
 	Layers["Player"] = myPlayer;
-
-
 
 	return Layers;
 }
