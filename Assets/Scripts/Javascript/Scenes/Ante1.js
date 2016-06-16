@@ -16,21 +16,12 @@ Application.Ante1.prototype = {
 
 
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
-
-		console.log("MapLayer");
-		console.log(MapLayers);
-		this.Player = MapLayers["Player"];
-		this.InteractObjects = MapLayers["InteractObjects"];
-		
 	},
 	update : function()
 	{
-		this.Player.Update();
-		for (var i = 0; i < this.InteractObjects.length; i++) 
-		{
-			this.InteractObjects[i].Update();
-		}
 		Application.Timer.Update();
+
+		
 	},
 	render : function(){
 		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
