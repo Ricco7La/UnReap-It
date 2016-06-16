@@ -401,19 +401,19 @@
                  "name":"0-0",
                  "properties":
                     {
-                     "path":0,
+                     "index":0,
                      "pathIndex":0,
                      "speed":0,
                      "timeRotation":0
                     },
                  "propertytypes":
                     {
-                     "path":"int",
+                     "index":"int",
                      "pathIndex":"int",
                      "speed":"int",
                      "timeRotation":"int"
                     },
-                 "rotation":0,
+                 "rotation":180,
                  "type":"Medusa",
                  "visible":true,
                  "width":0,
@@ -426,14 +426,14 @@
                  "name":"1-0",
                  "properties":
                     {
-                     "path":1,
+                     "index":1,
                      "pathIndex":0,
                      "speed":0,
                      "timeRotation":0
                     },
                  "propertytypes":
                     {
-                     "path":"int",
+                     "index":"int",
                      "pathIndex":"int",
                      "speed":"int",
                      "timeRotation":"int"
@@ -451,14 +451,14 @@
                  "name":"2-3",
                  "properties":
                     {
-                     "path":2,
+                     "index":2,
                      "pathIndex":1,
                      "speed":0,
                      "timeRotation":0
                     },
                  "propertytypes":
                     {
-                     "path":"int",
+                     "index":"int",
                      "pathIndex":"int",
                      "speed":"int",
                      "timeRotation":"int"
@@ -476,14 +476,14 @@
                  "name":"2-0",
                  "properties":
                     {
-                     "path":2,
+                     "index":2,
                      "pathIndex":0,
                      "speed":0,
                      "timeRotation":0
                     },
                  "propertytypes":
                     {
-                     "path":"int",
+                     "index":"int",
                      "pathIndex":"int",
                      "speed":"int",
                      "timeRotation":"int"
@@ -501,14 +501,14 @@
                  "name":"2-2",
                  "properties":
                     {
-                     "path":2,
+                     "index":2,
                      "pathIndex":2,
                      "speed":0,
                      "timeRotation":0
                     },
                  "propertytypes":
                     {
-                     "path":"int",
+                     "index":"int",
                      "pathIndex":"int",
                      "speed":"int",
                      "timeRotation":"int"
@@ -526,14 +526,14 @@
                  "name":"2-1",
                  "properties":
                     {
-                     "path":2,
+                     "index":2,
                      "pathIndex":3,
                      "speed":0,
                      "timeRotation":0
                     },
                  "propertytypes":
                     {
-                     "path":"int",
+                     "index":"int",
                      "pathIndex":"int",
                      "speed":"int",
                      "timeRotation":"int"
@@ -544,6 +544,56 @@
                  "width":0,
                  "x":634,
                  "y":1205.33
+                }, 
+                {
+                 "height":0,
+                 "id":69,
+                 "name":"0-1",
+                 "properties":
+                    {
+                     "index":0,
+                     "pathIndex":1,
+                     "speed":0,
+                     "timeRotation":0
+                    },
+                 "propertytypes":
+                    {
+                     "index":"int",
+                     "pathIndex":"int",
+                     "speed":"int",
+                     "timeRotation":"int"
+                    },
+                 "rotation":180,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":590,
+                 "y":620
+                }, 
+                {
+                 "height":0,
+                 "id":70,
+                 "name":"1-1",
+                 "properties":
+                    {
+                     "index":1,
+                     "pathIndex":1,
+                     "speed":0,
+                     "timeRotation":0
+                    },
+                 "propertytypes":
+                    {
+                     "index":"int",
+                     "pathIndex":"int",
+                     "speed":"int",
+                     "timeRotation":"int"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":748.864,
+                 "y":614.909
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -654,7 +704,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":69,
+ "nextobjectid":71,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,
