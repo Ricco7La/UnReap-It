@@ -4,6 +4,8 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
     var x = _x + _w * 0.5;
     var y = _y + _h * 0.5;
     var _self = _game.add.sprite(x, y, type);
+    _self.SavedCollision = null;
+    _self.isOpen = false;
 
     _self.Switches = _switches;
 
@@ -29,10 +31,23 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
 
     _self.Update = function()
     {
-        if ( _self.IsOpen() ) 
+        var switchesBool = _self.IsOpen();
+        if ( switchesBool && !_self.isOpen ) 
         {
-            _self.body.clearCollision();
+            _self.body.removeCollisionGroup(_self.SavedCollision)
             _self.animations.frame = 1;
+            _self.isOpen = true;
+        }
+        else if ( !switchesBool && _self.isOpen ) 
+        {
+            /*for (el of sprite.body.data.shapes) 
+            {
+                // TODO
+                console.log(el);
+            }*/
+            _self.body.collides(_self.SavedCollision);
+            _self.animations.frame = 0;
+            _self.isOpen = false;
         }
     }
     _self.IsOpen = function()

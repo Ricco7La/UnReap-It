@@ -155,8 +155,11 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 						array.push(Switches[prop]);
 					}
 					var s = new Door(_Game, el.x, el.y,el.width,el.height, array, el.type);
+					var arrayCollision = [playerCG]
 					s.body.setCollisionGroup(doorCG);
-					s.body.collides(playerCG);
+					s.SavedCollision = arrayCollision;
+					s.body.collides(s.SavedCollision);
+					
 					Objects.push(s);
 					break;
 			}

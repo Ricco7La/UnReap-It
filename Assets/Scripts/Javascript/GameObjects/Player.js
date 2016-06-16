@@ -5,6 +5,7 @@ function Player (_game, _x, _y)
     _self.scale.setTo(0.75);
     var currentDirection = null;
     _self.lastSoul = _game.time.now;
+    _self.speed = 300;
 
     _self.anchor.set(0.5);
 
@@ -39,7 +40,7 @@ function Player (_game, _x, _y)
         {
             this.currentDirection = "UP";
             _self.animations.play('move_up', 5, true);
-            _self.body.moveUp(100);
+            _self.body.moveUp(_self.speed);
             _self.body.damping = 0.9;
         }
         else if((_game.input.keyboard.isDown(Phaser.Keyboard.LEFT) 
@@ -48,7 +49,7 @@ function Player (_game, _x, _y)
         {
             this.currentDirection = "LEFT";
             _self.animations.play('move_left', 5, true);
-            _self.body.moveLeft(100);
+            _self.body.moveLeft(_self.speed);
             _self.body.damping = 0.9;
         }
         else if((_game.input.keyboard.isDown(Phaser.Keyboard.DOWN) 
@@ -56,7 +57,7 @@ function Player (_game, _x, _y)
         {
             this.currentDirection = "DOWN";
             _self.animations.play('move_down', 5, true);
-            _self.body.moveDown(100);
+            _self.body.moveDown(_self.speed);
             _self.body.damping = 0.9;
         }
         else if((_game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) 
@@ -64,7 +65,7 @@ function Player (_game, _x, _y)
         {
             this.currentDirection = "RIGHT";
             _self.animations.play('move_right', 5, true);
-            _self.body.moveRight(100);
+            _self.body.moveRight(_self.speed);
             _self.body.damping = 0.9;
         }
         else
