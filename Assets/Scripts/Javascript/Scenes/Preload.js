@@ -50,7 +50,7 @@ Application.Preload.prototype = {
 
 	updateCounter : function() 
 	{
-		console.log('finis');
+		//console.log('finis');
 		Application.Timer.Clear();
 	},
 }

@@ -615,7 +615,7 @@
         }, 
         {
          "draworder":"topdown",
-         "height":40,
+         "height":0,
          "name":"Exit",
          "objects":[
                 {
@@ -632,7 +632,7 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":40,
+         "width":0,
          "x":0,
          "y":0
         }],
