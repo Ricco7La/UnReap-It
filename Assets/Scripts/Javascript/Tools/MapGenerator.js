@@ -35,8 +35,8 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var soulCG = _Game.physics.p2.createCollisionGroup();
 	var switchCG = _Game.physics.p2.createCollisionGroup();
 	var exitCG = _Game.physics.p2.createCollisionGroup();
+	var fovCG = _Game.physics.p2.createCollisionGroup();
 	var doorCG = _Game.physics.p2.createCollisionGroup();
-
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
@@ -106,6 +106,11 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		var ennemy = new Ennemy(_Game, p, p[0].type, p[0].properties.speed, p[0].properties.timeRotation);
 		ennemy.body.setCollisionGroup(ennemyCG);
 		ennemy.body.collides([tilesCG, playerCG]);
+		Ennemies.push(ennemy);
+		ennemy.fieldOfSight.body.setCollisionGroup(fovCG);
+		ennemy.fieldOfSight.body.collides([playerCG], function(){
+			console.log("bisous");
+		});
 	}
 	Layers["Ennemies"] = Ennemies;
 	console.dir(EnnemiesPaths);
@@ -184,7 +189,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, fovCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 
 	Layers["Player"] = myPlayer;
