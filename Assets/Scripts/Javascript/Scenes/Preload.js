@@ -28,7 +28,7 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('Octo', 'Assets/Graphics/Character/Octo_64_80.png', 64, 80, 16);
 		this.game.load.spritesheet('Vampire', 'Assets/Graphics/Character/Vampire_48_48.png', 48, 48, 16);
 		this.game.load.spritesheet('AnimeSoul', 'Assets/Graphics/SFX/Souls/Soul_96_128.png',96,128,4);
-		this.game.load.spritesheet('Soul', 'Assets/Graphics/SFX/Souls/Soul_47_50.png', 47, 50);
+		this.game.load.spritesheet('Soul', 'Assets/Graphics/SFX/Souls/Soul_32_32.png', 32, 32, 6);
 		// Load interact items
 		this.game.load.spritesheet('Bronze_Lever', 'Assets/Graphics/Interact/Switch/Bronze_Lever_32_32.png', 32, 32, 4);
 		this.game.load.spritesheet('Silver_Lever', 'Assets/Graphics/Interact/Switch/Silver_Lever_32_32.png', 32, 32, 4);
@@ -38,6 +38,10 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('CellRight', 'Assets/Graphics/Interact/Door/CellRight_96_64.png', 96, 64, 4);
 		this.game.load.spritesheet('RockDoorDark', 'Assets/Graphics/Interact/Door/RockDoorDark_96_64.png', 96, 64, 4);
 		this.game.load.spritesheet('RockDoorLight', 'Assets/Graphics/Interact/Door/RockDoorLight_96_64.png', 96, 64, 4);
+		this.game.load.spritesheet('Spikes', 'Assets/Graphics/Interact/Trap/Spike_32_32.png', 32, 32, 4);
+		this.game.load.spritesheet('HiddenZone', 'Assets/Graphics/Interact/Door/HiddenZone_96_128.png', 96, 128, 4);
+		// Load SFX
+		this.game.load.spritesheet('SoulParticle', 'Assets/Graphics/SFX/Souls/SoulParticle.png');
 
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');

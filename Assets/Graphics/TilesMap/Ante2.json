@@ -112,64 +112,64 @@
                  "y":84
                 }, 
                 {
-                 "height":101.333,
+                 "height":32.5,
                  "id":45,
                  "name":"Spike",
                  "properties":
                     {
-                     "switchesIndex":4
+                     "switchesIndex":"4"
                     },
                  "propertytypes":
                     {
-                     "switchesIndex":"int"
+                     "switchesIndex":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":29.3333,
-                 "x":193.333,
-                 "y":26.6667
+                 "width":32,
+                 "x":192,
+                 "y":31.75
                 }, 
                 {
-                 "height":101.333,
+                 "height":31.5,
                  "id":46,
                  "name":"Spike",
                  "properties":
                     {
-                     "switchesIndex":2
+                     "switchesIndex":"2"
                     },
                  "propertytypes":
                     {
-                     "switchesIndex":"int"
+                     "switchesIndex":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":29.3333,
-                 "x":1057.33,
-                 "y":32
+                 "width":30.9200000000001,
+                 "x":1056.33,
+                 "y":33.75
                 }, 
                 {
-                 "height":73.3333,
+                 "height":63.417,
                  "id":49,
-                 "name":"HiddenZone",
+                 "name":"Door",
                  "properties":
                     {
-                     "switchesIndex":5
+                     "switchesIndex":"5"
                     },
                  "propertytypes":
                     {
-                     "switchesIndex":"int"
+                     "switchesIndex":"string"
                     },
                  "rotation":0,
-                 "type":"Ante",
+                 "type":"HiddenZone",
                  "visible":true,
-                 "width":105.333,
-                 "x":986.667,
-                 "y":889.333
+                 "width":95.583,
+                 "x":992.417,
+                 "y":896.583
                 }, 
                 {
-                 "height":68,
+                 "height":63.5,
                  "id":52,
                  "name":"Door",
                  "properties":
@@ -183,12 +183,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32,
-                 "x":94.6667,
-                 "y":125.333
+                 "width":31,
+                 "x":96.5,
+                 "y":128.25
                 }, 
                 {
-                 "height":68,
+                 "height":63,
                  "id":53,
                  "name":"Door",
                  "properties":
@@ -203,8 +203,8 @@
                  "type":"",
                  "visible":true,
                  "width":32,
-                 "x":1154.67,
-                 "y":130.667
+                 "x":1152,
+                 "y":128.5
                 }, 
                 {
                  "height":32,
@@ -245,23 +245,23 @@
                  "y":224
                 }, 
                 {
-                 "height":101.333,
+                 "height":32.25,
                  "id":57,
                  "name":"Spike",
                  "properties":
                     {
-                     "switchesIndex":3
+                     "switchesIndex":"3"
                     },
                  "propertytypes":
                     {
-                     "switchesIndex":"int"
+                     "switchesIndex":"string"
                     },
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":29.3333,
-                 "x":1060,
-                 "y":1145.33
+                 "width":32,
+                 "x":1056,
+                 "y":1151.75
                 }, 
                 {
                  "height":32,
@@ -357,6 +357,120 @@
                  "width":32,
                  "x":702.667,
                  "y":64
+                }, 
+                {
+                 "height":32.25,
+                 "id":71,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"3"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1055.5,
+                 "y":1184.875
+                }, 
+                {
+                 "height":32.25,
+                 "id":72,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"3"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":1055.75,
+                 "y":1217.625
+                }, 
+                {
+                 "height":32.5,
+                 "id":74,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":193,
+                 "y":97.25
+                }, 
+                {
+                 "height":32.5,
+                 "id":75,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":192,
+                 "y":64
+                }, 
+                {
+                 "height":31.5,
+                 "id":76,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"2"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30.92,
+                 "x":1056.04,
+                 "y":98.75
+                }, 
+                {
+                 "height":31.5,
+                 "id":77,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"2"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":30.92,
+                 "x":1056.04,
+                 "y":66
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -704,7 +818,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":71,
+ "nextobjectid":78,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,
