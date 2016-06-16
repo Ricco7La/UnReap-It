@@ -111,7 +111,7 @@ Application.Title.prototype = {
 function over (item)
 {
 	console.log('hover');
-	this.state.start("Story");
+	this.state.start("Ante2");
 }
 
 function particleBurst(pointer)
