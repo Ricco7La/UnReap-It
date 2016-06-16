@@ -63,12 +63,6 @@ Application.Title.prototype = {
 		this.quit = this.game.add.text(30, this.game.world.centerY + 190, "Exit", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
 		this.quit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);	
 
-		this.game.physics.startSystem(Phaser.Physics.P2);
-		// emitter = this.game.add.emitter(0,0,100);
-		// emitter.makeParticles('dust');
-		// emitter.gravity = 200;
-
-		this.game.input.onDown.add(particleBurst,this);
 
 		
 	},
@@ -79,24 +73,21 @@ Application.Title.prototype = {
 
 		if( !(( this.game.input.mousePointer.x |0) >= this.start.x && (this.game.input.mousePointer.y |0) >= this.start.y && (this.game.input.mousePointer.x |0) <= this.start.x + this.start.width && (this.game.input.mousePointer.y |0) <= this.start.y + this.start.height ))
 		{
-			console.log(this.start);
 			emitterStart.start(false, 300, 200);	
 		}
 		
 		if( !(( this.game.input.mousePointer.x |0) >= this.credit.x && (this.game.input.mousePointer.y |0) >= this.credit.y && (this.game.input.mousePointer.x |0) <= this.credit.x + this.credit.width && (this.game.input.mousePointer.y |0) <= this.credit.y + this.credit.height ))
 		{
-			console.log(this.credit)
 			emitterCredit.start(false, 300, 200);
 		}
 
 		if( !(( this.game.input.mousePointer.x |0) >= this.quit.x && (this.game.input.mousePointer.y |0) >= this.quit.y && (this.game.input.mousePointer.x |0) <= this.quit.x + this.quit.width && (this.game.input.mousePointer.y |0) <= this.quit.y + this.quit.height ))
 		{
-			console.log(this.credit)
 			emitterExit.start(false, 300, 200);
 		}
 
 
-		console.log((this.game.input.mousePointer.x |0) + ' : ' + (this.game.input.mousePointer.y |0) + ' /  30  : ' +( this.game.world.centerY - 10))
+		
 			
 	},
 
@@ -110,15 +101,7 @@ Application.Title.prototype = {
 
 function over (item)
 {
-	console.log('hover');
 	this.state.start("Ante2");
 }
 
-function particleBurst(pointer)
-{
-	emitter.x = pointer.x;
-	emitter.y = pointer.y;
-	
-	emitter.start(true,500,50,50);
-}
 
