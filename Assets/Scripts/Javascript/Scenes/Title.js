@@ -9,7 +9,7 @@ Application.Title.prototype = {
 
 	preload : function()
 	{
-		this.game.load.image('dust','Assets/Graphics/SFX/Particles/DustParticles.png');
+		
 	},
 
 	create: function()
@@ -18,23 +18,39 @@ Application.Title.prototype = {
 		var background = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'background');
 		var title = this.game.add.tileSprite(400,30,206,60,'title');
 
+		emitterBack = this.game.add.emitter(this.game.world.centerX + 100, 200, 200);
+		emitterBack.makeParticles('blueParticles');
+
+	    // emitterBack.minParticleSpeed.set(0, 300);
+	    // emitterBack.maxParticleSpeed.set(0, 600);
+
+		// emitterBack.setRotation(100, 100000);
+		emitterBack.setAlpha(0.1, 1, 3000);
+		emitterBack.setScale(0.1, 1, 0.1, 1, 6000, Phaser.Easing.Quintic.Out);
+		emitterBack.gravity = 2;
+		emitterBack.setXspeed = 50;
+		emitterBack.start(false, 1000, 100);
+
+
+
+
 
 	    emitterStart = this.game.add.emitter(60,this.game.world.centerY,500,200);
-		emitterStart.makeParticles('dust');
+		emitterStart.makeParticles('redParticles');
 	    emitterStart.setRotation(50, 50);
 	    emitterStart.setAlpha(0.7, 0.8);
 	    emitterStart.setScale(0.1, 0.1);
 	    emitterStart.gravity = 0;
 
 	    emitterCredit = this.game.add.emitter(60,this.game.world.centerY + 150,500,200);
-		emitterCredit.makeParticles('dust');
+		emitterCredit.makeParticles('redParticles');
 	    emitterCredit.setRotation(50, 50);
 	    emitterCredit.setAlpha(0.7, 0.8);
 	    emitterCredit.setScale(0.1, 0.1);
 	    emitterCredit.gravity = 0;
 
 	    emitterExit = this.game.add.emitter(60,this.game.world.centerY + 200,500,200);
-		emitterExit.makeParticles('dust');
+		emitterExit.makeParticles('redParticles');
 	    emitterExit.setRotation(50, 50);
 	    emitterExit.setAlpha(0.7, 0.8);
 	    emitterExit.setScale(0.1, 0.1);
@@ -101,7 +117,7 @@ Application.Title.prototype = {
 
 function over (item)
 {
-	this.state.start("Ante2");
+	this.state.start("Ante1");
 }
 
 

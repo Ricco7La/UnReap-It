@@ -42,6 +42,11 @@ Application.Preload.prototype = {
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
 		this.game.load.image('title','Assets/Graphics/Title/Title.PNG');
+		this.game.load.image('redParticles','Assets/Graphics/SFX/Particles/redParticles.png');
+		this.game.load.image('blueParticles','Assets/Graphics/SFX/Particles/blueParticles.png');
+
+		//SFX
+		this.game.load.image('smoke','Assets/Graphics/SFX/Player/smoke.png');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
