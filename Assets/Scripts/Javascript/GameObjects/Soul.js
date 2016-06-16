@@ -9,8 +9,8 @@ function Soul(game,x,y)
 
     emitter.setRotation(0, 0);
     emitter.setAlpha(0.4, 0.4);
-    emitter.setScale(0.00001, 0.00001);
-    emitter.gravity = -200;
+    emitter.setScale(0.5, 0, 0.5, 0, 2000);
+    emitter.gravity = -400;
 
     var _self = game.add.sprite(x, y, "Soul");
 
