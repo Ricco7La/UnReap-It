@@ -163,12 +163,14 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			soul.body.collides([playerCG],soul.Kill);
 			if (p.properties && p.properties.z_index) 
 			{
-						console.log("Custom z-index");
+				console.log("Custom z-index");
+				Layers["Z-index"][p.properties.z_index].add(soul.emitter);
 				Layers["Z-index"][p.properties.z_index].add(soul);
 			}
 			else
 			{
-				Layers["Z-index"][6].add(soul);
+				Layers["Z-index"][5].add(soul.emitter);
+				Layers["Z-index"][5].add(soul);
 			}
 		}
 	}
