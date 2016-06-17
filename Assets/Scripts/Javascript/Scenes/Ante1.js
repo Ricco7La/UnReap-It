@@ -16,6 +16,8 @@ Application.Ante1.prototype = {
 
 
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
+
+		
 	},
 	update : function()
 	{

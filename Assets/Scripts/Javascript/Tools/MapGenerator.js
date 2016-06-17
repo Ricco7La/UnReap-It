@@ -38,6 +38,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var fovCG = _Game.physics.p2.createCollisionGroup();
 	var doorCG = _Game.physics.p2.createCollisionGroup();
 	var spikeCG = _Game.physics.p2.createCollisionGroup();
+	var teleportCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
@@ -156,7 +157,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			{
 				case "Door":
 					var array = [];
-					for (prop of el.properties.switchesIndex.split(",")) 
+					for (prop of el.properties.switchesIndex.toString().split(",")) 
 					{
 						array.push(Switches[prop]);
 					}
@@ -170,7 +171,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					break;
 				case 'Spike':
 					var array = [];
-					for (prop of el.properties.switchesIndex.split(",")) 
+					for (prop of el.properties.switchesIndex.toString().split(",")) 
 					{
 						array.push(Switches[prop]);
 					}
@@ -186,6 +187,41 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		}
 	}
 	Layers["InteractObjects"] = Objects;
+
+
+	/* Teleporting */
+	if (_Map.objects.Teleport) 
+	{
+		console.log("Teleporting");
+		var TeleportArray = [];
+		var TeleportZone = [];
+		for (el of _Map.objects.Teleport) 
+		{
+			if (el.visible) 
+			{
+				if(el.type == "TeleportZone")
+				{
+					TeleportZone[el.properties.index] = {x: el.x, y: el.y};
+				}
+			}
+		}
+		for (el of _Map.objects.Teleport) 
+		{
+			if (el.visible) 
+			{
+				if(el.type == "Teleport")
+				{
+					var area = TeleportZone[el.properties.index]
+					var t = new Teleport( _Game, el.x, el.y, el.width,el.height, area.x, area.y);
+					t.body.setCollisionGroup(teleportCG);
+					t.body.collides([playerCG],t.teleportPlayer);
+					TeleportArray.push(t);
+				}
+			}
+		}
+		console.log(TeleportZone);
+		console.log(TeleportArray);
+	}
 
 	/*  Exit  */
 	console.log("Exit");
@@ -204,7 +240,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, fovCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, fovCG, teleportCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 
 	Layers["Player"] = myPlayer;
