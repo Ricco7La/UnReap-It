@@ -21,12 +21,23 @@
 */
 function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile ) 
 {
+	var Layers = {};
 	//console.log(_Game);
 	_Map = _Game.add.tilemap(_tilemap);
 	_Map.addTilesetImage(_tilesetName, _tilesetFile);
 	
 	console.log("Map");
 	console.log(_Map);
+
+	// Group for Z-index
+	Layers["Z-index"] = [];
+
+	for (var i = 0; i < 10; i++) 
+	{
+		Layers["Z-index"].push(_Game.add.group();)
+	}
+
+
 
 	//Collision Group
 	var tilesCG = _Game.physics.p2.createCollisionGroup();
@@ -44,7 +55,6 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
 	/***** Charge Tile Layer from Tiled *****/
-	var Layers = {};
 	var tilesBodies = [];
 	for (prop of _Map.layers) 
 	{
