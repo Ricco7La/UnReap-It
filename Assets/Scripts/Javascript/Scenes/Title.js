@@ -117,7 +117,7 @@ Application.Title.prototype = {
 
 function over (item)
 {
-	this.state.start("Ante1");
+	this.state.start("Story");
 }
 
 

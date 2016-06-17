@@ -39,6 +39,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var doorCG = _Game.physics.p2.createCollisionGroup();
 	var spikeCG = _Game.physics.p2.createCollisionGroup();
 	var teleportCG = _Game.physics.p2.createCollisionGroup();
+	var HoleCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
@@ -108,11 +109,16 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		var ennemy = new Ennemy(_Game, p, p[0].type, p[0].properties.speed, p[0].properties.timeRotation);
 		ennemy.body.setCollisionGroup(ennemyCG);
 		ennemy.body.collides([playerCG]);
+		ennemy.body.collides([HoleCG], function()
+		{
+			console.log('hole kill');
+		});
 		Ennemies.push(ennemy);
 		ennemy.fieldOfSight.body.setCollisionGroup(fovCG);
 		ennemy.fieldOfSight.body.collides([playerCG], function(){
 			console.log("bisous");
 		});
+		// ennemy.body.collides([HoleCG]);
 	}
 	Layers["Ennemies"] = Ennemies;
 	console.dir(EnnemiesPaths);
@@ -136,6 +142,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.log("Interractions");
 	var Switches = [];
 	var Objects = [];
+	var EnemyDies = [];
 	for (el of _Map.objects.Interractions) 
 	{
 		if (el.visible) 
@@ -156,6 +163,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			switch (el.name)
 			{
 				case "Door":
+					console.log('Door');
 					var array = [];
 					for (prop of el.properties.switchesIndex.toString().split(",")) 
 					{
@@ -180,6 +188,19 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					s.body.setCollisionGroup(spikeCG);
 					s.SavedCollision = arrayCollision;
 					s.body.collides(s.SavedCollision);
+					
+					Objects.push(s);
+					break;
+				case 'Hole':
+					console.log('Hole');
+					var array = [];
+					for (prop of el.properties.switchesIndex.split(",")) 
+					{
+						array.push(Switches[prop]);
+					}
+					var s = new Hole(_Game, el.x, el.y,el.width,el.height, array, el.type);
+					s.body.setCollisionGroup(HoleCG);
+					s.SavedCollision = [playerCG ,ennemyCG];
 					
 					Objects.push(s);
 					break;
@@ -240,7 +261,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, fovCG, teleportCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, HoleCG, fovCG, teleportCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 
 	Layers["Player"] = myPlayer;
