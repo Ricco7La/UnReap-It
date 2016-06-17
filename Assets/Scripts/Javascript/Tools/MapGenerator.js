@@ -106,7 +106,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	{
 		var ennemy = new Ennemy(_Game, p, p[0].type, p[0].properties.speed, p[0].properties.timeRotation);
 		ennemy.body.setCollisionGroup(ennemyCG);
-		ennemy.body.collides([tilesCG, playerCG]);
+		ennemy.body.collides([playerCG]);
 		Ennemies.push(ennemy);
 		ennemy.fieldOfSight.body.setCollisionGroup(fovCG);
 		ennemy.fieldOfSight.body.collides([playerCG], function(){
