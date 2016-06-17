@@ -52,6 +52,7 @@ Application.Preload.prototype = {
 
 		//Dialogue
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
+		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);

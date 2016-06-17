@@ -16,12 +16,33 @@ Application.Ante1.prototype = {
 
 	
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
-		dialogue();
-		
+		eugenedial = new Dialogue('eugeneDial',"Il faut que je passe sans me faire reperer ! \n ce serait con de ce faire choper");
+		medusaDial = new Dialogue('medusaDial',"ATTRAPEZ LE !! VIV..MORT !... Attend il est quoi enfaite ?!")
+		medusaDial.setVisible(false);
+		eugenedial.setVisible(false);
+		this.lastInput = this.game.time.now;
+
+		this.DialArray = [eugenedial,medusaDial];
+		this.indexDial = 0;
+
+		this.DialArray[this.indexDial].setVisible(true);
+				
 	},
 	update : function()
 	{
 		Application.Timer.Update();
+		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.M) && ( this.lastInput + 500) < this.game.time.now )
+		{
+			console.log("ici")
+			this.lastInput = this.game.time.now;
+			this.DialArray[this.indexDial].setVisible(false);
+			this.indexDial ++;
+			if (this.indexDial < this.DialArray.length) 
+			{
+				this.DialArray[this.indexDial].setVisible(true);
+			}
+			
+		}		
 
 		
 	},
@@ -32,9 +53,33 @@ Application.Ante1.prototype = {
 }
 
 
-function dialogue()
-{
-	var dialogue = Application.Game.add.image(0,0,'eugeneDial');
-	dialogue.fixedToCamera = true;
-	console.log("dialogue")
-}
+// function dialogue(_charaDial,_text)
+// {
+
+
+// 	var boxDialogue = Application.Game.add.image(0,0,_charaDial);
+//  	var dialogue = Application.Game.add.text(180,350, _text, { font: "14px Merriweather", fill: "#ff1105", align: "center" });
+// 	boxDialogue.fixedToCamera = true;
+// 	dialogue.fixedToCamera = true;
+// 	// _game.input.keyboard.isDown(Phaser.Keyboard.UP
+// 	boxDialogue.update = function() 
+// 	{
+// 		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) 
+// 		{
+// 			console.log("kill dial")
+// 			boxDialogue.destroy();
+// 		}
+// 	}
+// 	dialogue.update = function()
+// 	{
+// 		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) 
+// 		{
+// 			dialogue.destroy();
+// 		}
+// 	}
+	
+
+
+
+// 	console.log("dialogue")
+// }
