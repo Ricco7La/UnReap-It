@@ -11,6 +11,8 @@ function Player (_game, _x, _y)
 
     _game.physics.p2.enable(_self);
 
+    _self.body.setRectangle(_self.width,_self.width,0,(_self.height - _self.width) * 0.5);
+
     _self.animations.add('move_down', [0,1,2,3]);
     _self.animations.add('move_left', [4,5,6,7]);
     _self.animations.add('move_right', [8,9,10,11]);
