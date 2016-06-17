@@ -14,8 +14,11 @@ Application.Ante1.prototype = {
 
 		this.Map = {};
 
-
+	
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
+
+		dialogue();
+		
 	},
 	update : function()
 	{
@@ -26,5 +29,13 @@ Application.Ante1.prototype = {
 	render : function(){
 		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
 	}
+
 }
 
+
+function dialogue()
+{
+	var dialogue = Application.Game.add.image(0,0,'eugeneDial');
+	dialogue.fixedToCamera = true;
+	console.log("dialogue")
+}

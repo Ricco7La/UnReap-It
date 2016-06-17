@@ -40,6 +40,7 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('RockDoorDark', 'Assets/Graphics/Interact/Door/RockDoorDark_96_64.png', 96, 64, 4);
 		this.game.load.spritesheet('RockDoorLight', 'Assets/Graphics/Interact/Door/RockDoorLight_96_64.png', 96, 64, 4);
 		this.game.load.spritesheet('Spikes', 'Assets/Graphics/Interact/Trap/Spike_32_32.png', 32, 32, 4);
+		this.game.load.spritesheet('Hole', 'Assets/Graphics/Interact/Trap/Hole_32_32.png', 32, 32, 4);
 		this.game.load.spritesheet('HiddenZone', 'Assets/Graphics/Interact/Door/HiddenZone_96_128.png', 96, 128, 4);
 		// Load SFX
 		this.game.load.spritesheet('SoulParticle', 'Assets/Graphics/SFX/Souls/SoulParticle.png');
@@ -50,8 +51,8 @@ Application.Preload.prototype = {
 		this.game.load.image('redParticles','Assets/Graphics/SFX/Particles/redParticles.png');
 		this.game.load.image('blueParticles','Assets/Graphics/SFX/Particles/blueParticles.png');
 
-		//SFX
-		this.game.load.image('smoke','Assets/Graphics/SFX/Player/smoke.png');
+		//Dialogue
+		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
