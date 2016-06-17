@@ -28,7 +28,7 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('Octo', 'Assets/Graphics/Character/Octo_64_80.png', 64, 80, 16);
 		this.game.load.spritesheet('Vampire', 'Assets/Graphics/Character/Vampire_48_48.png', 48, 48, 16);
 		this.game.load.spritesheet('AnimeSoul', 'Assets/Graphics/SFX/Souls/Soul_96_128.png',96,128,4);
-		this.game.load.spritesheet('Soul', 'Assets/Graphics/SFX/Souls/Soul_32_32.png', 32, 32, 6);
+		this.game.load.spritesheet('Soul', 'Assets/Graphics/SFX/Souls/SoulAnimated_64_64.png', 64, 64, 26);
 		// Load interact items
 		this.game.load.spritesheet('Bronze_Lever', 'Assets/Graphics/Interact/Switch/Bronze_Lever_32_32.png', 32, 32, 4);
 		this.game.load.spritesheet('Silver_Lever', 'Assets/Graphics/Interact/Switch/Silver_Lever_32_32.png', 32, 32, 4);
