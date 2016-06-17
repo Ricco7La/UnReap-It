@@ -1,7 +1,6 @@
 Default Z-index
 ----------------
 All : 5
-Soul : 6
 
 
 Tile Layers
