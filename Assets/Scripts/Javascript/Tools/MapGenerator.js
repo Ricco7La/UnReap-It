@@ -135,6 +135,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.log("Interractions");
 	var Switches = [];
 	var Objects = [];
+	var EnemyDies = [];
 	for (el of _Map.objects.Interractions) 
 	{
 		if (el.visible) 
