@@ -8,14 +8,19 @@ function Out(game,x,y,w,h)
     _self.body.y = y + h * 0.5;
     _self.body.setRectangle(w,h,0,0,0);
     _self.body.fixedRotation = true;
+    _self.lastLvl = game.time.now;
     
     _self.body.debug = Application.debugMode;
 
    _self.Exit = function()
    {
-        console.log("switch");
-        Application.Game.state.start(Application.lvl[Application.indexLevel],true);
-        Application.indexLevel ++;
+        if (_self.lastLvl + 50 < game.time.now)
+        {
+          console.log("switch");
+          Application.Game.state.start(Application.lvl[Application.indexLevel], true);
+          Application.indexLevel ++;
+          _self.lastLvl = game.time.now;
+        }
    }
    return _self;
 

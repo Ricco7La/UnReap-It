@@ -17,6 +17,7 @@
 	Game.state.add("LevelTest", Application.LevelTest);
 	Game.state.add("Title", Application.Title);
 	Game.state.add("Story", Application.Story);
+	Game.state.add("Tutorial", Application.Tutorial);
 	Game.state.add("Ante1", Application.Ante1);
 	Game.state.add("Ante2", Application.Ante2);
 	Game.state.add("GameOver", Application.GameOver);

@@ -10,6 +10,7 @@ function Player (_game, _x, _y)
     _self.anchor.set(0.5);
 
     _game.physics.p2.enable(_self);
+    _self.body.setRectangle(24,24);
 
     _self.body.setRectangle(_self.width,_self.width,0,(_self.height - _self.width) * 0.5);
 

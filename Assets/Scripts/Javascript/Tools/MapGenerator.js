@@ -236,6 +236,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				}
 			}
 		}
+		console.log(TeleportZone);
 		for (el of _Map.objects.Teleport) 
 		{
 			if (el.visible) 
@@ -250,7 +251,6 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				}
 			}
 		}
-		console.log(TeleportZone);
 		console.log(TeleportArray);
 	}
 

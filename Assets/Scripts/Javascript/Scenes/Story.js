@@ -132,10 +132,8 @@ function nextWord()
 
 function actionOnClick () 
 {
-
     Application.Game.state.start(Application.lvl[Application.indexLevel],true);
     Application.indexLevel ++;
-
 }
 
 
