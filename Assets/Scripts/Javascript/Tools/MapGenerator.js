@@ -37,6 +37,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var exitCG = _Game.physics.p2.createCollisionGroup();
 	var fovCG = _Game.physics.p2.createCollisionGroup();
 	var doorCG = _Game.physics.p2.createCollisionGroup();
+	var spikeCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
@@ -105,7 +106,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	{
 		var ennemy = new Ennemy(_Game, p, p[0].type, p[0].properties.speed, p[0].properties.timeRotation);
 		ennemy.body.setCollisionGroup(ennemyCG);
-		ennemy.body.collides([tilesCG, playerCG]);
+		ennemy.body.collides([playerCG]);
 		Ennemies.push(ennemy);
 		ennemy.fieldOfSight.body.setCollisionGroup(fovCG);
 		ennemy.fieldOfSight.body.collides([playerCG], function(){
@@ -167,6 +168,20 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					
 					Objects.push(s);
 					break;
+				case 'Spike':
+					var array = [];
+					for (prop of el.properties.switchesIndex.split(",")) 
+					{
+						array.push(Switches[prop]);
+					}
+					var s = new Spike(_Game, el.x, el.y,el.width,el.height, array, el.type);
+					var arrayCollision = [playerCG]
+					s.body.setCollisionGroup(spikeCG);
+					s.SavedCollision = arrayCollision;
+					s.body.collides(s.SavedCollision);
+					
+					Objects.push(s);
+					break;
 			}
 		}
 	}
@@ -189,7 +204,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, fovCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, fovCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 
 	Layers["Player"] = myPlayer;

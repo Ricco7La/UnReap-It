@@ -28,8 +28,7 @@ function Player (_game, _x, _y)
     _self.scoreSouls.fixedToCamera = true;
 
     _self.animations.play('move_down', 5, true);
-
-
+    
     _self.update = function()
     {
         _self.scoreSouls.setText("Souls : " + Application.nbrSouls);
