@@ -34,7 +34,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 
 	for (var i = 0; i < 10; i++) 
 	{
-		Layers["Z-index"].push(_Game.add.group();)
+		Layers["Z-index"].push(_Game.add.group())
 	}
 
 
