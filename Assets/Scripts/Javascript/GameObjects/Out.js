@@ -14,7 +14,7 @@ function Out(game,x,y,w,h)
    _self.Exit = function()
    {
         console.log("switch");
-        Application.Game.state.start(Application.lvl[Application.indexLevel]);
+        Application.Game.state.start(Application.lvl[Application.indexLevel],true);
         Application.indexLevel ++;
    }
    return _self;
