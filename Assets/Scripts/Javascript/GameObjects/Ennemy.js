@@ -1,10 +1,9 @@
-function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplitude, _areaDetection, _switchKill) {
+function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplitude, _areaDetection) {
 
     //console.log("CG",_path);
     var type = _type || "Vampire";
     var _self = _game.add.sprite(_path[0].x, _path[0].y, type);
     var areaDetection = _areaDetection || .85;
-    var switchKill = _switchKill || false;
 
     _self.anchor.set(0.5);
 
