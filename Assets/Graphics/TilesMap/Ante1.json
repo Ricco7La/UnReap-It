@@ -50,12 +50,14 @@
          "properties":
             {
              "collide":false,
-             "worldSize":false
+             "worldSize":false,
+             "z_index":6
             },
          "propertytypes":
             {
              "collide":"bool",
-             "worldSize":"bool"
+             "worldSize":"bool",
+             "z_index":"int"
             },
          "type":"tilelayer",
          "visible":true,
@@ -71,12 +73,14 @@
          "properties":
             {
              "collide":true,
-             "worldSize":false
+             "worldSize":false,
+             "z_index":6
             },
          "propertytypes":
             {
              "collide":"bool",
-             "worldSize":"bool"
+             "worldSize":"bool",
+             "z_index":"int"
             },
          "type":"tilelayer",
          "visible":true,
