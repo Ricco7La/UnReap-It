@@ -132,9 +132,8 @@ function nextWord()
 
 function actionOnClick () 
 {
-
-    this.state.start("Ante1");
-
+    Application.Game.state.start(Application.lvl[Application.indexLevel],true);
+    Application.indexLevel ++;
 }
 
 
