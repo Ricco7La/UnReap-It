@@ -1,6 +1,6 @@
-function Door( _game, _x, _y, _w, _h, _switches, _type)
+function Hole( _game, _x, _y, _w, _h, _switches, _type)
 {
-	var type = _type || "CellLeft";
+	var type = _type || "Hole";
     var x = _x + _w * 0.5;
     var y = _y + _h * 0.5;
     var _self = _game.add.sprite(x, y, type);
@@ -18,14 +18,14 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
     _self.body.fixedRotation = true;
     _self.body.static = true;
 
-    _self.animations.add("open", [0,1,2,3]);
-    _self.animations.add("close", [3,2,1,0]);
+    _self.animations.add("open", [3,2,1,0]);
+    _self.animations.add("close", [0,1,2,3]);
 
    
     _self.body.debug = Application.debugMode;
     _self.body.sprite = _self;
 
-    //_self.animations.frame = 0;
+    // _self.animations.frame = 3;
 
     _self.update = function()
     {
@@ -45,15 +45,14 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
     }
     _self.IsOpen = function()
     {
-        // debugger;
         for (s of _self.Switches) 
         {
             if (!s.isActivated) 
             {
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     return _self;
