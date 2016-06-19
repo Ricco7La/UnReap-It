@@ -17,7 +17,7 @@ function Dialogue(_charaDial,_text)
 	{
 		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) 
 		{
-			console.log("kill dial")
+			//console.log("kill dial")
 			boxDialogue.dialogue.destroy();
 			boxDialogue.destroy();
 		}

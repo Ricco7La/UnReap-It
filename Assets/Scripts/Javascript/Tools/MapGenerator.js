@@ -22,12 +22,13 @@
 function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile ) 
 {
 	var Layers = {};
+	Application.Layers = Layers;
 	//console.log(_Game);
 	_Map = _Game.add.tilemap(_tilemap);
 	_Map.addTilesetImage(_tilesetName, _tilesetFile);
 	
-	console.log("Map");
-	console.log(_Map);
+	//console.log("Map");
+	//console.log(_Map);
 
 	// Group for Z-index
 	Layers["Z-index"] = [];
@@ -53,7 +54,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
 	/***** Charge Tile Layer from Tiled *****/
-	console.log("Tiles");
+	//console.log("Tiles");
 	var tilesBodies = [];
 	for (prop of _Map.layers) 
 	{
@@ -72,10 +73,10 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				tilesBodies = tilesBodies.concat(bodies);
 			}
 			
-			console.log(prop.properties);
+			//console.log(prop.properties);
 			if (prop.properties && prop.properties.z_index) 
 			{
-				console.log("Custom z-index");
+				//console.log("Custom z-index");
 				Layers["Z-index"][prop.properties.z_index].add(Layers[prop.name]);
 			}
 			else
@@ -102,7 +103,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	/***** Charge Object Layer from Tiled *****/
 
 	/* Ennemies */
-	console.log("Ennemies");
+	//console.log("Ennemies");
 	//console.log(_Map.objects.Ennemies);
 	var EnnemiesPaths = [];
 	for (el of _Map.objects.Ennemies) 
@@ -126,7 +127,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 
 		if (p[0].properties && p[0].properties.z_index) 
 		{
-						console.log("Custom z-index");
+			//console.log("Custom z-index");
 			Layers["Z-index"][p[0].properties.z_index].add(ennemy);
 		}
 		else
@@ -138,20 +139,16 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		ennemy.body.collides([playerCG]);
 		ennemy.body.collides([HoleCG], function()
 		{
-			console.log('hole kill');
+			//console.log('hole kill');
 		});
 		Ennemies.push(ennemy);
-		ennemy.fieldOfSight.body.setCollisionGroup(fovCG);
-		ennemy.fieldOfSight.body.collides([playerCG], function(){
-			console.log("bisous");
-		});
-		// ennemy.body.collides([HoleCG]);
+		
 	}
 	Layers["Ennemies"] = Ennemies;
 	console.dir(EnnemiesPaths);
 
 	/* Souls */
-	console.log("Souls");
+	//console.log("Souls");
 	var SoulsPositions = _Map.objects.Souls;
 	var Souls = [];
 	for (p of SoulsPositions) 
@@ -163,7 +160,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			soul.body.collides([playerCG],soul.Kill);
 			if (p.properties && p.properties.z_index) 
 			{
-				console.log("Custom z-index");
+				//console.log("Custom z-index");
 				Layers["Z-index"][p.properties.z_index].add(soul.emitter);
 				Layers["Z-index"][p.properties.z_index].add(soul);
 			}
@@ -177,7 +174,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	console.dir(SoulsPositions);
 
 	/* Interractions */
-	console.log("Interractions");
+	//console.log("Interractions");
 	var Switches = [];
 	var Objects = [];
 	var EnemyDies = [];
@@ -192,7 +189,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				s.body.collides(playerCG, s.Interact);
 				if (el.properties && el.properties.z_index) 
 				{
-						console.log("Custom z-index");
+						//console.log("Custom z-index");
 					Layers["Z-index"][el.properties.z_index].add(s);
 				}
 				else
@@ -210,7 +207,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			switch (el.name)
 			{
 				case "Door":
-					console.log('Door');
+					//console.log('Door');
 					var array = [];
 					for (prop of el.properties.switchesIndex.toString().split(",")) 
 					{
@@ -219,7 +216,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					var s = new Door(_Game, el.x, el.y,el.width,el.height, array, el.type);
 					if (el.properties && el.properties.z_index) 
 					{
-						console.log("Custom z-index");
+						//console.log("Custom z-index");
 						Layers["Z-index"][el.properties.z_index].add(s);
 					}
 					else
@@ -242,7 +239,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					var s = new Spike(_Game, el.x, el.y,el.width,el.height, array, el.type);
 					if (el.properties && el.properties.z_index) 
 					{
-						console.log("Custom z-index");
+						//console.log("Custom z-index");
 						Layers["Z-index"][el.properties.z_index].add(s);
 					}
 					else
@@ -257,7 +254,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					Objects.push(s);
 					break;
 				case 'Hole':
-					console.log('Hole');
+					//console.log('Hole');
 					var array = [];
 					for (prop of el.properties.switchesIndex.toString().split(",")) 
 					{
@@ -266,7 +263,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					var s = new Hole(_Game, el.x, el.y,el.width,el.height, array, el.type);
 					if (el.properties && el.properties.z_index) 
 					{
-						console.log("Custom z-index");
+						//console.log("Custom z-index");
 						Layers["Z-index"][el.properties.z_index].add(s);
 					}
 					else
@@ -287,7 +284,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	/* Teleporting */
 	if (_Map.objects.Teleport) 
 	{
-		console.log("Teleporting");
+		//console.log("Teleporting");
 		var TeleportArray = [];
 		var TeleportZone = [];
 		for (el of _Map.objects.Teleport) 
@@ -300,7 +297,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				}
 			}
 		}
-		console.log(TeleportZone);
+		//console.log(TeleportZone);
 		for (el of _Map.objects.Teleport) 
 		{
 			if (el.visible) 
@@ -315,24 +312,24 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				}
 			}
 		}
-		console.log(TeleportArray);
+		//console.log(TeleportArray);
 	}
 
 	/*  Exit  */
-	console.log("Exit");
+	//console.log("Exit");
 	var Exit = _Map.objects.Exit[0]; //(x,y,width,height);
 	var out = new Out(_Game,Exit.x,Exit.y,Exit.width,Exit.height);
 		out.body.setCollisionGroup(exitCG);
 		out.body.static = true;
 		out.body.collides([playerCG], out.Exit);
 
-	console.dir(Exit);
+	//console.dir(Exit);
 
 	/* Player Start */
-	console.log("StartPosition");
+	//console.log("StartPosition");
 	//console.log(_Map.objects.StartPosition[0]);
 	var StartPosition = _Map.objects.StartPosition[0];
-	console.dir(StartPosition);
+	//console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
 	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, HoleCG, fovCG, teleportCG]);
@@ -342,7 +339,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 
 	Layers["Player"] = myPlayer;
 
-	console.log(Layers["Z-index"]);
+	//console.log(Layers["Z-index"]);
 
 	return Layers;
 }

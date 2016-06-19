@@ -16,7 +16,7 @@ function Out(game,x,y,w,h)
    {
         if (_self.lastLvl + 50 < game.time.now)
         {
-          console.log("switch");
+          //console.log("switch");
           Application.Game.state.start(Application.lvl[Application.indexLevel], true);
           Application.indexLevel ++;
           _self.lastLvl = game.time.now;

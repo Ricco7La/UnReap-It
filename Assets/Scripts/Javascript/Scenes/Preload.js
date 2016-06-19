@@ -2,7 +2,7 @@ Application.Preload = function(){}
 
 Application.Preload.prototype = {
 	preload: function(){ 
-		console.log("Preload preload")
+		//console.log("Preload preload")
 		// on crée un sprite pour la barre de chargement
         var loadingBar = this.add.sprite(Application.config.width / 2, Application.config.height / 2, "loading");
 	        loadingBar.anchor.setTo(0.5,0.5);
@@ -60,7 +60,7 @@ Application.Preload.prototype = {
 
 	},
   	create: function(){
-  		console.log("Preload finished")
+  		//console.log("Preload finished")
   		// go to title
 		this.state.start("Title");
 	},

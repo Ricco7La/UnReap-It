@@ -4,7 +4,7 @@ Application.Tutorial = function(){}
 
 Application.Tutorial.prototype = {
 	create: function(){ 
-		console.log('Game Screen');
+		//console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
 		this.game.physics.p2.setImpactEvents(true);
