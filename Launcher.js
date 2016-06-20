@@ -26,4 +26,6 @@
 
 	// lancer l'ecran de lancement du jeu
 	Game.state.start("Splash");
+	console.log(Game);
+	
 })();    

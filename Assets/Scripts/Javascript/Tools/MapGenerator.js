@@ -32,6 +32,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 
 	// Group for Z-index
 	Layers["Z-index"] = [];
+	Layers["BlockVision"] = [];
 
 	for (var i = 0; i < 10; i++) 
 	{
@@ -73,7 +74,10 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				var bodies = _Game.physics.p2.convertTilemap(_Map, Layers[prop.name]);
 				tilesBodies = tilesBodies.concat(bodies);
 			}
-			
+			if (prop.properties.blockView) 
+			{
+				Layers["BlockVision"].push(prop.name);
+			}
 			//console.log(prop.properties);
 			if (prop.properties && prop.properties.z_index) 
 			{
@@ -134,7 +138,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		}
 		else
 		{
-			Layers["Z-index"][5].add(ennemy);
+			Layers["Z-index"][6].add(ennemy);
 		}
 
 		ennemy.body.setCollisionGroup(ennemyCG);
@@ -143,7 +147,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		});
 		ennemy.fovCG = fovCG;
 		ennemy.playerCG = playerCG;
-		ennemy.body.collides([HoleCG]);
+		ennemy.body.collides([HoleCG], ennemy.Kill);
 		Ennemies.push(ennemy);
 		
 	}
@@ -339,7 +343,6 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 	
 	Layers["Z-index"][5].add(myPlayer);
-
 	Layers["Player"] = myPlayer;
 
 	//console.log(Layers["Z-index"]);

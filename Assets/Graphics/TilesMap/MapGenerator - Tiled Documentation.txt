@@ -8,7 +8,7 @@ Tile Layers
 	- worldSize <optional>: set the world size with the size of the layer
 	- collide <optional>: set collision for the layer
 	- z_index <optional>: order of display
-	
+	- blockView <optional>: block the view of the ennemies
 
 
 Layer Ennemies
