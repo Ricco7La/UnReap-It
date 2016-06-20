@@ -13,10 +13,8 @@ Application.Tuto.prototype = {
 
 
 		this.Map = {};
-
-
+		
 		var MapLayers = GenerateMap(this.game, this.Map, 'Tuto', 'All_Tiles', 'Tiles');
-
 		var pause = this.game.add.text(300, 240, 'Pause', { font: '24px Arial', fill: '#fff' });
 		pause.fixedToCamera = true;
 
@@ -44,8 +42,6 @@ Application.Tuto.prototype = {
 	update : function()
 	{
 		Application.Timer.Update();
-
-		
 	},
 	render : function()
 	{

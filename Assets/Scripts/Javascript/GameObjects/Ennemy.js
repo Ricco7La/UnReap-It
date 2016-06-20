@@ -273,7 +273,19 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     }
 
     
-
+    _self.Kill = function()
+    {
+        var unscale = _game.add.tween(_self.scale).to( { x : 0, y : 0}, 2000, Phaser.Easing.Linear.None, true);
+        var rotationScale = _game.add.tween(_self).to( { angle : 60000 }, 1800, Phaser.Easing.Linear.None, true );
+        _self.FOV.visible = false;
+        _self.FOVCollider.body.clearCollision();
+        unscale.onComplete.add(function()
+        {
+            _self.FOV.destroy();
+            _self.FOVCollider.destroy();
+            _self.destroy();
+        })
+    }
     _self.MoveToPathPoint();
     return _self;
 }

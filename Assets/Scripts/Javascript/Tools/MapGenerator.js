@@ -147,7 +147,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		});
 		ennemy.fovCG = fovCG;
 		ennemy.playerCG = playerCG;
-		ennemy.body.collides([HoleCG]);
+		ennemy.body.collides([HoleCG], ennemy.Kill);
 		Ennemies.push(ennemy);
 		
 	}
@@ -343,7 +343,6 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 	
 	Layers["Z-index"][5].add(myPlayer);
-
 	Layers["Player"] = myPlayer;
 
 	//console.log(Layers["Z-index"]);

@@ -58,6 +58,13 @@ Application.Preload.prototype = {
 		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
 		this.game.load.image('charonDial','Assets/Graphics/CharacterDialogue/CharonDial.png');
 
+		// Load GameOver
+		this.game.load.image('gameOver','Assets/Graphics/GameOver/GameOver.png');
+
+		// Create the Timer(_duration, _repeat, _callback, _game)
+		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
+		// Add the Juicy Plugins to Application.
+		Application.Juicy = this.game.plugins.add(new Phaser.Plugin.Juicy(this.game));
 		
     	this.game.load.image('menu', 'Assets/Graphics/number-buttons-90x90.png', 270, 180);
 
