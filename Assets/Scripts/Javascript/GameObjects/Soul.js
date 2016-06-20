@@ -44,7 +44,7 @@ function Soul(game,x,y)
         _self.emitter.on = false;
         deathAnim.killOnComplete = true;
     	_self.animations.play('take',12,false);
-        var endPos = _self.x - 250;
+        var endPos = _self.y - 250;
         //console.log(_self.x, "to", endPos)
         game.add.tween(_self).to( { y: endPos }, 1000, Phaser.Easing.Linear.Out, true);
     	// _self.destroy();

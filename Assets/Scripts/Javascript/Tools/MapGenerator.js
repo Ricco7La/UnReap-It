@@ -136,11 +136,12 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		}
 
 		ennemy.body.setCollisionGroup(ennemyCG);
-		ennemy.body.collides([playerCG]);
-		ennemy.body.collides([HoleCG], function()
-		{
-			//console.log('hole kill');
+		ennemy.body.collides([playerCG],function () {
+			console.log("YOU ARE TOO CLOSE");
 		});
+		ennemy.fovCG = fovCG;
+		ennemy.playerCG = playerCG;
+		ennemy.body.collides([HoleCG]);
 		Ennemies.push(ennemy);
 		
 	}
