@@ -25,7 +25,7 @@ Application.AnteBoss.prototype = {
 		eugeneDial3 = new Dialogue(180,350,'eugeneDial',"Si tu le prend comme ça,\nJe n'ai pas d'autre choix que de forcer le passage a l'ancienne!");
 		charonDial4 = new Dialogue(130,200,'charonDial',"A nous deux !");
 		var nbSouls = Application.nbrSouls + 2
-		eugeneDial4 = new Dialogue(180,350,'eugeneDial',"Faux ! A nous " + nbSouls);
+		eugeneDial4 = new Dialogue(180,350,'eugeneDial',"Faux ! C'est toi contre moi et mes " + Application.nbrSouls + " nouveaux copains !" );
 		
 		charonDial.setVisible(false);
 		eugeneDial.setVisible(false);
