@@ -1,8 +1,9 @@
-function Dialogue(_charaDial,_text)
+function Dialogue(_x,_y,_charaDial,_text)
 {
 	
 	var boxDialogue = Application.Game.add.image(0,0,_charaDial);
- 	boxDialogue.dialogue = Application.Game.add.text(180,350, _text, { font: "14px Merriweather", fill: "#ff1105", align: "center" });
+ 	boxDialogue.dialogue = Application.Game.add.text(_x,_y, _text, { font: "12px Merriweather", fill: "#ff1105", align: "left" });
+ 	boxDialogue.dialogue.setShadow(3, 3, 'rgba(0,0,0,0.2)', 5);
 	boxDialogue.fixedToCamera = true;
 	boxDialogue.dialogue.fixedToCamera = true;
 
