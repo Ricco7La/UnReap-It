@@ -28,7 +28,7 @@ var content =
 	"lui qui a perdu l’envie de tuer",
 	" décida que si Lucifer n’avait plus besoin de lui, il allait se rallier aux humains,",
 	"leur rendre leurs âmes et",
-	" détruire ce que Lucifer avait mis tant de temps à créer.", 
+	"détruire ce que Lucifer avait mis tant de temps à créer.", 
 	"",
 	"Mais pour ça, encore fallait-il réussir à s’introduire dans le cœur des enfers",
 	"sans se faire repérer avant que ",

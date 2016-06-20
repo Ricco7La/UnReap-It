@@ -16,13 +16,15 @@ Application.Ante1.prototype = {
 
 	
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
-		eugenedial = new Dialogue('eugeneDial',"Il faut que je passe sans me faire reperer ! \n ce serait con de ce faire choper");
-		medusaDial = new Dialogue('medusaDial',"ATTRAPEZ LE !! VIV..MORT !... Attend il est quoi enfaite ?!")
+		eugeneDial = new Dialogue(180,350,'eugeneDial',"Bien, si je ne me trompe pas, l'embarcadère de Charon \ndoit ce trouver au bout de ce cercle... \nEvitons d'attirer l'attention, j'aimerais eviter une effusion de \nsang inutile...");
+		medusaDial = new Dialogue(160,350,'medusaDial',"Il parait qu'Eugène a disparu des bureaux. \nOn a ordre de le ramener si jamais on le vois");
+		eugeneDial2 = new Dialogue(180,350,'eugeneDial',"HEIN QUOI ?! Déjà ? Il y'a balaine sous gravier \ns'ils savent déjà que je suis parti...\nSoyons discret");
 		medusaDial.setVisible(false);
-		eugenedial.setVisible(false);
+		eugeneDial.setVisible(false);
+		eugeneDial2.setVisible(false);
 		this.lastInput = this.game.time.now;
 
-		this.DialArray = [eugenedial,medusaDial];
+		this.DialArray = [eugeneDial,medusaDial,eugeneDial2];
 		this.indexDial = 0;
 
 		this.DialArray[this.indexDial].setVisible(true);
@@ -51,35 +53,3 @@ Application.Ante1.prototype = {
 	}
 
 }
-
-
-// function dialogue(_charaDial,_text)
-// {
-
-
-// 	var boxDialogue = Application.Game.add.image(0,0,_charaDial);
-//  	var dialogue = Application.Game.add.text(180,350, _text, { font: "14px Merriweather", fill: "#ff1105", align: "center" });
-// 	boxDialogue.fixedToCamera = true;
-// 	dialogue.fixedToCamera = true;
-// 	// _game.input.keyboard.isDown(Phaser.Keyboard.UP
-// 	boxDialogue.update = function() 
-// 	{
-// 		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) 
-// 		{
-// 			console.log("kill dial")
-// 			boxDialogue.destroy();
-// 		}
-// 	}
-// 	dialogue.update = function()
-// 	{
-// 		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) 
-// 		{
-// 			dialogue.destroy();
-// 		}
-// 	}
-	
-
-
-
-// 	console.log("dialogue")
-// }
