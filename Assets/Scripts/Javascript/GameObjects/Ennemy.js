@@ -117,7 +117,8 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         }
         _self.FOVCollider.body.x = _self.x - offsetW * 1/3 * orientation * Math.sin(angleRad) + w * 2/3 * Math.cos(angleRad) ;
         _self.FOVCollider.body.y = _self.y - offsetH * 1/3 * orientation * Math.cos(angleRad) + h * 2/3 * Math.sin(angleRad) ;
-
+        _self.FOVCollider.body.sensor = true;
+        _self.FOVCollider.body.collideWorldBounds = false;
         _self.FOVCollider.body.setCollisionGroup(_self.fovCG);
         _self.FOVCollider.body.collides([_self.playerCG],function()
         {
@@ -152,7 +153,11 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         ray.start.set(_self.x, _self.y);
         ray.end.set(p.x, p.y);
         
-        var tiles = Application.Layers["Wall"].getRayCastTiles(ray, 4, false, false);
+        var tiles = []
+        for (var i = 0; i < Application.Layers["BlockVision"].length; i++) {
+            tiles = tiles.concat(Application.Layers[Application.Layers["BlockVision"][i]].getRayCastTiles(ray, 4, false, false));
+        }
+        
         var lines = [];
         for (var i = 0; i < tiles.length; i++) 
         {
@@ -268,7 +273,19 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     }
 
     
-
+    _self.Kill = function()
+    {
+        var unscale = _game.add.tween(_self.scale).to( { x : 0, y : 0}, 2000, Phaser.Easing.Linear.None, true);
+        var rotationScale = _game.add.tween(_self).to( { angle : 60000 }, 1800, Phaser.Easing.Linear.None, true );
+        _self.FOV.visible = false;
+        _self.FOVCollider.body.clearCollision();
+        unscale.onComplete.add(function()
+        {
+            _self.FOV.destroy();
+            _self.FOVCollider.destroy();
+            _self.destroy();
+        })
+    }
     _self.MoveToPathPoint();
     return _self;
 }

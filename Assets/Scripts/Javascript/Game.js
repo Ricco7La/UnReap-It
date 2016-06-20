@@ -5,10 +5,11 @@ var Application = {
 		height : 480
 	},
 	Game : null,
-	debugMode: true,
+	debugMode: false,
 	Timer : null,
+	Juicy : null,
 	nbrSouls : 0,
-	lvl : ['Tutorial','Ante1','Ante2','AnteBoss'],
+	lvl : ['Tuto','Ante1','Ante2','Ante3','AnteBoss'],
 	indexLevel : 0
 }
 

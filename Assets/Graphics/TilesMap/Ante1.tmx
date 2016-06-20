@@ -53,6 +53,7 @@
  </layer>
  <layer name="Wall" width="40" height="40">
   <properties>
+   <property name="blockView" type="bool" value="true"/>
    <property name="collide" type="bool" value="true"/>
    <property name="worldSize" type="bool" value="false"/>
   </properties>

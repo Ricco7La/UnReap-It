@@ -17,13 +17,15 @@
 	Game.state.add("LevelTest", Application.LevelTest);
 	Game.state.add("Title", Application.Title);
 	Game.state.add("Story", Application.Story);
-	Game.state.add("Tutorial", Application.Tutorial);
+	Game.state.add("Tuto", Application.Tuto);
 	Game.state.add("Ante1", Application.Ante1);
 	Game.state.add("Ante2", Application.Ante2);
-	Game.state.add("GameOver", Application.GameOver);
-	Game.state.add("Tuto", Application.Tuto);
+	Game.state.add("Ante3", Application.Ante3);
 	Game.state.add("AnteBoss", Application.AnteBoss);
+	Game.state.add("GameOver", Application.GameOver);
 
 	// lancer l'ecran de lancement du jeu
 	Game.state.start("Splash");
+	console.log(Game);
+	
 })();    
