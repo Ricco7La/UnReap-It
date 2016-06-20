@@ -4,14 +4,22 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     var type = _type || "Vampire";
     var _self = _game.add.sprite(_path[0].x, _path[0].y, type);
     var areaDetection = _areaDetection || .85;
+    _self.rangeView = _rangeView || 150;
+    _self.amplitude = _amplitude || 30;
+
+    _self.playerCG = null;
+    _self.fovCG = null;
+
+    // speed in pixel/second
+    _self.speed = _speed || 50;
 
     _self.anchor.set(0.5);
 
     _self.Path = _path;
     _self.pathIndex = 1;
 
-    // speed in pixel/second
-    _self.speed = _speed || 50;
+    // Vision angle
+    _self.angleOfView = 0;
 
     // time between rotation
     _self.timeRotation = _timeRotation || 2500;
@@ -36,39 +44,164 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
 
     _self.animations.play('moveDown', 7, true);
 
-    console.log(_self.body);
-
     _self.tween = null;
 
-    _self.fieldOfSight = _game.add.graphics(0, 0);
-
-    _self.fieldOfSight.beginFill(0xFFFF0B, 0.3);
-    _self.fieldOfSight.lineStyle(1, 0x0000FF);
-    _self.rangeView = _rangeView || 150;
-    _self.amplitude = _amplitude || 30;
-    var midValue = _self.rangeView * Math.tan(Phaser.Math.degToRad(_self.amplitude * 0.5));
-    _self.thirdOfSprite = _self.rangeView * 0.666666666666666;
-    _self.fieldOfSight.moveTo(0 - _self.thirdOfSprite, 0);
-    _self.fieldOfSight.lineTo(_self.rangeView - _self.thirdOfSprite, - midValue);
-    _self.fieldOfSight.lineTo(_self.rangeView - _self.thirdOfSprite, midValue);
-    _self.fieldOfSight.lineTo(0 - _self.thirdOfSprite, 0);
-    _self.fieldOfSight.endFill();
-
-    _game.physics.p2.enable(_self.fieldOfSight);
-    _self.fieldOfSight.body.addPolygon({}, 0, 0, _self.rangeView, - midValue, _self.rangeView, midValue);
+    _self.FOV = _game.add.graphics(0, 0);
+    _self.FOVCollider = _game.add.sprite(0, 0);
     
-    _self.fieldOfSight.body.clearCollision();
-    _self.fieldOfSight.body.fixedRotation = true;
+    _game.physics.p2.enable(_self.FOVCollider);
+    _self.FOVCollider.body.debug = Application.debugMode;
+    _self.FOVCollider.body.fixedRotation = true;
 
-    _self.fieldOfSight.body.debug = Application.debugMode;
+    //var r = _game.physics.p2.hitTest(_self.position);
+    //console.log(r);
 
     _self.update = function()
     {
-        _self.fieldOfSight.body.x = _self.x + _self.thirdOfSprite * Math.cos(Phaser.Math.degToRad(_self.fieldOfSight.body.angle));
-        _self.fieldOfSight.body.y = _self.y + _self.thirdOfSprite * Math.sin(Phaser.Math.degToRad(_self.fieldOfSight.body.angle));
-        //_self.fieldOfSight.body.updateCollisionMask();
-    }
+        _self.FOV.clear();
+        _self.FOV.beginFill(0xFBFE00);
+        _self.FOV.lineStyle(0, 0xffffff, 0);
+        _self.FOV.alpha = 0.5;
+        //_self.FOV.moveTo(_self.x, _self.y);
+        var poly = _self.CheckVision();
+        poly.unshift([_self.x, _self.y]);
+        poly.push([_self.x, _self.y]);
 
+        var minX = 9000000000000000;
+        var maxX = 0;
+        var minY = 9000000000000000;
+        var maxY = 0;
+        for (p of poly) 
+        {
+            //console.log(p[0]);
+            if (p[0] < minX) 
+            {
+                //console.log("minX");
+                minX = p[0];
+            }
+            if (p[0] > maxX) 
+            {
+                //console.log("maxX");
+                maxX = p[0];
+            }
+            if (p[1] < minY) 
+            {
+                //console.log("minY");
+                minY = p[1];
+            }
+            if (p[1]> maxY) 
+            {
+                //console.log("maxY");
+                maxY = p[1];
+            }
+        }
+        var h = maxY - minY;
+        var w = maxX - minX;
+        var offsetH =  (_self.y - maxY) + (_self.y - minY) ;
+        var offsetW = (_self.x - maxX) + (_self.x - minX) ;
+
+        //_self.FOV.lineTo(_self.x, _self.y);
+
+        _self.FOV.drawPolygon(poly);
+
+        //_self.FOVCollider.body.clearShapes();
+        _self.FOVCollider.body.addPolygon({}, poly);
+
+        //console.log("w",w,"h",h)
+        var angleRad = Phaser.Math.degToRad(_self.angleOfView);
+        
+        //console.log(offsetW,offsetH);
+        var orientation = 1;
+        if (_self.angleOfView == 180 || _self.angleOfView == 270) {
+            orientation = -1;
+        }
+        _self.FOVCollider.body.x = _self.x - offsetW * 1/3 * orientation * Math.sin(angleRad) + w * 2/3 * Math.cos(angleRad) ;
+        _self.FOVCollider.body.y = _self.y - offsetH * 1/3 * orientation * Math.cos(angleRad) + h * 2/3 * Math.sin(angleRad) ;
+
+        _self.FOVCollider.body.setCollisionGroup(_self.fovCG);
+        _self.FOVCollider.body.collides([_self.playerCG],function()
+        {
+            console.log("I CAN SEE YOU");
+        });
+
+        _self.FOV.endFill();        
+    }
+    _self.CheckVision = function () 
+    {
+        var startAngle = _self.angleOfView - (_self.amplitude * 0.5);
+        var endAngle = _self.angleOfView + (_self.amplitude * 0.5);
+        var points = [];
+        for (var i = startAngle; i <= endAngle; i += 3) 
+        {
+            var p = _self.ShotRaycast(i);
+            if (p) 
+            {   
+                points.push([p.x,p.y])
+                _self.FOV.lineTo(p.x, p.y);
+            }
+        }
+        return points;
+    }
+    _self.ShotRaycast = function (_angle) 
+    {   
+        var p = {x: 0, y: 0};
+        p.x = _self.x + Math.cos(Phaser.Math.degToRad(_angle)) * _self.rangeView;
+        p.y = _self.y + Math.sin(Phaser.Math.degToRad(_angle)) * _self.rangeView;
+
+        var ray = new Phaser.Line();
+        ray.start.set(_self.x, _self.y);
+        ray.end.set(p.x, p.y);
+        
+        var tiles = []
+        for (var i = 0; i < Application.Layers["BlockVision"].length; i++) {
+            tiles = tiles.concat(Application.Layers[Application.Layers["BlockVision"][i]].getRayCastTiles(ray, 4, false, false));
+        }
+        
+        var lines = [];
+        for (var i = 0; i < tiles.length; i++) 
+        {
+            if (tiles[i].index != -1)
+            {   
+                // convert tiles position in pixel
+                var wall = {
+                    x: tiles[i].x * tiles[i].width,
+                    y: tiles[i].y * tiles[i].height,
+                    width: tiles[i].width,
+                    height: tiles[i].height
+                };
+                var lines = lines.concat([
+                    new Phaser.Line(wall.x, wall.y, wall.x + wall.width, wall.y),
+                    new Phaser.Line(wall.x, wall.y, wall.x, wall.y + wall.height),
+                    new Phaser.Line(wall.x + wall.width, wall.y,
+                        wall.x + wall.width, wall.y + wall.height),
+                    new Phaser.Line(wall.x, wall.y + wall.height,
+                        wall.x + wall.width, wall.y + wall.height)
+                ]);   
+            }
+        }
+        if (lines.length == 0) return p; 
+
+        var distanceToWall = Number.POSITIVE_INFINITY;
+        var closestIntersection = null;
+        for (var j = 0; j < lines.length; j++) 
+        {
+            var intersect = lines[j].intersects(ray, true);
+            if (intersect) 
+            {
+                // Find the closest intersection
+                var distance = this.game.math.distance(ray.start.x, ray.start.y, intersect.x, intersect.y);
+                if (distance < distanceToWall) 
+                {
+                    distanceToWall = distance;
+                    closestIntersection = intersect;
+                }
+            }
+        }
+        return closestIntersection;
+
+        
+         
+    }
 
     //Go to the next Point in the predifined path
     _self.MoveToPathPoint = function()
@@ -99,8 +232,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
                     _self.animations.play('moveUp',7,true);
                     break;
             }
-            _self.fieldOfSight.body.angle = _self.Path[_self.pathIndex].rotation;
-            _self.fieldOfSight.angle = _self.Path[_self.pathIndex].rotation;  
+            _self.angleOfView = _self.Path[_self.pathIndex].rotation;  
         }
         //Ennemy walking
         else if (Math.abs(nextX - previousX) > Math.abs(nextY - previousY)) 
@@ -108,14 +240,12 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
             if (nextX > previousX) 
             {
                 _self.animations.play('moveRight',7,true);
-                _self.fieldOfSight.body.angle = 0;
-                _self.fieldOfSight.angle = 0;
+                _self.angleOfView = 0;
             }
             else
             {
                 _self.animations.play('moveLeft',7,true);
-                _self.fieldOfSight.body.angle = 180;
-                _self.fieldOfSight.angle = 180;
+                _self.angleOfView = 180;
             }
         }
         else 
@@ -123,14 +253,12 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
             if (nextY > previousY) 
             {
                 _self.animations.play('moveDown',7,true);
-                _self.fieldOfSight.body.angle = 90;
-                _self.fieldOfSight.angle = 90;
+                _self.angleOfView = 90;
             }
             else
             {
                 _self.animations.play('moveUp',7,true);
-                _self.fieldOfSight.body.angle = 270;
-                _self.fieldOfSight.angle = 270;
+                _self.angleOfView = 270;
             }
         }
 
@@ -144,7 +272,19 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     }
 
     
-
+    _self.Kill = function()
+    {
+        var unscale = _game.add.tween(_self.scale).to( { x : 0, y : 0}, 2000, Phaser.Easing.Linear.None, true);
+        var rotationScale = _game.add.tween(_self).to( { angle : 60000 }, 1800, Phaser.Easing.Linear.None, true );
+        _self.FOV.visible = false;
+        _self.FOVCollider.body.clearCollision();
+        unscale.onComplete.add(function()
+        {
+            _self.FOV.destroy();
+            _self.FOVCollider.destroy();
+            _self.destroy();
+        })
+    }
     _self.MoveToPathPoint();
     return _self;
 }

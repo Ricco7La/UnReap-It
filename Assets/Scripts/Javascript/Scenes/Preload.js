@@ -2,7 +2,7 @@ Application.Preload = function(){}
 
 Application.Preload.prototype = {
 	preload: function(){ 
-		console.log("Preload preload")
+		//console.log("Preload preload")
 		// on crée un sprite pour la barre de chargement
         var loadingBar = this.add.sprite(Application.config.width / 2, Application.config.height / 2, "loading");
 	        loadingBar.anchor.setTo(0.5,0.5);
@@ -15,10 +15,11 @@ Application.Preload.prototype = {
 
 	    // Load TILEMAP
 		this.game.load.tilemap('LevelTest', 'Assets/Graphics/TilesMap/LevelTest.json', null, Phaser.Tilemap.TILED_JSON);
-		this.game.load.tilemap('Tutorial', 'Assets/Graphics/TilesMap/Tutorial.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('Tuto', 'Assets/Graphics/TilesMap/Tuto.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante1', 'Assets/Graphics/TilesMap/Ante1.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante2', 'Assets/Graphics/TilesMap/Ante2.json', null, Phaser.Tilemap.TILED_JSON);
-		this.game.load.tilemap('Tuto', 'Assets/Graphics/TilesMap/Tuto.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('Ante3', 'Assets/Graphics/TilesMap/Ante3.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('AnteBoss', 'Assets/Graphics/TilesMap/AnteBoss.json', null, Phaser.Tilemap.TILED_JSON);
 		//Load Tiles
 		this.game.load.image('Tiles', 'Assets/Graphics/Tiles/All_Tiles.png', 32, 32);
 		// Load SpriteSheet Personnages
@@ -55,6 +56,7 @@ Application.Preload.prototype = {
 		//Dialogue
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
 		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
+		this.game.load.image('charonDial','Assets/Graphics/CharacterDialogue/CharonDial.png');
 
 		// Load GameOver
 		this.game.load.image('gameOver','Assets/Graphics/GameOver/GameOver.png');
@@ -63,12 +65,16 @@ Application.Preload.prototype = {
 		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
 		// Add the Juicy Plugins to Application.
 		Application.Juicy = this.game.plugins.add(new Phaser.Plugin.Juicy(this.game));
+		
+    	this.game.load.image('menu', 'Assets/Graphics/number-buttons-90x90.png', 270, 180);
 
+		// Create the Timer(_duration, _repeat, _callback, _game)
+		Application.Timer = new Timer(30000, false, this.updateCounter, Application.Game);
 	},
   	create: function(){
-  		console.log("Preload finished")
+  		//console.log("Preload finished")
   		// go to title
-		this.state.start("GameOver");
+		this.state.start("Title");
 	},
 
 	updateCounter : function() 

@@ -18,9 +18,10 @@ function Player (_game, _x, _y)
     _self.animations.add('move_right', [8,9,10,11]);
     _self.animations.add('move_up', [12,13,14,15]);
     
-    _self.body.thrust(0)
+    _self.body.thrust(0);
     _self.body.fixedRotation = true;
     _self.body.collideWorldBounds = true;
+    _self.body.mass = 10;
 
     _game.camera.follow(_self);
 
@@ -71,6 +72,7 @@ function Player (_game, _x, _y)
         }
         else
         {
+            //_self.body.setZeroVelocity();
             _self.body.damping = 1;
             _self.animations.stop();
 

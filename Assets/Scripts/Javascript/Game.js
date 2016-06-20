@@ -9,7 +9,7 @@ var Application = {
 	Timer : null,
 	Juicy : null,
 	nbrSouls : 0,
-	lvl : ['Tutorial','Ante1','Ante2'],
+	lvl : ['Tuto','Ante1','Ante2','Ante3','AnteBoss'],
 	indexLevel : 0
 }
 
