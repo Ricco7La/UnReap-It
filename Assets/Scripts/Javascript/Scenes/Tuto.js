@@ -28,6 +28,18 @@ Application.Tuto.prototype = {
 		
 		pause.inputEnabled = true;
 
+		this.game.input.keyboard.addCallbacks(this, null, null, function(char)
+		{
+	        // When the paus button is pressed, we pause the game
+	        //Application.Game.paused = true;
+	        if( char == "P")
+	        {
+	        	console.log("kikoo")
+	        }
+	        // Then add the menu
+	        //menu.visible = true
+		});
+
     	pause.events.onInputUp.add(function ()
     	{
 	        // When the paus button is pressed, we pause the game
