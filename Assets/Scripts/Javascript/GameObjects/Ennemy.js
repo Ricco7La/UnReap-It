@@ -152,7 +152,11 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         ray.start.set(_self.x, _self.y);
         ray.end.set(p.x, p.y);
         
-        var tiles = Application.Layers["Wall"].getRayCastTiles(ray, 4, false, false);
+        var tiles = []
+        for (var i = 0; i < Application.Layers["BlockVision"].length; i++) {
+            tiles = tiles.concat(Application.Layers[Application.Layers["BlockVision"][i]].getRayCastTiles(ray, 4, false, false));
+        }
+        
         var lines = [];
         for (var i = 0; i < tiles.length; i++) 
         {

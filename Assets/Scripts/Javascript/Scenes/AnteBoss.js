@@ -43,6 +43,8 @@ Application.AnteBoss.prototype = {
 
 		this.DialArray[this.indexDial].setVisible(true);
 
+		console.log(this.game);
+
 				
 	},
 	update : function()

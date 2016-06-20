@@ -28,11 +28,13 @@
          "opacity":1,
          "properties":
             {
+             "blockView":true,
              "collide":true,
              "worldSize":false
             },
          "propertytypes":
             {
+             "blockView":"bool",
              "collide":"bool",
              "worldSize":"bool"
             },
