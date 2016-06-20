@@ -13,18 +13,17 @@ Application.Tuto.prototype = {
 
 
 		this.Map = {};
-
-
+		
 		var MapLayers = GenerateMap(this.game, this.Map, 'Tuto', 'All_Tiles', 'Tiles');
+
 	},
 	update : function()
 	{
 		Application.Timer.Update();
-
-		
 	},
 	render : function(){
 		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
+		
 	}
 }
 

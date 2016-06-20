@@ -339,7 +339,6 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 	
 	Layers["Z-index"][5].add(myPlayer);
-
 	Layers["Player"] = myPlayer;
 
 	console.log(Layers["Z-index"]);

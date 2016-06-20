@@ -77,16 +77,13 @@ Application.Title.prototype = {
 		this.credit.inputEnabled = true;
 
 		this.quit = this.game.add.text(30, this.game.world.centerY + 190, "Exit", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
-		this.quit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);	
-
-
+		this.quit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 		
+        
 	},
 
 	update : function()
 	{
-
-
 		if( !(( this.game.input.mousePointer.x |0) >= this.start.x && (this.game.input.mousePointer.y |0) >= this.start.y && (this.game.input.mousePointer.x |0) <= this.start.x + this.start.width && (this.game.input.mousePointer.y |0) <= this.start.y + this.start.height ))
 		{
 			emitterStart.start(false, 300, 200);	
@@ -100,11 +97,7 @@ Application.Title.prototype = {
 		if( !(( this.game.input.mousePointer.x |0) >= this.quit.x && (this.game.input.mousePointer.y |0) >= this.quit.y && (this.game.input.mousePointer.x |0) <= this.quit.x + this.quit.width && (this.game.input.mousePointer.y |0) <= this.quit.y + this.quit.height ))
 		{
 			emitterExit.start(false, 300, 200);
-		}
-
-
-		
-			
+		}			
 	},
 
 	render : function()
@@ -117,5 +110,5 @@ Application.Title.prototype = {
 
 function over (item)
 {
-	this.state.start("Ante1");
+	this.state.start("Tuto");
 }

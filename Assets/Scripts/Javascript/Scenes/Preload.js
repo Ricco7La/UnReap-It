@@ -56,14 +56,19 @@ Application.Preload.prototype = {
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
 		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
 
+		// Load GameOver
+		this.game.load.image('gameOver','Assets/Graphics/GameOver/GameOver.png');
+
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
+		// Add the Juicy Plugins to Application.
+		Application.Juicy = this.game.plugins.add(new Phaser.Plugin.Juicy(this.game));
 
 	},
   	create: function(){
   		console.log("Preload finished")
   		// go to title
-		this.state.start("Title");
+		this.state.start("GameOver");
 	},
 
 	updateCounter : function() 
