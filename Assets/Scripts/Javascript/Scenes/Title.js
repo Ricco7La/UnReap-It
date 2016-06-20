@@ -119,5 +119,3 @@ function over (item)
 {
 	this.state.start("Ante1");
 }
-
-
