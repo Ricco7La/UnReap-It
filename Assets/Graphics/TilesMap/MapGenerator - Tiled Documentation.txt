@@ -1,7 +1,14 @@
+Default Z-index
+----------------
+All : 5
+
+
 Tile Layers
 ------------
 	- worldSize <optional>: set the world size with the size of the layer
 	- collide <optional>: set collision for the layer
+	- z_index <optional>: order of display
+	
 
 
 Layer Ennemies
@@ -13,11 +20,19 @@ Layer Ennemies
 	- type <optional>: sprite of the ennemy ( Vampire(Default), Medusa, Devil, Octo, Demon )
 	- speed <optional>: the speed of the ennemy (Default = 50)
 	- timeRotation <optional>: time between each rotation (Default = 2500 ms)
+	- z_index <optional>: order of display
 
 
 Layer Interractions
 --------------------
 	-name: Switch , Door
+	- z_index <optional>: order of display
 
 Layer Souls
 ------------
+
+
+Layer Teleport
+---------------
+	- type : Teleport or TeleportZone
+	- index : link 1 TeleportZone to 1 or more Teleport

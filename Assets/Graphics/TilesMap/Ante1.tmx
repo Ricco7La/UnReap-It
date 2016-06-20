@@ -103,6 +103,7 @@
   <properties>
    <property name="collide" type="bool" value="false"/>
    <property name="worldSize" type="bool" value="false"/>
+   <property name="z_index" type="int" value="6"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -151,6 +152,7 @@
   <properties>
    <property name="collide" type="bool" value="true"/>
    <property name="worldSize" type="bool" value="false"/>
+   <property name="z_index" type="int" value="6"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

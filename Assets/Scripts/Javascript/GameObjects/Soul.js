@@ -30,19 +30,23 @@ function Soul(game,x,y)
     _self.animations.play('animate',7,true);
    
    _self.body.debug = Application.debugMode;
+   _self.body.static = true;
    _self.body.sprite = _self;
-   _self.body.setRectangle(_self.with * 0.5, _self.height * 0.75);
+   _self.body.setRectangle(16, 32);
 
    _self.emitter.start(false, 3000, 50);
     _self.Kill = function()
     {   
         _self.body.destroy();
     	console.log("destroy")
-    	_self.loadTexture('AnimeSoul',[0]);
+    	_self.loadTexture('AnimeSoul');
     	var deathAnim = _self.animations.add('take');
         _self.emitter.on = false;
         deathAnim.killOnComplete = true;
     	_self.animations.play('take',12,false);
+        var endPos = _self.x - 250;
+        console.log(_self.x, "to", endPos)
+        game.add.tween(_self).to( { y: endPos }, 1000, Phaser.Easing.Linear.Out, true);
     	// _self.destroy();
     }
 
