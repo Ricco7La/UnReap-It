@@ -18,6 +18,7 @@ Application.Preload.prototype = {
 		this.game.load.tilemap('Tutorial', 'Assets/Graphics/TilesMap/Tutorial.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante1', 'Assets/Graphics/TilesMap/Ante1.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante2', 'Assets/Graphics/TilesMap/Ante2.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('Tuto', 'Assets/Graphics/TilesMap/Tuto.json', null, Phaser.Tilemap.TILED_JSON);
 		//Load Tiles
 		this.game.load.image('Tiles', 'Assets/Graphics/Tiles/All_Tiles.png', 32, 32);
 		// Load SpriteSheet Personnages
