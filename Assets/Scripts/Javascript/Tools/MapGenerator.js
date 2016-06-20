@@ -54,6 +54,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
+
 	/***** Charge Tile Layer from Tiled *****/
 	//console.log("Tiles");
 	var tilesBodies = [];
@@ -101,6 +102,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	{
 		prop.setCollisionGroup(tilesCG);
 		prop.collides([playerCG]);
+		prop.mass = 20;
 	}
 
 
