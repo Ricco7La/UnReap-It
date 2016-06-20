@@ -117,7 +117,8 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         }
         _self.FOVCollider.body.x = _self.x - offsetW * 1/3 * orientation * Math.sin(angleRad) + w * 2/3 * Math.cos(angleRad) ;
         _self.FOVCollider.body.y = _self.y - offsetH * 1/3 * orientation * Math.cos(angleRad) + h * 2/3 * Math.sin(angleRad) ;
-
+        _self.FOVCollider.body.sensor = true;
+        _self.FOVCollider.body.collideWorldBounds = false;
         _self.FOVCollider.body.setCollisionGroup(_self.fovCG);
         _self.FOVCollider.body.collides([_self.playerCG],function()
         {
