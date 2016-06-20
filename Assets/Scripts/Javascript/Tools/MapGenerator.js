@@ -138,7 +138,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		}
 		else
 		{
-			Layers["Z-index"][5].add(ennemy);
+			Layers["Z-index"][6].add(ennemy);
 		}
 
 		ennemy.body.setCollisionGroup(ennemyCG);
