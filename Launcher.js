@@ -21,6 +21,8 @@
 	Game.state.add("Ante1", Application.Ante1);
 	Game.state.add("Ante2", Application.Ante2);
 	Game.state.add("GameOver", Application.GameOver);
+	Game.state.add("Tuto", Application.Tuto);
+	Game.state.add("AnteBoss", Application.AnteBoss);
 
 	// lancer l'ecran de lancement du jeu
 	Game.state.start("Splash");
