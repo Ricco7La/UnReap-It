@@ -8,7 +8,7 @@ var Application = {
 	debugMode: true,
 	Timer : null,
 	nbrSouls : 0,
-	lvl : ['Tutorial','Ante1','Ante2'],
+	lvl : ['Tutorial','Ante1','Ante2','AnteBoss'],
 	indexLevel : 0
 }
 

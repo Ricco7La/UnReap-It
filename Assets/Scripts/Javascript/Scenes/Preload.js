@@ -18,6 +18,7 @@ Application.Preload.prototype = {
 		this.game.load.tilemap('Tutorial', 'Assets/Graphics/TilesMap/Tutorial.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante1', 'Assets/Graphics/TilesMap/Ante1.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante2', 'Assets/Graphics/TilesMap/Ante2.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('AnteBoss', 'Assets/Graphics/TilesMap/AnteBoss.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Tuto', 'Assets/Graphics/TilesMap/Tuto.json', null, Phaser.Tilemap.TILED_JSON);
 		//Load Tiles
 		this.game.load.image('Tiles', 'Assets/Graphics/Tiles/All_Tiles.png', 32, 32);
@@ -55,6 +56,7 @@ Application.Preload.prototype = {
 		//Dialogue
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
 		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
+		this.game.load.image('charonDial','Assets/Graphics/CharacterDialogue/CharonDial.png');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
