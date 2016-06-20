@@ -4,7 +4,7 @@ Application.LevelTest = function(){}
 
 Application.LevelTest.prototype = {
 	create: function(){ 
-		console.log('Game Screen');
+		//console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
 		this.game.physics.p2.setImpactEvents(true);
@@ -25,7 +25,7 @@ Application.LevelTest.prototype = {
 			{layerName: "Object" }
 		];
 		var MapLayers = GenerateMap(this.game, this.Map, 'LevelTest', 'All_Tiles', 'Tiles', layers);
-		console.log('testEnd');
+		//console.log('testEnd');
 
 		this.Player = MapLayers["Player"];
 

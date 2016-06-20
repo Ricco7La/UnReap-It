@@ -2,7 +2,7 @@ Application.Preload = function(){}
 
 Application.Preload.prototype = {
 	preload: function(){ 
-		console.log("Preload preload")
+		//console.log("Preload preload")
 		// on crée un sprite pour la barre de chargement
         var loadingBar = this.add.sprite(Application.config.width / 2, Application.config.height / 2, "loading");
 	        loadingBar.anchor.setTo(0.5,0.5);
@@ -19,6 +19,7 @@ Application.Preload.prototype = {
 		this.game.load.tilemap('Ante1', 'Assets/Graphics/TilesMap/Ante1.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante2', 'Assets/Graphics/TilesMap/Ante2.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante3', 'Assets/Graphics/TilesMap/Ante3.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('AnteBoss', 'Assets/Graphics/TilesMap/AnteBoss.json', null, Phaser.Tilemap.TILED_JSON);
 		//Load Tiles
 		this.game.load.image('Tiles', 'Assets/Graphics/Tiles/All_Tiles.png', 32, 32);
 		// Load SpriteSheet Personnages
@@ -55,6 +56,7 @@ Application.Preload.prototype = {
 		//Dialogue
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
 		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
+		this.game.load.image('charonDial','Assets/Graphics/CharacterDialogue/CharonDial.png');
 
 		
     	this.game.load.image('menu', 'Assets/Graphics/number-buttons-90x90.png', 270, 180);
@@ -63,7 +65,7 @@ Application.Preload.prototype = {
 		Application.Timer = new Timer(30000, false, this.updateCounter, Application.Game);
 	},
   	create: function(){
-  		console.log("Preload finished")
+  		//console.log("Preload finished")
   		// go to title
 		this.state.start("Title");
 	},

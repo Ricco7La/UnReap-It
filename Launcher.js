@@ -21,6 +21,7 @@
 	Game.state.add("Ante1", Application.Ante1);
 	Game.state.add("Ante2", Application.Ante2);
 	Game.state.add("Ante3", Application.Ante3);
+	Game.state.add("AnteBoss", Application.AnteBoss);
 	Game.state.add("GameOver", Application.GameOver);
 
 	// lancer l'ecran de lancement du jeu

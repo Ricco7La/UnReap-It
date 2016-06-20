@@ -28,7 +28,7 @@ var content =
 	"lui qui a perdu l’envie de tuer",
 	" décida que si Lucifer n’avait plus besoin de lui, il allait se rallier aux humains,",
 	"leur rendre leurs âmes et",
-	" détruire ce que Lucifer avait mis tant de temps à créer.", 
+	"détruire ce que Lucifer avait mis tant de temps à créer.", 
 	"",
 	"Mais pour ça, encore fallait-il réussir à s’introduire dans le cœur des enfers",
 	"sans se faire repérer avant que ",
@@ -55,7 +55,7 @@ Application.Story.prototype = {
 
 	create: function()
 	{ 
-		console.log('Story Screen');
+		//console.log('Story Screen');
 		background = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'background');
 		title = this.game.add.tileSprite(400,30,206,60,'title');
 
@@ -101,7 +101,7 @@ function nextLine() {
     wordIndex = 0;
 
     //  Call the 'nextWord' function once for each word in the line (line.length)
-    console.log(Application)
+    //console.log(Application)
     Application.Game.time.events.repeat(wordDelay, line.length, nextWord, this);
 
     //  Advance to the next line

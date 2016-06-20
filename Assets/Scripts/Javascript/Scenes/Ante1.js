@@ -4,7 +4,7 @@ Application.Ante1 = function(){}
 
 Application.Ante1.prototype = {
 	create: function(){ 
-		console.log('Game Screen');
+		//console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
 		this.game.physics.p2.setImpactEvents(true);
@@ -35,7 +35,7 @@ Application.Ante1.prototype = {
 		Application.Timer.Update();
 		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.M) && ( this.lastInput + 500) < this.game.time.now )
 		{
-			console.log("ici")
+			//console.log("ici")
 			this.lastInput = this.game.time.now;
 			this.DialArray[this.indexDial].setVisible(false);
 			this.indexDial ++;

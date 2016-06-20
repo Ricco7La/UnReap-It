@@ -14,7 +14,7 @@ Application.Title.prototype = {
 
 	create: function()
 	{ 
-		console.log('Title Screen');
+		//console.log('Title Screen');
 		var background = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'background');
 		var title = this.game.add.tileSprite(400,30,206,60,'title');
 
@@ -62,7 +62,7 @@ Application.Title.prototype = {
 		this.start.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 		this.start.inputEnabled = true;
 		this.start.events.onInputOver.add(over,this);
-		console.log(this.game.input.mousePointer)
+		//console.log(this.game.input.mousePointer)
 			
 			
 
