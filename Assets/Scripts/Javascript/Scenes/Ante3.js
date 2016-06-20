@@ -1,8 +1,8 @@
-Application.Tutorial = function(){}
+Application.Ante3 = function(){}
 
 
 
-Application.Tutorial.prototype = {
+Application.Ante3.prototype = {
 	create: function(){ 
 		console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
@@ -15,7 +15,7 @@ Application.Tutorial.prototype = {
 		this.Map = {};
 
 
-		var MapLayers = GenerateMap(this.game, this.Map, 'Tutorial', 'All_Tiles', 'Tiles');
+		var MapLayers = GenerateMap(this.game, this.Map, 'Ante3', 'All_Tiles', 'Tiles');
 	},
 	update : function()
 	{
