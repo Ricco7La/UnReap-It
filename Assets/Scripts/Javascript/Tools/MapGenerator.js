@@ -129,7 +129,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var Ennemies = [];
 	for (p of EnnemiesPaths) 
 	{
-		var ennemy = new Ennemy(_Game, p, p[0].type, p[0].properties.speed, p[0].properties.timeRotation);
+		var ennemy = new Ennemy(_Game, p, p[0].type, p[0].properties.speed, p[0].properties.timeRotation, p[0].properties.rangeView, p[0].properties.amplitude, p[0].properties.areaDetection);
 
 		if (p[0].properties && p[0].properties.z_index) 
 		{
@@ -142,12 +142,22 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		}
 
 		ennemy.body.setCollisionGroup(ennemyCG);
-		ennemy.body.collides([playerCG],function () {
-			console.log("YOU ARE TOO CLOSE");
-		});
 		ennemy.fovCG = fovCG;
 		ennemy.playerCG = playerCG;
 		ennemy.body.collides([HoleCG], ennemy.Kill);
+
+		// What to do on viewed
+		ennemy.FunctionOnSeeing = function() {
+			console.log("Seen");
+			if (ennemy.lastViewed + 5000 < _Game.time.now)
+        	{
+        		console.log("Do");
+        	  	Application.resetLevel();
+        	  	ennemy.lastViewed = _Game.time.now;
+        	}	
+		} 
+		ennemy.body.collides([playerCG], ennemy.FunctionOnSeeing);
+
 		Ennemies.push(ennemy);
 		
 	}

@@ -23,6 +23,7 @@
 	Game.state.add("Ante3", Application.Ante3);
 	Game.state.add("AnteBoss", Application.AnteBoss);
 	Game.state.add("GameOver", Application.GameOver);
+	Game.state.add("Credit", Application.Credit);
 
 	// lancer l'ecran de lancement du jeu
 	Game.state.start("Splash");

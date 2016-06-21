@@ -76,6 +76,11 @@ Application.Story.prototype = {
 	update : function()
 	{
 		text.position.y -= 0.3;
+		if (text.position.y <= -520) 
+		{
+			this.state.start(Application.lvl[Application.indexLevel],true);
+			Application.indexLevel ++;
+		}
 
 	},
 
@@ -132,10 +137,7 @@ function nextWord()
 
 function actionOnClick () 
 {
-    console.log("switchindex ", Application.indexLevel)
-    Application.Game.state.start(Application.lvl[Application.indexLevel],true);
-    Application.indexLevel ++;
-    console.log("switchindex ", Application.indexLevel)
+    Application.startLevel0();
 }
 
 
