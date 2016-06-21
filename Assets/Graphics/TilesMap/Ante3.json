@@ -170,7 +170,7 @@
                  "visible":true,
                  "width":0,
                  "x":672.5,
-                 "y":1007.33666666667
+                 "y":1007.34
                 }, 
                 {
                  "height":0,
@@ -350,6 +350,7 @@
                     {
                      "index":0,
                      "pathIndex":0,
+                     "rangeView":250,
                      "speed":50,
                      "timeRotation":2500
                     },
@@ -357,6 +358,7 @@
                     {
                      "index":"int",
                      "pathIndex":"int",
+                     "rangeView":"int",
                      "speed":"int",
                      "timeRotation":"int"
                     },

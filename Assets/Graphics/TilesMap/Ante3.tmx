@@ -391,6 +391,7 @@
    <properties>
     <property name="index" type="int" value="0"/>
     <property name="pathIndex" type="int" value="0"/>
+    <property name="rangeView" type="int" value="250"/>
     <property name="speed" type="int" value="50"/>
     <property name="timeRotation" type="int" value="2500"/>
    </properties>
