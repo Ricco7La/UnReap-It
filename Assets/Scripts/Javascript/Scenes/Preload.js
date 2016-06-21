@@ -53,6 +53,10 @@ Application.Preload.prototype = {
 		this.game.load.image('redParticles','Assets/Graphics/SFX/Particles/redParticles.png');
 		this.game.load.image('blueParticles','Assets/Graphics/SFX/Particles/blueParticles.png');
 
+		//Load Credit
+
+		this.game.load.image('credit','Assets/Graphics/SFX/Credit/fullcredit.png');
+
 		//Dialogue
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
 		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
@@ -63,6 +67,19 @@ Application.Preload.prototype = {
 
 		// Load Menu
     	this.game.load.image('pauseMenu', 'Assets/Graphics/PauseMenu/pauseMenu_150_300.png');
+
+		// Load Sounds
+		this.game.load.audio('title', 'Assets/Audio/Ambiant/Title.mp3');
+		this.game.load.audio('ambiant', 'Assets/Audio/Ambiant/Ambiant.mp3');
+		this.game.load.audio('playerWalking', 'Assets/Audio/Character/Player/walking.mp3');
+		this.game.load.audio('switch', 'Assets/Audio/SFX/switch.mp3');
+		this.game.load.audio('soul', 'Assets/Audio/SFX/soul.mp3');
+		this.game.load.audio('doorOpening', 'Assets/Audio/SFX/DoorOpening.mp3');
+		this.game.load.audio('doorClosing', 'Assets/Audio/SFX/DoorClosing.mp3');
+		this.game.load.audio('hidden', 'Assets/Audio/SFX/hidden.mp3');
+		this.game.load.audio('spikeOut', 'Assets/Audio/SFX/spikeOut.mp3');
+		this.game.load.audio('spikeIn', 'Assets/Audio/SFX/spikeIn.mp3');
+		this.game.load.audio('teleport', 'Assets/Audio/SFX/teleport.mp3');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
@@ -75,7 +92,7 @@ Application.Preload.prototype = {
   	create: function(){
   		//console.log("Preload finished")
   		// go to title
-		this.state.start("Title");
+		this.state.start("Tuto");
 	},
 
 	updateCounter : function() 

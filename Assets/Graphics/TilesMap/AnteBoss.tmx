@@ -152,20 +152,7 @@
 </data>
  </layer>
  <objectgroup name="Interractions"/>
- <objectgroup name="Ennemies">
-  <object id="2" name="0-0" type="Vampire" x="302" y="205">
-   <properties>
-    <property name="index" type="int" value="0"/>
-    <property name="pathIndex" type="int" value="0"/>
-   </properties>
-  </object>
-  <object id="5" name="0-1" type="Vampire" x="302" y="205">
-   <properties>
-    <property name="index" type="int" value="0"/>
-    <property name="pathIndex" type="int" value="1"/>
-   </properties>
-  </object>
- </objectgroup>
+ <objectgroup name="Ennemies"/>
  <objectgroup name="StartPosition">
   <object id="1" name="Start" x="302" y="592"/>
  </objectgroup>

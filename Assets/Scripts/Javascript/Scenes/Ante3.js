@@ -3,7 +3,10 @@ Application.Ante3 = function(){}
 
 
 Application.Ante3.prototype = {
-	create: function(){ 
+	
+	create: function(){
+		Application.Game.sound.stopAll();
+		this.ambiant = this.game.add.audio('ambiant'); 
 		//console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
@@ -16,12 +19,11 @@ Application.Ante3.prototype = {
 
 
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante3', 'All_Tiles', 'Tiles');
+		this.ambiant.loopFull();
 	},
 	update : function()
 	{
-		Application.Timer.Update();
-
-		
+		Application.Timer.Update();		
 	},
 	render : function(){
 		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
