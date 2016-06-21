@@ -4,6 +4,7 @@ Application.Tuto = function(){}
 
 Application.Tuto.prototype = {
 	create: function(){ 
+		Application.Game.sound.stopAll();
 		this.sound = this.game.add.audio('ambiant');
 		console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);

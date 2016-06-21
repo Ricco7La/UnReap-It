@@ -32,7 +32,6 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
         var switchesBool = _self.IsOpen();
         if ( switchesBool && !_self.isOpen ) 
         {
-            console.log(_self.doorType);
             if(_self.doorType == 'CellLeft')
             {
                 Application.Game.sound.play('doorOpening', .3);
@@ -47,7 +46,6 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
         }
         else if ( !switchesBool && _self.isOpen ) 
         {
-            console.log(_self.doorType);
             if(_self.doorType == 'CellLeft')
             {
                 Application.Game.sound.play('doorClosing', .3);

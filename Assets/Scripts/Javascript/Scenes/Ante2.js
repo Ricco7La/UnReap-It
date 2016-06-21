@@ -4,6 +4,8 @@ Application.Ante2 = function(){}
 
 Application.Ante2.prototype = {
 	create: function(){ 
+		Application.Game.sound.stopAll();
+		this.ambiant = this.game.add.audio('ambiant');
 		//console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
@@ -16,6 +18,7 @@ Application.Ante2.prototype = {
 
 
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante2', 'All_Tiles', 'Tiles');
+		this.ambiant.loopFull();
 	},
 	update : function()
 	{

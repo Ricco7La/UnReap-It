@@ -5,6 +5,7 @@ Application.Ante3 = function(){}
 Application.Ante3.prototype = {
 	
 	create: function(){
+		Application.Game.sound.stopAll();
 		this.ambiant = this.game.add.audio('ambiant'); 
 		//console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
