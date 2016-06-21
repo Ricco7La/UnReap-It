@@ -5,7 +5,7 @@ var Application = {
 		height : 480
 	},
 	Game : null,
-	debugMode: false,
+	debugMode: true,
 	Timer : null,
 	Juicy : null,
 	nbrSouls : 0,

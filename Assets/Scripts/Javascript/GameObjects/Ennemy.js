@@ -48,6 +48,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
 
     _self.FOV = _game.add.graphics(0, 0);
     _self.FOVCollider = _game.add.sprite(0, 0);
+    _self.FOVCollider.active = true;
     
     _game.physics.p2.enable(_self.FOVCollider);
     _self.FOVCollider.body.debug = Application.debugMode;
@@ -58,74 +59,78 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
 
     _self.update = function()
     {
-        _self.FOV.clear();
-        _self.FOV.beginFill(0xFBFE00);
-        _self.FOV.lineStyle(0, 0xffffff, 0);
-        _self.FOV.alpha = 0.5;
-        //_self.FOV.moveTo(_self.x, _self.y);
-        var poly = _self.CheckVision();
-        poly.unshift([_self.x, _self.y]);
-        poly.push([_self.x, _self.y]);
-
-        var minX = 9000000000000000;
-        var maxX = 0;
-        var minY = 9000000000000000;
-        var maxY = 0;
-        for (p of poly) 
+        if (_self.FOVCollider.active) 
         {
-            //console.log(p[0]);
-            if (p[0] < minX) 
+            _self.FOV.clear();
+            _self.FOV.beginFill(0xFBFE00);
+            _self.FOV.lineStyle(0, 0xffffff, 0);
+            _self.FOV.alpha = 0.5;
+            //_self.FOV.moveTo(_self.x, _self.y);
+            var poly = _self.CheckVision();
+            poly.unshift([_self.x, _self.y]);
+            poly.push([_self.x, _self.y]);
+    
+            var minX = 9000000000000000;
+            var maxX = 0;
+            var minY = 9000000000000000;
+            var maxY = 0;
+            for (p of poly) 
             {
-                //console.log("minX");
-                minX = p[0];
+                //console.log(p[0]);
+                if (p[0] < minX) 
+                {
+                    //console.log("minX");
+                    minX = p[0];
+                }
+                if (p[0] > maxX) 
+                {
+                    //console.log("maxX");
+                    maxX = p[0];
+                }
+                if (p[1] < minY) 
+                {
+                    //console.log("minY");
+                    minY = p[1];
+                }
+                if (p[1]> maxY) 
+                {
+                    //console.log("maxY");
+                    maxY = p[1];
+                }
             }
-            if (p[0] > maxX) 
+            var h = maxY - minY;
+            var w = maxX - minX;
+            var offsetH =  (_self.y - maxY) + (_self.y - minY) ;
+            var offsetW = (_self.x - maxX) + (_self.x - minX) ;
+    
+            //_self.FOV.lineTo(_self.x, _self.y);
+    
+            _self.FOV.drawPolygon(poly);
+    
+            //_self.FOVCollider.body.clearShapes();
+            _self.FOVCollider.body.addPolygon({}, poly);
+    
+            //console.log("w",w,"h",h)
+            var angleRad = Phaser.Math.degToRad(_self.angleOfView);
+            
+            //console.log(offsetW,offsetH);
+            var orientation = 1;
+            if (_self.angleOfView == 180 || _self.angleOfView == 270) {
+                orientation = -1;
+            }
+            _self.FOVCollider.body.x = _self.x - offsetW * 1/3 * orientation * Math.sin(angleRad) + w * 2/3 * Math.cos(angleRad) ;
+            _self.FOVCollider.body.y = _self.y - offsetH * 1/3 * orientation * Math.cos(angleRad) + h * 2/3 * Math.sin(angleRad) ;
+            _self.FOVCollider.body.collideWorldBounds = false;
+            _self.FOVCollider.body.setCollisionGroup(_self.fovCG);
+            _self.FOVCollider.body.collides([_self.playerCG],function()
             {
-                //console.log("maxX");
-                maxX = p[0];
-            }
-            if (p[1] < minY) 
-            {
-                //console.log("minY");
-                minY = p[1];
-            }
-            if (p[1]> maxY) 
-            {
-                //console.log("maxY");
-                maxY = p[1];
-            }
+                console.log("I CAN SEE YOU");
+            });
+    
+            _self.FOV.endFill(); 
+
         }
-        var h = maxY - minY;
-        var w = maxX - minX;
-        var offsetH =  (_self.y - maxY) + (_self.y - minY) ;
-        var offsetW = (_self.x - maxX) + (_self.x - minX) ;
 
-        //_self.FOV.lineTo(_self.x, _self.y);
-
-        _self.FOV.drawPolygon(poly);
-
-        //_self.FOVCollider.body.clearShapes();
-        _self.FOVCollider.body.addPolygon({}, poly);
-
-        //console.log("w",w,"h",h)
-        var angleRad = Phaser.Math.degToRad(_self.angleOfView);
-        
-        //console.log(offsetW,offsetH);
-        var orientation = 1;
-        if (_self.angleOfView == 180 || _self.angleOfView == 270) {
-            orientation = -1;
-        }
-        _self.FOVCollider.body.x = _self.x - offsetW * 1/3 * orientation * Math.sin(angleRad) + w * 2/3 * Math.cos(angleRad) ;
-        _self.FOVCollider.body.y = _self.y - offsetH * 1/3 * orientation * Math.cos(angleRad) + h * 2/3 * Math.sin(angleRad) ;
-        _self.FOVCollider.body.sensor = true;
-        _self.FOVCollider.body.collideWorldBounds = false;
-        _self.FOVCollider.body.setCollisionGroup(_self.fovCG);
-        _self.FOVCollider.body.collides([_self.playerCG],function()
-        {
-            console.log("I CAN SEE YOU");
-        });
-
-        _self.FOV.endFill();        
     }
     _self.CheckVision = function () 
     {
@@ -278,7 +283,9 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         var unscale = _game.add.tween(_self.scale).to( { x : 0, y : 0}, 2000, Phaser.Easing.Linear.None, true);
         var rotationScale = _game.add.tween(_self).to( { angle : 60000 }, 1800, Phaser.Easing.Linear.None, true );
         _self.FOV.visible = false;
-        _self.FOVCollider.body.clearCollision();
+
+        _self.FOVCollider.active = false;
+        _self.FOVCollider.body.removeCollisionGroup([_self.playerCG],true);
         unscale.onComplete.add(function()
         {
             _self.FOV.destroy();
