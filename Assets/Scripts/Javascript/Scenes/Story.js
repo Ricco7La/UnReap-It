@@ -132,10 +132,7 @@ function nextWord()
 
 function actionOnClick () 
 {
-    console.log("switchindex ", Application.indexLevel)
-    Application.Game.state.start(Application.lvl[Application.indexLevel],true);
-    Application.indexLevel ++;
-    console.log("switchindex ", Application.indexLevel)
+    Application.startLevel0();
 }
 
 
