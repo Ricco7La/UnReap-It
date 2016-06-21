@@ -16,8 +16,7 @@ function Out(game,x,y,w,h)
    {
         if (_self.lastLvl + 50 < game.time.now)
         {
-          Application.Game.state.start(Application.lvl[Application.indexLevel], true);
-          Application.indexLevel ++;
+          Application.nextLevel();
           _self.lastLvl = game.time.now;
         }
    }

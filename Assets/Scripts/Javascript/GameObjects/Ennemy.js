@@ -9,6 +9,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
 
     _self.playerCG = null;
     _self.fovCG = null;
+    _self.FunctionOnSeeing = function(argument) {}
 
     // speed in pixel/second
     _self.speed = _speed || 50;
@@ -124,7 +125,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
             _self.FOVCollider.body.setCollisionGroup(_self.fovCG);
             _self.FOVCollider.body.collides([_self.playerCG],function()
             {
-                console.log("I CAN SEE YOU");
+                _self.FunctionOnSeeing();
             });
     
             _self.FOV.endFill(); 
