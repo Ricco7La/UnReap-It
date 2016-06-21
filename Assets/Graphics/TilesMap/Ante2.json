@@ -563,6 +563,7 @@
                  "name":"0-0",
                  "properties":
                     {
+                     "amplitude":55,
                      "index":0,
                      "pathIndex":0,
                      "speed":0,
@@ -570,6 +571,7 @@
                     },
                  "propertytypes":
                     {
+                     "amplitude":"int",
                      "index":"int",
                      "pathIndex":"int",
                      "speed":"int",
@@ -580,7 +582,7 @@
                  "visible":true,
                  "width":0,
                  "x":590,
-                 "y":620
+                 "y":613
                 }, 
                 {
                  "height":0,
@@ -588,6 +590,7 @@
                  "name":"1-0",
                  "properties":
                     {
+                     "amplitude":55,
                      "index":1,
                      "pathIndex":0,
                      "speed":0,
@@ -595,6 +598,7 @@
                     },
                  "propertytypes":
                     {
+                     "amplitude":"int",
                      "index":"int",
                      "pathIndex":"int",
                      "speed":"int",
@@ -605,7 +609,7 @@
                  "visible":true,
                  "width":0,
                  "x":748.864,
-                 "y":614.909
+                 "y":613
                 }, 
                 {
                  "height":0,
@@ -730,7 +734,7 @@
                  "visible":true,
                  "width":0,
                  "x":590,
-                 "y":620
+                 "y":613
                 }, 
                 {
                  "height":0,
@@ -755,7 +759,7 @@
                  "visible":true,
                  "width":0,
                  "x":748.864,
-                 "y":614.909
+                 "y":613
                 }],
          "opacity":1,
          "type":"objectgroup",

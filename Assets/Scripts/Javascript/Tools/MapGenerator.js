@@ -129,7 +129,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var Ennemies = [];
 	for (p of EnnemiesPaths) 
 	{
-		var ennemy = new Ennemy(_Game, p, p[0].type, p[0].properties.speed, p[0].properties.timeRotation);
+		var ennemy = new Ennemy(_Game, p, p[0].type, p[0].properties.speed, p[0].properties.timeRotation, p[0].properties.rangeView, p[0].properties.amplitude, p[0].properties.areaDetection);
 
 		if (p[0].properties && p[0].properties.z_index) 
 		{

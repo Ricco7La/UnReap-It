@@ -318,16 +318,18 @@
     <property name="timeRotation" type="int" value="2500"/>
    </properties>
   </object>
-  <object id="41" name="0-0" type="Medusa" x="590" y="620" rotation="180">
+  <object id="41" name="0-0" type="Medusa" x="590" y="613" rotation="180">
    <properties>
+    <property name="amplitude" type="int" value="55"/>
     <property name="index" type="int" value="0"/>
     <property name="pathIndex" type="int" value="0"/>
     <property name="speed" type="int" value="0"/>
     <property name="timeRotation" type="int" value="0"/>
    </properties>
   </object>
-  <object id="43" name="1-0" type="Medusa" x="748.864" y="614.909">
+  <object id="43" name="1-0" type="Medusa" x="748.864" y="613">
    <properties>
+    <property name="amplitude" type="int" value="55"/>
     <property name="index" type="int" value="1"/>
     <property name="pathIndex" type="int" value="0"/>
     <property name="speed" type="int" value="0"/>
@@ -366,7 +368,7 @@
     <property name="timeRotation" type="int" value="0"/>
    </properties>
   </object>
-  <object id="69" name="0-1" x="590" y="620" rotation="180">
+  <object id="69" name="0-1" x="590" y="613" rotation="180">
    <properties>
     <property name="index" type="int" value="0"/>
     <property name="pathIndex" type="int" value="1"/>
@@ -374,7 +376,7 @@
     <property name="timeRotation" type="int" value="0"/>
    </properties>
   </object>
-  <object id="70" name="1-1" x="748.864" y="614.909">
+  <object id="70" name="1-1" x="748.864" y="613">
    <properties>
     <property name="index" type="int" value="1"/>
     <property name="pathIndex" type="int" value="1"/>
