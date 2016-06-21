@@ -72,6 +72,14 @@
          "height":40,
          "name":"Cell",
          "opacity":1,
+         "properties":
+            {
+             "collide":true
+            },
+         "propertytypes":
+            {
+             "collide":"bool"
+            },
          "type":"tilelayer",
          "visible":true,
          "width":40,
