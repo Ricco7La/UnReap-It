@@ -4,6 +4,8 @@ Application.Ante1 = function(){}
 
 Application.Ante1.prototype = {
 	create: function(){ 
+		Application.Game.sound.stopAll();
+		this.ambiant = this.game.add.audio('ambiant'); 
 		//console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
@@ -28,6 +30,7 @@ Application.Ante1.prototype = {
 		this.indexDial = 0;
 
 		this.DialArray[this.indexDial].setVisible(true);
+		this.ambiant.loopFull();
 				
 	},
 	update : function()

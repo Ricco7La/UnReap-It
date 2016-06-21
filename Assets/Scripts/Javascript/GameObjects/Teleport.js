@@ -12,6 +12,7 @@ function Teleport( _game, _x, _y, _w, _h, _teleportX, _teleportY)
     _self.body.debug = Application.debugMode;
 
     _self.teleportPlayer = function ( _teleportBody, _playerBody) {
+        Application.Game.sound.play('teleport', .1);
         _self.screenFlash = Application.Juicy.createScreenFlash('rgba(0,0,125,.4)');
         Application.Game.add.existing(_self.screenFlash);
         _playerBody.x = _self.teleportPoint.x;

@@ -4,6 +4,8 @@ function Spike( _game, _x, _y, _w, _h, _switches, _type)
     var x = _x + _w * 0.5;
     var y = _y + _h * 0.5;
     var _self = _game.add.sprite(x, y, type);
+    _self.spikeIn = Application.Game.add.audio('spikeIn');
+    _self.spikeOut = Application.Game.add.audio('spikeOut');
     _self.SavedCollision = null;
     _self.isOpen = false;
 
@@ -32,12 +34,14 @@ function Spike( _game, _x, _y, _w, _h, _switches, _type)
         var switchesBool = _self.IsOpen();
         if ( switchesBool && !_self.isOpen ) 
         {
+            Application.Game.sound.play('spikeIn', .1);
             _self.body.removeCollisionGroup(_self.SavedCollision)
             _self.animations.play("open", 10, false);
             _self.isOpen = true;
         }
         else if ( !switchesBool && _self.isOpen ) 
         {
+            Application.Game.sound.play('spikeOut', .1);
             _self.body.collides(_self.SavedCollision);
             _self.animations.play("close", 10, false);
             _self.isOpen = false;

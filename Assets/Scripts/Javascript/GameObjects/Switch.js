@@ -30,6 +30,7 @@ function Switch( _game, _x, _y, _type)
     {
         if (_self.lastActivation + 50 < _game.time.now)
         {
+            Application.Game.sound.play('switch');
             if(_self.isActivated)
             {
                 _self.animations.play("desactivate", 7, false);
@@ -41,6 +42,7 @@ function Switch( _game, _x, _y, _type)
                 _self.isActivated = true;
             }
             _self.lastActivation = _game.time.now;
+            
         }
     }
 
