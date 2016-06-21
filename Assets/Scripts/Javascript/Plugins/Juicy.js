@@ -93,14 +93,18 @@ Phaser.Plugin.Juicy.ScreenFlash.prototype.constructor = Phaser.Plugin.Juicy.Scre
 * @method Phaser.Plugin.Juicy.ScreenFlash#flash
 * @memberof Phaser.Plugin.Juicy.ScreenFlash
 */
-Phaser.Plugin.Juicy.ScreenFlash.prototype.flash = function(maxAlpha, duration) {
+Phaser.Plugin.Juicy.ScreenFlash.prototype.flash = function(maxAlpha, duration, endAlpha, callback) {
   console.log('flashed');
   maxAlpha = maxAlpha || 1;
-  duration = duration || 500;
-  var flashTween = this.game.add.tween(this).to({alpha: maxAlpha}, 100, Phaser.Easing.Bounce.InOut, true,0, 0, true);
+  duration = duration || 100;
+  endAlpha = endAlpha || 0;
+  var flashTween = this.game.add.tween(this).to({alpha: maxAlpha}, duration, Phaser.Easing.Bounce.InOut, true,0, 0, true);
   flashTween.onComplete.add(function() {
-    this.alpha = 0;
+    this.alpha = endAlpha;
   }, this);
+  if (callback) {
+    flashTween.onComplete.add(callback, this);
+  }
 };
 
 /**

@@ -6,24 +6,43 @@ var Application = {
 	},
 	Game : null,
 	debugMode: false,
+	Layers: null,
 	Timer : null,
 	Juicy : null,
 	nbrSoulsBeforeLvl : 0,
 	nbrSouls : 0,
 	lvl : ['Tuto','Ante1','Ante2','Ante3','AnteBoss'],
 	indexLevel : 0,
+	EscapeAnimation : [],
 	startLevel0 : function () {
 		indexLevel = 0;
-		this.Game.state.start(this.lvl[this.indexLevel], true);
+		Application.Game.state.start(Application.lvl[Application.indexLevel], true);
 	},
 	resetLevel : function () {
-		this.nbrSouls = this.nbrSoulsBeforeLvl;
-		this.Game.state.start(this.lvl[this.indexLevel], true);
+		Application.nbrSouls = Application.nbrSoulsBeforeLvl;
+		Application.EscapeAnimation[0]();
 	},
 	nextLevel : function() {
-		this.indexLevel ++;
-		this.nbrSoulsBeforeLvl = this.nbrSouls;
-        this.Game.state.start(this.lvl[this.indexLevel], true);
+		Application.indexLevel ++;
+		Application.nbrSoulsBeforeLvl = Application.nbrSouls;
+        Application.Game.state.start(Application.lvl[Application.indexLevel], true);
 	}
 }
 
+var Anim1 = function () 
+{
+	var flash = Application.Juicy.createScreenFlash('rgba(255,255,255,1)');
+	Application.Game.add.existing(flash);
+	eugeneDial = new Dialogue(180,350,'eugeneDial',"FIRE IN THE HOLE !");
+	flash.flash(1,200,1,function () {
+		setTimeout(function() {
+			Application.Game.state.start(Application.lvl[Application.indexLevel], true);
+		},1500);
+	});
+}
+Application.EscapeAnimation.push(Anim1);
+
+var Anim2 = function()
+{
+	
+}
