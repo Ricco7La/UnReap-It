@@ -61,7 +61,7 @@ Application.Title.prototype = {
 	 	this.start = this.game.add.text(30, this.game.world.centerY - 10, "Start", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
 		this.start.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 		this.start.inputEnabled = true;
-		this.start.events.onInputOver.add(over,this);
+		this.start.events.onInputOver.add(StartGame,this);
 		//console.log(this.game.input.mousePointer)
 			
 			
@@ -75,6 +75,8 @@ Application.Title.prototype = {
 		this.credit = this.game.add.text(30, this.game.world.centerY + 140, "Credit", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
 		this.credit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 		this.credit.inputEnabled = true;
+		this.credit.events.onInputOver.add(StartCredit,this);
+
 
 		this.quit = this.game.add.text(30, this.game.world.centerY + 190, "Exit", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
 		this.quit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
@@ -108,7 +110,11 @@ Application.Title.prototype = {
 }
 
 
-function over (item)
+function StartGame (item)
 {
 	this.state.start("Story");
+}
+function StartCredit (item)
+{
+	this.state.start("Credit");
 }
