@@ -76,6 +76,12 @@ Application.Story.prototype = {
 	update : function()
 	{
 		text.position.y -= 0.3;
+		console.log(text.position.y);
+		if (text.position.y <= -500) 
+		{
+			this.state.start(Application.lvl[Application.indexLevel],true);
+			Application.indexLevel ++;
+		}
 
 	},
 
