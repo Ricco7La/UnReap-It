@@ -345,6 +345,8 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	Layers["Z-index"][5].add(myPlayer);
 	Layers["Player"] = myPlayer;
 
+	var pauseMenu = new PauseMenu(_Game);
+
 	//console.log(Layers["Z-index"]);
 
 	return Layers;
