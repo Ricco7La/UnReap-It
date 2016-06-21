@@ -78,13 +78,13 @@
         }, 
         {
          "draworder":"topdown",
-         "height":20,
+         "height":0,
          "name":"Interractions",
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":20,
+         "width":0,
          "x":0,
          "y":0
         }, 
@@ -92,49 +92,7 @@
          "draworder":"topdown",
          "height":0,
          "name":"Ennemies",
-         "objects":[
-                {
-                 "height":0,
-                 "id":2,
-                 "name":"0-0",
-                 "properties":
-                    {
-                     "index":0,
-                     "pathIndex":0
-                    },
-                 "propertytypes":
-                    {
-                     "index":"int",
-                     "pathIndex":"int"
-                    },
-                 "rotation":0,
-                 "type":"Vampire",
-                 "visible":true,
-                 "width":0,
-                 "x":302,
-                 "y":205
-                }, 
-                {
-                 "height":0,
-                 "id":5,
-                 "name":"0-1",
-                 "properties":
-                    {
-                     "index":0,
-                     "pathIndex":1
-                    },
-                 "propertytypes":
-                    {
-                     "index":"int",
-                     "pathIndex":"int"
-                    },
-                 "rotation":0,
-                 "type":"Vampire",
-                 "visible":true,
-                 "width":0,
-                 "x":302,
-                 "y":205
-                }],
+         "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
@@ -167,19 +125,19 @@
         }, 
         {
          "draworder":"topdown",
-         "height":20,
+         "height":0,
          "name":"Souls",
          "objects":[],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":20,
+         "width":0,
          "x":0,
          "y":0
         }, 
         {
          "draworder":"topdown",
-         "height":20,
+         "height":0,
          "name":"Exit",
          "objects":[
                 {
@@ -196,7 +154,7 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":20,
+         "width":0,
          "x":0,
          "y":0
         }],
