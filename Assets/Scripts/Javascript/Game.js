@@ -20,7 +20,9 @@ var Application = {
 	},
 	resetLevel : function () {
 		Application.nbrSouls = Application.nbrSoulsBeforeLvl;
-		Application.EscapeAnimation[0]();
+		//Application.EscapeAnimation[0]();
+		var RndGen = new Phaser.RandomDataGenerator();
+		Application.EscapeAnimation[RndGen.integerInRange(0,Application.EscapeAnimation.length - 1)]();
 	},
 	nextLevel : function() {
 		Application.indexLevel ++;
@@ -29,7 +31,7 @@ var Application = {
 	}
 }
 
-var Anim1 = function () 
+var Anim0 = function () 
 {
 	var flash = Application.Juicy.createScreenFlash('rgba(255,255,255,1)');
 	Application.Game.add.existing(flash);
@@ -37,12 +39,19 @@ var Anim1 = function ()
 	flash.flash(1,200,1,function () {
 		setTimeout(function() {
 			Application.Game.state.start(Application.lvl[Application.indexLevel], true);
-		},1500);
+		},1000);
+	});
+}
+Application.EscapeAnimation.push(Anim0);
+
+var Anim1 = function()
+{
+	Application.Game.camera.follow(null);
+	Application.Layers.Player.animations.play('move_right', 5, true);
+	var newPos = Application.Layers.Player.x - Application.config.width * 1.5;
+	var tween = Application.Game.add.tween(Application.Layers.Player.body).to( { x: newPos }, 3000, Phaser.Easing.Quadratic.In, true);
+	tween.onComplete.add(function() {
+		Application.Game.state.start(Application.lvl[Application.indexLevel], true);
 	});
 }
 Application.EscapeAnimation.push(Anim1);
-
-var Anim2 = function()
-{
-	
-}
