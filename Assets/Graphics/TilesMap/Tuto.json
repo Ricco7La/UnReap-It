@@ -103,7 +103,7 @@
                  "y":337
                 }, 
                 {
-                 "height":63.6666666666667,
+                 "height":63.6667,
                  "id":36,
                  "name":"Door",
                  "properties":
@@ -117,9 +117,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":32.3333333333333,
+                 "width":32.3333,
                  "x":96,
-                 "y":896.333333333333
+                 "y":896.333
                 }, 
                 {
                  "height":42,
@@ -141,7 +141,7 @@
                  "y":1012
                 }, 
                 {
-                 "height":65.3333,
+                 "height":34.667,
                  "id":51,
                  "name":"Spike",
                  "properties":
@@ -155,12 +155,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":61.3333,
+                 "width":32.333,
                  "x":446.667,
                  "y":285.333
                 }, 
                 {
-                 "height":65.3333,
+                 "height":30.333,
                  "id":53,
                  "name":"Spike",
                  "properties":
@@ -174,12 +174,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":61.3333,
+                 "width":31,
                  "x":448,
-                 "y":354.667
+                 "y":320.667
                 }, 
                 {
-                 "height":65.3333,
+                 "height":26,
                  "id":54,
                  "name":"Spike",
                  "properties":
@@ -193,12 +193,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":61.3333,
+                 "width":31,
                  "x":448,
-                 "y":420
+                 "y":354
                 }, 
                 {
-                 "height":65.3333,
+                 "height":29,
                  "id":55,
                  "name":"Spike",
                  "properties":
@@ -212,12 +212,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":61.3333,
-                 "x":446.667,
-                 "y":488
+                 "width":31.333,
+                 "x":448.667,
+                 "y":385
                 }, 
                 {
-                 "height":65.3333,
+                 "height":27.667,
                  "id":56,
                  "name":"Spike",
                  "properties":
@@ -231,12 +231,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":61.3333,
-                 "x":446.667,
-                 "y":553.333
+                 "width":30.333,
+                 "x":448.667,
+                 "y":418.333
                 }, 
                 {
-                 "height":65.3333,
+                 "height":30.333,
                  "id":57,
                  "name":"Spike",
                  "properties":
@@ -250,12 +250,12 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":61.3333,
+                 "width":31,
                  "x":448,
-                 "y":622.667
+                 "y":447.667
                 }, 
                 {
-                 "height":65.3333,
+                 "height":31.333,
                  "id":58,
                  "name":"Spike",
                  "properties":
@@ -269,9 +269,9 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":61.3333,
-                 "x":446.667,
-                 "y":694.667
+                 "width":31.333,
+                 "x":447.667,
+                 "y":478.667
                 }, 
                 {
                  "height":42,
@@ -386,6 +386,158 @@
                  "width":50,
                  "x":800.667,
                  "y":537.333
+                }, 
+                {
+                 "height":32,
+                 "id":76,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"1,4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.333,
+                 "x":447.667,
+                 "y":512
+                }, 
+                {
+                 "height":32,
+                 "id":77,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"1,4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.333,
+                 "x":448.667,
+                 "y":543
+                }, 
+                {
+                 "height":32,
+                 "id":78,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"1,4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.333,
+                 "x":448.667,
+                 "y":576
+                }, 
+                {
+                 "height":32,
+                 "id":79,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"1,4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.333,
+                 "x":448.667,
+                 "y":607
+                }, 
+                {
+                 "height":32,
+                 "id":80,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"1,4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.333,
+                 "x":447.667,
+                 "y":640
+                }, 
+                {
+                 "height":32,
+                 "id":81,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"1,4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.333,
+                 "x":448.667,
+                 "y":672
+                }, 
+                {
+                 "height":32,
+                 "id":82,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"1,4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.333,
+                 "x":448.667,
+                 "y":704
+                }, 
+                {
+                 "height":32,
+                 "id":83,
+                 "name":"Spike",
+                 "properties":
+                    {
+                     "switchesIndex":"1,4"
+                    },
+                 "propertytypes":
+                    {
+                     "switchesIndex":"string"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":31.333,
+                 "x":449.667,
+                 "y":737
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -772,7 +924,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":76,
+ "nextobjectid":84,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,
