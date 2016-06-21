@@ -148,7 +148,13 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 
 		// What to do on viewed
 		ennemy.FunctionOnSeeing = function() {
-			Application.resetLevel();
+			console.log("Seen");
+			if (ennemy.lastViewed + 5000 < _Game.time.now)
+        	{
+        		console.log("Do");
+        	  	Application.resetLevel();
+        	  	ennemy.lastViewed = _Game.time.now;
+        	}	
 		} 
 		ennemy.body.collides([playerCG], ennemy.FunctionOnSeeing);
 

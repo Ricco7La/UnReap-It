@@ -6,10 +6,11 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     var areaDetection = _areaDetection || .85;
     _self.rangeView = _rangeView || 150;
     _self.amplitude = _amplitude || 30;
+    _self.lastViewed = _game.time.now - 10000;
 
     _self.playerCG = null;
     _self.fovCG = null;
-    _self.FunctionOnSeeing = function(argument) {}
+    _self.FunctionOnSeeing = function() {}
 
     // speed in pixel/second
     _self.speed = _speed || 50;
