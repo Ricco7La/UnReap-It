@@ -4,6 +4,7 @@ Application.Tuto = function(){}
 
 Application.Tuto.prototype = {
 	create: function(){ 
+		this.sound = this.game.add.audio('ambiant');
 		console.log('Game Screen');
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
@@ -50,6 +51,7 @@ Application.Tuto.prototype = {
 
 	    // Add a input listener that can help us return from being paused
 	    this.game.input.onDown.add(this.unpause, self);
+		this.sound.loopFull();
 	},
 	update : function()
 	{

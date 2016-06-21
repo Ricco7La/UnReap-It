@@ -2,6 +2,8 @@ function Player (_game, _x, _y)
 {
 
     var _self = _game.add.sprite(_x, _y, "Player");
+    _self.soundWalking = _game.add.audio('playerWalking');
+    console.log(_self.soundWalking);
     _self.scale.setTo(0.75);
     var currentDirection = null;
     _self.lastSoul = _game.time.now;
@@ -35,6 +37,15 @@ function Player (_game, _x, _y)
     _self.update = function()
     {
         _self.scoreSouls.setText("Souls : " + Application.nbrSouls);
+
+        // if(this.currentDirection != null && !_self.soundWalking.isPlaying)
+        // {
+        //      _self.soundWalking.play();
+        // }
+        // else
+        // {
+        //     _self.soundWalking.stop();
+        // }
 
         if((_game.input.keyboard.isDown(Phaser.Keyboard.UP) 
                     || _game.input.keyboard.isDown(Phaser.Keyboard.Z) 

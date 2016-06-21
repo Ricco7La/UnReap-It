@@ -6,7 +6,7 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
     var _self = _game.add.sprite(x, y, type);
     _self.SavedCollision = null;
     _self.isOpen = false;
-
+    _self.doorType = type;
     _self.Switches = _switches;
 
     _self.z = 1;
@@ -32,12 +32,30 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
         var switchesBool = _self.IsOpen();
         if ( switchesBool && !_self.isOpen ) 
         {
+            console.log(_self.doorType);
+            if(_self.doorType == 'CellLeft')
+            {
+                Application.Game.sound.play('doorOpening', .3);
+            }
+            else if (_self.doorType == 'HiddenZone')
+            {
+                Application.Game.sound.play('hidden', .3);
+            }
             _self.body.removeCollisionGroup(_self.SavedCollision)
             _self.animations.play("open", 10, false);
             _self.isOpen = true;
         }
         else if ( !switchesBool && _self.isOpen ) 
         {
+            console.log(_self.doorType);
+            if(_self.doorType == 'CellLeft')
+            {
+                Application.Game.sound.play('doorClosing', .3);
+            }
+            else if (_self.doorType == 'HiddenZone')
+            {
+                Application.Game.sound.play('hidden', .3);
+            }
             _self.body.collides(_self.SavedCollision);
             _self.animations.play("close", 10, false);
             _self.isOpen = false;

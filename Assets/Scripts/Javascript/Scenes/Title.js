@@ -17,6 +17,7 @@ Application.Title.prototype = {
 		//console.log('Title Screen');
 		var background = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'background');
 		var title = this.game.add.tileSprite(400,30,206,60,'title');
+		this.game.sound.play('title');
 
 		emitterBack = this.game.add.emitter(this.game.world.centerX + 100, 200, 200);
 		emitterBack.makeParticles('blueParticles');
