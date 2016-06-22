@@ -5,7 +5,10 @@ function Player (_game, _x, _y)
     _self.soundWalking = _game.add.audio('playerWalking');
     console.log(_self.soundWalking);
     _self.scale.setTo(0.75);
+
     var currentDirection = null;
+
+    _self.isActivated = false;
     _self.lastSoul = _game.time.now;
     _self.speed = 300;
     _self.canMove = true;
@@ -24,7 +27,7 @@ function Player (_game, _x, _y)
     _self.body.thrust(0);
     _self.body.fixedRotation = true;
     _self.body.collideWorldBounds = true;
-    _self.body.mass = 10;
+    _self.body.mass = 2;
 
     _game.camera.follow(_self);
 
@@ -34,6 +37,8 @@ function Player (_game, _x, _y)
     _self.scoreSouls.fixedToCamera = true;
 
     _self.animations.play('move_down', 5, true);
+
+    _self.actionKey = _game.input.keyboard.addKey(Phaser.Keyboard.E);
     
     _self.update = function()
     {
@@ -109,6 +114,15 @@ function Player (_game, _x, _y)
                 }
                 this.currentDirection = null;
             }
+        }
+
+        if(_self.actionKey.downDuration(5))
+        {
+            _self.isActivated = true;
+        }
+        else
+        {
+            _self.isActivated = false;
         }
     };
 
