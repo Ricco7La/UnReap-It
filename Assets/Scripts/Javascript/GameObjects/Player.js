@@ -11,6 +11,7 @@ function Player (_game, _x, _y)
     _self.isActivated = false;
     _self.lastSoul = _game.time.now;
     _self.speed = 300;
+    _self.canMove = true;
 
     _self.anchor.set(0.5);
 
@@ -52,63 +53,67 @@ function Player (_game, _x, _y)
         //     _self.soundWalking.stop();
         // }
 
-        if((_game.input.keyboard.isDown(Phaser.Keyboard.UP) 
-                    || _game.input.keyboard.isDown(Phaser.Keyboard.Z) 
-                    || _game.input.keyboard.isDown(Phaser.Keyboard.W)) && (this.currentDirection == null || this.currentDirection == "UP"))
+        if (_self.canMove)
         {
-            this.currentDirection = "UP";
-            _self.animations.play('move_up', 5, true);
-            _self.body.moveUp(_self.speed);
-            _self.body.damping = 0.9;
-        }
-        else if((_game.input.keyboard.isDown(Phaser.Keyboard.LEFT) 
-                    || _game.input.keyboard.isDown(Phaser.Keyboard.Q) 
-                    || _game.input.keyboard.isDown(Phaser.Keyboard.A)) && (this.currentDirection == null || this.currentDirection == "LEFT"))
-        {
-            this.currentDirection = "LEFT";
-            _self.animations.play('move_left', 5, true);
-            _self.body.moveLeft(_self.speed);
-            _self.body.damping = 0.9;
-        }
-        else if((_game.input.keyboard.isDown(Phaser.Keyboard.DOWN) 
-                    || _game.input.keyboard.isDown(Phaser.Keyboard.S)) && (this.currentDirection == null || this.currentDirection == "DOWN"))
-        {
-            this.currentDirection = "DOWN";
-            _self.animations.play('move_down', 5, true);
-            _self.body.moveDown(_self.speed);
-            _self.body.damping = 0.9;
-        }
-        else if((_game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) 
-                    || _game.input.keyboard.isDown(Phaser.Keyboard.D)) && (this.currentDirection == null || this.currentDirection == "RIGHT"))
-        {
-            this.currentDirection = "RIGHT";
-            _self.animations.play('move_right', 5, true);
-            _self.body.moveRight(_self.speed);
-            _self.body.damping = 0.9;
-        }
-        else
-        {
-            //_self.body.setZeroVelocity();
-            _self.body.damping = 1;
-            _self.animations.stop();
 
-            if(this.currentDirection == "UP")
+            if((_game.input.keyboard.isDown(Phaser.Keyboard.UP) 
+                        || _game.input.keyboard.isDown(Phaser.Keyboard.Z) 
+                        || _game.input.keyboard.isDown(Phaser.Keyboard.W)) && (this.currentDirection == null || this.currentDirection == "UP"))
             {
-                _self.animations.frame = 12;
+                this.currentDirection = "UP";
+                _self.animations.play('move_up', 5, true);
+                _self.body.moveUp(_self.speed);
+                _self.body.damping = 0.9;
             }
-            if(this.currentDirection == "LEFT")
+            else if((_game.input.keyboard.isDown(Phaser.Keyboard.LEFT) 
+                        || _game.input.keyboard.isDown(Phaser.Keyboard.Q) 
+                        || _game.input.keyboard.isDown(Phaser.Keyboard.A)) && (this.currentDirection == null || this.currentDirection == "LEFT"))
             {
-                _self.animations.frame = 4;
+                this.currentDirection = "LEFT";
+                _self.animations.play('move_left', 5, true);
+                _self.body.moveLeft(_self.speed);
+                _self.body.damping = 0.9;
             }
-            if(this.currentDirection == "DOWN")
+            else if((_game.input.keyboard.isDown(Phaser.Keyboard.DOWN) 
+                        || _game.input.keyboard.isDown(Phaser.Keyboard.S)) && (this.currentDirection == null || this.currentDirection == "DOWN"))
             {
-                _self.animations.frame = 0;
+                this.currentDirection = "DOWN";
+                _self.animations.play('move_down', 5, true);
+                _self.body.moveDown(_self.speed);
+                _self.body.damping = 0.9;
             }
-            if(this.currentDirection == "RIGHT")
+            else if((_game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) 
+                        || _game.input.keyboard.isDown(Phaser.Keyboard.D)) && (this.currentDirection == null || this.currentDirection == "RIGHT"))
             {
-                _self.animations.frame = 8;
+                this.currentDirection = "RIGHT";
+                _self.animations.play('move_right', 5, true);
+                _self.body.moveRight(_self.speed);
+                _self.body.damping = 0.9;
             }
-            this.currentDirection = null;
+            else
+            {
+                //_self.body.setZeroVelocity();
+                _self.body.damping = 1;
+                _self.animations.stop();
+    
+                if(this.currentDirection == "UP")
+                {
+                    _self.animations.frame = 12;
+                }
+                if(this.currentDirection == "LEFT")
+                {
+                    _self.animations.frame = 4;
+                }
+                if(this.currentDirection == "DOWN")
+                {
+                    _self.animations.frame = 0;
+                }
+                if(this.currentDirection == "RIGHT")
+                {
+                    _self.animations.frame = 8;
+                }
+                this.currentDirection = null;
+            }
         }
 
         if(_self.actionKey.downDuration(5))
