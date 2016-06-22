@@ -65,6 +65,9 @@ Application.Preload.prototype = {
 		// Load GameOver
 		this.game.load.image('gameOver','Assets/Graphics/GameOver/GameOver.png');
 
+		// Load Menu
+    	this.game.load.image('pauseMenu', 'Assets/Graphics/PauseMenu/pauseMenu_150_300.png');
+
 		// Load Sounds
 		this.game.load.audio('title', 'Assets/Audio/Ambiant/Title.mp3');
 		this.game.load.audio('ambiant', 'Assets/Audio/Ambiant/Ambiant.mp3');
@@ -82,8 +85,6 @@ Application.Preload.prototype = {
 		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
 		// Add the Juicy Plugins to Application.
 		Application.Juicy = this.game.plugins.add(new Phaser.Plugin.Juicy(this.game));
-		
-    	this.game.load.image('menu', 'Assets/Graphics/number-buttons-90x90.png', 270, 180);
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		Application.Timer = new Timer(30000, false, this.updateCounter, Application.Game);
