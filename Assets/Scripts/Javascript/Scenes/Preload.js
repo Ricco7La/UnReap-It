@@ -45,8 +45,10 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('Hole', 'Assets/Graphics/Interact/Trap/Hole_32_32.png', 32, 32, 4);
 		this.game.load.spritesheet('HiddenZone', 'Assets/Graphics/Interact/Door/HiddenZone_96_128.png', 96, 128, 4);
 		// Load SFX
-		this.game.load.spritesheet('SoulParticle', 'Assets/Graphics/SFX/Souls/SoulParticle.png');
-		this.game.load.spritesheet('SmokePuff', 'Assets/Graphics/SFX/Particles/smoke-puff.png');
+		this.game.load.image('SoulParticle', 'Assets/Graphics/SFX/Souls/SoulParticle.png');
+		this.game.load.image('SmokePuff', 'Assets/Graphics/SFX/Particles/smoke-puff.png');
+		this.game.load.image('Leaf', 'Assets/Graphics/SFX/Particles/leaf1.png');
+		this.game.load.image('Wood', 'Assets/Graphics/SFX/Player/wood.png');
 
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
@@ -56,7 +58,7 @@ Application.Preload.prototype = {
 
 		//Load Credit
 
-		this.game.load.image('credit','Assets/Graphics/SFX/Credit/fullcredit.png');
+		this.game.load.image('credit','Assets/Graphics/SFX/Credit/FullGravesCredit.png');
 
 		//Dialogue
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');

@@ -5,7 +5,7 @@ var Application = {
 		height : 480
 	},
 	Game : null,
-	debugMode: true,
+	debugMode: false,
 	Layers: null,
 	Timer : null,
 	Juicy : null,
@@ -20,7 +20,7 @@ var Application = {
 	},
 	resetLevel : function () {
 		Application.nbrSouls = Application.nbrSoulsBeforeLvl;
-		//Application.EscapeAnimation[2]();
+		//Application.EscapeAnimation[3]();
 		Application.EscapeAnimation[Math.Random.RangeInt(0,Application.EscapeAnimation.length - 1,true)]();
 	},
 	nextLevel : function() {
@@ -72,12 +72,13 @@ var Anim2 = function() {
 
     emitter.setRotation(0, 360);
     emitter.setAlpha(0.6);
-    emitter.setScale(0.5, 0, 0.5, 0, 2000);
+    emitter.setScale(0.3, 0, 0.3, 0, 2000);
     emitter.gravity = 0;
     emitter.setXSpeed(-75,75);
     emitter.setYSpeed(-75,75);
     emitter.makeParticles('SmokePuff');
 
+    Application.Game.camera.shake(0.03,350,true);
     emitter.start(false, 500, 10);
 
     Application.Layers.Player.visible = false;
@@ -93,3 +94,54 @@ var Anim2 = function() {
 
 }
 Application.EscapeAnimation.push(Anim2);
+
+var Anim3 = function() 
+{
+	Application.Layers.Player.canMove = false;
+	var wood = Application.Game.add.sprite(Application.Layers.Player.x,Application.Layers.Player.y,"Wood");
+	wood.visible = false;
+	wood.anchor.set(0.5);
+	wood.scale.set(0.65);
+	emitterLeaf = Application.Game.add.emitter(Application.Layers.Player.x, Application.Layers.Player.y, 5000);
+	Application.Layers.Player.body.damping = 1;
+	Application.Layers.Player.animations.stop();
+	Application.Layers.Player.animations.frame = 0;
+	eugeneDial = new Dialogue(180,350,'eugeneDial',"Shiniton : Henge Kawarimi no Jutsu");
+	Application.Game.camera.unfollow();
+	
+	emitterLeaf.minParticleScale = 0.005;
+    emitterLeaf.maxParticleScale = 0.05;
+    emitterLeaf.setRotation(0, 360);
+    emitterLeaf.setAlpha(0.6);
+    emitterLeaf.setScale(0.07, 0.05, 0.07, 0.05, 10000);
+    emitterLeaf.gravity = -35;
+    emitterLeaf.setXSpeed(-3,3);
+    emitterLeaf.setYSpeed(0,0);
+    emitterLeaf.makeParticles('Leaf');
+
+    emitterLeaf.start(false, 1150, 2);
+
+    var start = Application.Layers.Player.x - Application.Layers.Player.width;
+    var end = Application.Layers.Player.x + Application.Layers.Player.width;
+
+    emitterLeaf.emitY = Application.Layers.Player.y + Application.Layers.Player.height * 0.6;
+    emitterLeaf.emitX = start;
+    Application.Game.add.tween(emitterLeaf).to( { emitX: end }, 250, Phaser.Easing.Sinusoidal.InOut, true, 0, Number.MAX_VALUE, true);
+
+    Application.Layers.Player.body.clearCollision();
+
+    Application.Game.time.events.add(1500, function (argument) {
+    	emitterLeaf.on = false;
+    	Application.Layers.Player.visible = false;
+
+    });
+    Application.Game.time.events.add(1600, function (argument) {
+    	wood.visible = true;
+
+    });
+    Application.Game.time.events.add(2750, function (argument) {
+    	Application.Game.state.start(Application.lvl[Application.indexLevel], true);
+    });
+
+}
+Application.EscapeAnimation.push(Anim3);
