@@ -58,7 +58,7 @@ Application.Preload.prototype = {
 
 		//Load Credit
 
-		this.game.load.image('credit','Assets/Graphics/SFX/Credit/fullcredit.png');
+		this.game.load.image('credit','Assets/Graphics/SFX/Credit/FullGravesCredit.png');
 
 		//Dialogue
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
