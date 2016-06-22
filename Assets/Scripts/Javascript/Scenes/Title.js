@@ -36,39 +36,41 @@ Application.Title.prototype = {
 
 
 
-	    emitterStart = this.game.add.emitter(60,this.game.world.centerY + 50,500,200);
+	    emitterStart = this.game.add.emitter(this.game.world.centerX , this.game.world.centerY + 90 + 50,500,200);
 		emitterStart.makeParticles('redParticles');
 	    emitterStart.setRotation(50, 50);
 	    emitterStart.setAlpha(0.7, 0.8);
-	    emitterStart.setScale(0.1, 0.1);
+    	emitterStart.setScale(0.4, 0, 0.4, 0, 2000);
 	    emitterStart.gravity = 0;
 
-	    emitterCredit = this.game.add.emitter(60,this.game.world.centerY + 200,500,200);
+	    emitterCredit = this.game.add.emitter(this.game.world.centerX , this.game.world.centerY + 180,500,200);
 		emitterCredit.makeParticles('redParticles');
 	    emitterCredit.setRotation(50, 50);
 	    emitterCredit.setAlpha(0.7, 0.8);
-	    emitterCredit.setScale(0.1, 0.1);
+    	emitterCredit.setScale(0.4, 0, 0.4, 0, 2000);
 	    emitterCredit.gravity = 0;
 
 		
 
 
-	 	this.start = this.game.add.text(30, this.game.world.centerY + 40, "Start", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
+	 	this.start = this.game.add.text(this.game.world.centerX , this.game.world.centerY + 120, "Start", { font: "20px Lithos Pro", fill: "#fff", align: "left" });
 		this.start.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
+		this.start.anchor.x = 0.5;
 		this.start.inputEnabled = true;
 		this.start.events.onInputOver.add(StartGame,this);
 		//console.log(this.game.input.mousePointer)
 			
 			
 
-		var load = this.game.add.text(30, this.game.world.centerY + 90, "Load", { font: "20px Merriweather", fill: "#808DC1", align: "center" });
-			load.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
+		// var load = this.game.add.text(30, this.game.world.centerY + 90, "Load", { font: "20px Merriweather", fill: "#808DC1", align: "center" });
+		// 	load.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 
-		var option = this.game.add.text(30, this.game.world.centerY + 140, "Option", { font: "20px Merriweather", fill: "#808DC1", align: "center" });
-			option.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
+		// var option = this.game.add.text(30, this.game.world.centerY + 140, "Option", { font: "20px Merriweather", fill: "#808DC1", align: "center" });
+		// 	option.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 
-		this.credit = this.game.add.text(30, this.game.world.centerY + 190, "Credit", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
+		this.credit = this.game.add.text(this.game.world.centerX , this.game.world.centerY + 160, "Credit", { font: "20px Lithos Pro", fill: "#fff", align: "left" });
 		this.credit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
+		this.credit.anchor.x = 0.5;
 		this.credit.inputEnabled = true;
 		this.credit.events.onInputOver.add(StartCredit,this);     
 	},
