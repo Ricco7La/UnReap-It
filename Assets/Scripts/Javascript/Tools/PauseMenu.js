@@ -3,11 +3,13 @@ function PauseMenu (_game)
 	var _self = _game.add.sprite(Application.config.width * .5, Application.config.height * .5, 'pauseMenu');
     var menuPositionTopY = ((Application.config.height - _self.height) * .5);
 
-	_self.isPaused = false;
-
     _self.anchor.setTo(0.5, 0.5);
     _self.fixedToCamera = true;
     _self.visible = false;
+
+	_self.isPaused = false;
+
+    _self.choiceButton = ['Option', 'Save', 'Load', 'Main Title', 'Quit', 'Back'];
 
     _self.option = _game.add.text(Application.config.width * .5, menuPositionTopY + (_self.height * .167) * .5, "Option", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
 	_self.option.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
@@ -49,27 +51,11 @@ function PauseMenu (_game)
 	{
         if( _char == "p" && !_self.isPaused)
         {
-        	Application.Game.paused = true;
-         	_self.visible = true;
-			_self.option.visible = true;
-			_self.save.visible = true;
-			_self.load.visible = true;
-			_self.mainTitle.visible = true;
-			_self.quit.visible = true;
-			_self.back.visible = true;
-        	_self.isPaused = true;
+        	_self.ShowMenu();
         }
         else if( _char == "p" && _self.isPaused)
         {
-            Application.Game.paused = false;
-   			_self.visible = false;
-			_self.option.visible = false;
-			_self.save.visible = false;
-			_self.load.visible = false;
-			_self.mainTitle.visible = false;
-			_self.quit.visible = false;
-			_self.back.visible = false;
-        	_self.isPaused = false;
+        	_self.HideMenu();
         }
 
 	};
@@ -86,29 +72,26 @@ function PauseMenu (_game)
             // Check if the click was inside the menu
             if(event.x > x1 && event.x < x2 && event.y > y1 && event.y < y2 )
             {
-                // The choicemap is an array that will help us see which item was clicked
-                var choicemap = ['Option', 'Save', 'Load', 'MainTitle', 'Quit', 'Back'];
-
                 // Get menu local coordinates for the click
                 var x = event.x - x1,
                     y = event.y - y1;
 
                 // Calculate the choice 
                 var choice = Math.floor(y / 50) ;
-                console.log(event)
-                if(choicemap[choice] == 'Option')
+
+                if(_self.choiceButton[choice] == 'Option')
                 {
 
                 }
-                else if(choicemap[choice] == 'Save')
+                else if(_self.choiceButton[choice] == 'Save')
                 {
 
                 }
-                else if(choicemap[choice] == 'Load')
+                else if(_self.choiceButton[choice] == 'Load')
                 {
 
                 }
-                else if(choicemap[choice] == 'MainTitle')
+                else if(_self.choiceButton[choice] == 'Main Title')
 				{
 	                Application.Game.paused = false;
 	                /**
@@ -121,37 +104,51 @@ function PauseMenu (_game)
 					Application.Game.state.start("Title");
 					Application.Game.input.keyboard.addCallbacks(this, null, null, function(){});
 				}
-                else if(choicemap[choice] == 'Quit')
+                else if(_self.choiceButton[choice] == 'Quit')
                 {
+        			_self.HideMenu();
+                	var luciferDial = new Dialogue(210,355,'luciferDial',"Gnark, gnark, gnark! \nOù crois-tu aller! Personne ne s'échape de l'Enfer.");
+                	Application.Game.time.events.add( Phaser.Timer.SECOND * 2.5, function(){
+                		luciferDial.setVisible(false)
+                	});
 
                 }
-                else if(choicemap[choice] == 'Back')
+                else if(_self.choiceButton[choice] == 'Back')
                 {
-	                Application.Game.paused = false;
-		        	_self.visible = false;
-					_self.option.visible = false;
-					_self.save.visible = false;
-					_self.load.visible = false;
-					_self.mainTitle.visible = false;
-					_self.quit.visible = false;
-					_self.back.visible = false;
-		        	_self.isPaused = false;
+                	_self.HideMenu();
                 }
             }
-            // else
-            // {
-            //     // Remove the menu and the label
-            //     menu.visible = false;
-
-            //     // Unpause the game
-            //     Application.Game.paused = false;
-            //}
         }
     };
+
+    _self.ShowMenu = function()
+    {
+    	Application.Game.paused = true;
+     	_self.visible = true;
+		_self.option.visible = true;
+		_self.save.visible = true;
+		_self.load.visible = true;
+		_self.mainTitle.visible = true;
+		_self.quit.visible = true;
+		_self.back.visible = true;
+    	_self.isPaused = true;
+    };
+
+    _self.HideMenu = function()
+    {
+        Application.Game.paused = false;
+    	_self.visible = false;
+		_self.option.visible = false;
+		_self.save.visible = false;
+		_self.load.visible = false;
+		_self.mainTitle.visible = false;
+		_self.quit.visible = false;
+		_self.back.visible = false;
+    	_self.isPaused = false;
+    }
 
 	_game.input.keyboard.addCallbacks(this, null, null, _self.SetPause);
     _game.input.onDown.add(_self.OnPauseMenu, self);
 
     return _self;
-
 }

@@ -46,6 +46,7 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('HiddenZone', 'Assets/Graphics/Interact/Door/HiddenZone_96_128.png', 96, 128, 4);
 		// Load SFX
 		this.game.load.spritesheet('SoulParticle', 'Assets/Graphics/SFX/Souls/SoulParticle.png');
+		this.game.load.spritesheet('SmokePuff', 'Assets/Graphics/SFX/Particles/smoke-puff.png');
 
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
@@ -61,6 +62,7 @@ Application.Preload.prototype = {
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
 		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
 		this.game.load.image('charonDial','Assets/Graphics/CharacterDialogue/CharonDial.png');
+		this.game.load.image('luciferDial','Assets/Graphics/CharacterDialogue/LuciferDial.png');
 
 		// Load GameOver
 		this.game.load.image('gameOver','Assets/Graphics/GameOver/GameOver.png');

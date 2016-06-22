@@ -5,6 +5,7 @@ function Switch( _game, _x, _y, _type)
 
     _self.lastActivation = _game.time.now;
     _self.isActivated = false;
+    _self.canActivate = false;
 
     _self.anchor.set(0.5);
 
@@ -23,26 +24,36 @@ function Switch( _game, _x, _y, _type)
 
     _self.animations.frame = 0;
 
+    _self.body.onBeginContact.add(function(){
+        _self.canActivate = true;
+    })
+
+    _self.body.onEndContact.add(function(){
+        _self.canActivate = false;
+    })
     //_self.animations.play("activate", 7, true);
 
 
-    _self.Interact = function()
+    _self.update = function()
     {
-        if (_self.lastActivation + 50 < _game.time.now)
+        if( _self.canActivate && Application.Layers.Player.isActivated)
         {
-            Application.Game.sound.play('switch');
-            if(_self.isActivated)
+            if (_self.lastActivation + 50 < _game.time.now )
             {
-                _self.animations.play("desactivate", 7, false);
-                _self.isActivated = false;
+                Application.Game.sound.play('switch');
+                if(_self.isActivated)
+                {
+                    _self.animations.play("desactivate", 7, false);
+                    _self.isActivated = false;
+                }
+                else
+                {
+                    _self.animations.play("activate", 7, false);
+                    _self.isActivated = true;
+                }
+                _self.lastActivation = _game.time.now;
+                
             }
-            else
-            {
-                _self.animations.play("activate", 7, false);
-                _self.isActivated = true;
-            }
-            _self.lastActivation = _game.time.now;
-            
         }
     }
 

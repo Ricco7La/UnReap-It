@@ -102,7 +102,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	{
 		prop.setCollisionGroup(tilesCG);
 		prop.collides([playerCG]);
-		prop.mass = 20;
+		prop.mass = 3;
 	}
 
 
@@ -203,7 +203,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			{
 				var s = new Switch(_Game, el.x, el.y, el.type);
 				s.body.setCollisionGroup(switchCG);
-				s.body.collides(playerCG, s.Interact);
+				s.body.collides(playerCG);
 				if (el.properties && el.properties.z_index) 
 				{
 						//console.log("Custom z-index");

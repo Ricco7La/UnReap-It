@@ -36,7 +36,7 @@ function Soul(game,x,y)
     _self.body.sprite = _self;
     _self.body.setRectangle(16, 32);
     
-    _self.emitter.start(false, 3000, 50);
+    _self.emitter.start(false, 3000, 40);
 
     _self.Kill = function()
     {   
