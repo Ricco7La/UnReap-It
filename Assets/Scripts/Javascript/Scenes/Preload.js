@@ -46,6 +46,7 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('HiddenZone', 'Assets/Graphics/Interact/Door/HiddenZone_96_128.png', 96, 128, 4);
 		// Load SFX
 		this.game.load.spritesheet('SoulParticle', 'Assets/Graphics/SFX/Souls/SoulParticle.png');
+		this.game.load.spritesheet('SmokePuff', 'Assets/Graphics/SFX/Particles/smoke-puff.png');
 
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
