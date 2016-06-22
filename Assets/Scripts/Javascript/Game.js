@@ -20,8 +20,8 @@ var Application = {
 	},
 	resetLevel : function () {
 		Application.nbrSouls = Application.nbrSoulsBeforeLvl;
-		Application.EscapeAnimation[3]();
-		//Application.EscapeAnimation[Math.Random.RangeInt(0,Application.EscapeAnimation.length - 1,true)]();
+		//Application.EscapeAnimation[3]();
+		Application.EscapeAnimation[Math.Random.RangeInt(0,Application.EscapeAnimation.length - 1,true)]();
 	},
 	nextLevel : function() {
 		Application.indexLevel ++;
@@ -114,12 +114,12 @@ var Anim3 = function()
     emitterLeaf.setRotation(0, 360);
     emitterLeaf.setAlpha(0.6);
     emitterLeaf.setScale(0.07, 0.05, 0.07, 0.05, 10000);
-    emitterLeaf.gravity = -25;
+    emitterLeaf.gravity = -35;
     emitterLeaf.setXSpeed(-3,3);
     emitterLeaf.setYSpeed(0,0);
     emitterLeaf.makeParticles('Leaf');
 
-    emitterLeaf.start(false, 2000, 1);
+    emitterLeaf.start(false, 1150, 2);
 
     var start = Application.Layers.Player.x - Application.Layers.Player.width;
     var end = Application.Layers.Player.x + Application.Layers.Player.width;
@@ -139,7 +139,7 @@ var Anim3 = function()
     	wood.visible = true;
 
     });
-    Application.Game.time.events.add(2500, function (argument) {
+    Application.Game.time.events.add(2750, function (argument) {
     	Application.Game.state.start(Application.lvl[Application.indexLevel], true);
     });
 
