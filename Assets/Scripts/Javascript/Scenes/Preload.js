@@ -62,6 +62,7 @@ Application.Preload.prototype = {
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
 		this.game.load.image('medusaDial','Assets/Graphics/CharacterDialogue/MedusaDial.png');
 		this.game.load.image('charonDial','Assets/Graphics/CharacterDialogue/CharonDial.png');
+		this.game.load.image('luciferDial','Assets/Graphics/CharacterDialogue/LuciferDial.png');
 
 		// Load GameOver
 		this.game.load.image('gameOver','Assets/Graphics/GameOver/GameOver.png');

@@ -15,7 +15,7 @@ var Application = {
 	indexLevel : 0,
 	EscapeAnimation : [],
 	startLevel0 : function () {
-		indexLevel = 0;
+		Application.indexLevel = 0;
 		Application.Game.state.start(Application.lvl[Application.indexLevel], true);
 	},
 	resetLevel : function () {
