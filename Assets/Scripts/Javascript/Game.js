@@ -20,8 +20,8 @@ var Application = {
 	},
 	resetLevel : function () {
 		Application.nbrSouls = Application.nbrSoulsBeforeLvl;
-		//Application.EscapeAnimation[2]();
-		Application.EscapeAnimation[Math.Random.RangeInt(0,Application.EscapeAnimation.length - 1,true)]();
+		Application.EscapeAnimation[3]();
+		//Application.EscapeAnimation[Math.Random.RangeInt(0,Application.EscapeAnimation.length - 1,true)]();
 	},
 	nextLevel : function() {
 		Application.indexLevel ++;
@@ -93,3 +93,36 @@ var Anim2 = function() {
 
 }
 Application.EscapeAnimation.push(Anim2);
+
+var Anim3 = function() {
+	emitter = Application.Game.add.emitter(Application.Layers.Player.x, Application.Layers.Player.y, 100);
+	Application.Layers.Player.canMove = false;
+	Application.Layers.Player.body.damping = 1;
+	eugeneDial = new Dialogue(180,350,'eugeneDial',"");
+	Application.Game.camera.unfollow();
+	
+	emitter.minParticleScale = 0.005;
+    emitter.maxParticleScale = 0.05;
+
+    emitter.setRotation(0, 360);
+    emitter.setAlpha(0.6);
+    emitter.setScale(0.5, 0, 0.5, 0, 2000);
+    emitter.gravity = -200;
+    emitter.setXSpeed(-3,3);
+    emitter.makeParticles('Leaf');
+
+    emitter.start(false, 500, 10);
+
+    Application.Layers.Player.visible = false;
+    Application.Layers.Player.body.clearCollision();
+
+    Application.Game.time.events.add(1500, function (argument) {
+    	emitter.on = false;
+    });
+    Application.Game.time.events.add(2250, function (argument) {
+    	Application.Game.state.start(Application.lvl[Application.indexLevel], true);
+    });
+    console.log(emitter);
+
+}
+Application.EscapeAnimation.push(Anim3);

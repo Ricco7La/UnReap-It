@@ -47,6 +47,7 @@ Application.Preload.prototype = {
 		// Load SFX
 		this.game.load.spritesheet('SoulParticle', 'Assets/Graphics/SFX/Souls/SoulParticle.png');
 		this.game.load.spritesheet('SmokePuff', 'Assets/Graphics/SFX/Particles/smoke-puff.png');
+		this.game.load.spritesheet('Leaf', 'Assets/Graphics/SFX/Particles/leaf1.png');
 
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
