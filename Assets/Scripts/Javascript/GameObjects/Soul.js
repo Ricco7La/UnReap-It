@@ -38,13 +38,18 @@ function Soul(game,x,y)
     
     _self.emitter.start(false, 3000, 40);
 
+    _self.update = function() 
+    {
+        _self.emitter.on = _self.inCamera && _self.visible ;
+    }
+
     _self.Kill = function()
     {   
         _self.body.destroy();
         //console.log("destroy")
         _self.loadTexture('AnimeSoul');
         var deathAnim = _self.animations.add('take');
-        _self.emitter.on = false;
+        //_self.emitter.on = false;
         deathAnim.killOnComplete = true;
         _self.animations.play('take',12,false);
         var endPos = _self.y - 250;
