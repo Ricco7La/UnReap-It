@@ -10,7 +10,7 @@ function Player (_game, _x, _y)
 
     _self.isActivated = false;
     _self.lastSoul = _game.time.now;
-    _self.speed = 300;
+    _self.speed = 120;
     _self.canMove = true;
 
     _self.anchor.set(0.5);
@@ -39,6 +39,12 @@ function Player (_game, _x, _y)
     _self.animations.play('move_down', 5, true);
 
     _self.actionKey = _game.input.keyboard.addKey(Phaser.Keyboard.E);
+
+    _self.keys =  {};
+    _self.keys.up = [Phaser.Keyboard.UP, Phaser.Keyboard.Z, Phaser.Keyboard.W];
+    _self.keys.left = [Phaser.Keyboard.LEFT, Phaser.Keyboard.Q, Phaser.Keyboard.A];
+    _self.keys.down = [Phaser.Keyboard.DOWN, Phaser.Keyboard.S, Phaser.Keyboard.S];
+    _self.keys.right = [Phaser.Keyboard.RIGHT, Phaser.Keyboard.D, Phaser.Keyboard.D];
     
     _self.update = function()
     {
@@ -56,34 +62,36 @@ function Player (_game, _x, _y)
         if (_self.canMove)
         {
 
-            if((_game.input.keyboard.isDown(Phaser.Keyboard.UP) 
-                        || _game.input.keyboard.isDown(Phaser.Keyboard.Z) 
-                        || _game.input.keyboard.isDown(Phaser.Keyboard.W)) && (this.currentDirection == null || this.currentDirection == "UP"))
+            if((_game.input.keyboard.isDown(_self.keys.up[0]) 
+                        || _game.input.keyboard.isDown(_self.keys.up[1]) 
+                        || _game.input.keyboard.isDown(_self.keys.up[2])) && (this.currentDirection == null || this.currentDirection == "UP"))
             {
                 this.currentDirection = "UP";
                 _self.animations.play('move_up', 5, true);
                 _self.body.moveUp(_self.speed);
                 _self.body.damping = 0.9;
             }
-            else if((_game.input.keyboard.isDown(Phaser.Keyboard.LEFT) 
-                        || _game.input.keyboard.isDown(Phaser.Keyboard.Q) 
-                        || _game.input.keyboard.isDown(Phaser.Keyboard.A)) && (this.currentDirection == null || this.currentDirection == "LEFT"))
+            else if((_game.input.keyboard.isDown(_self.keys.left[0]) 
+                        || _game.input.keyboard.isDown(_self.keys.left[1]) 
+                        || _game.input.keyboard.isDown(_self.keys.left[2])) && (this.currentDirection == null || this.currentDirection == "LEFT"))
             {
                 this.currentDirection = "LEFT";
                 _self.animations.play('move_left', 5, true);
                 _self.body.moveLeft(_self.speed);
                 _self.body.damping = 0.9;
             }
-            else if((_game.input.keyboard.isDown(Phaser.Keyboard.DOWN) 
-                        || _game.input.keyboard.isDown(Phaser.Keyboard.S)) && (this.currentDirection == null || this.currentDirection == "DOWN"))
+            else if((_game.input.keyboard.isDown(_self.keys.down[0]) 
+                        || _game.input.keyboard.isDown(_self.keys.down[1])
+                        || _game.input.keyboard.isDown(_self.keys.down[2])) && (this.currentDirection == null || this.currentDirection == "DOWN"))
             {
                 this.currentDirection = "DOWN";
                 _self.animations.play('move_down', 5, true);
                 _self.body.moveDown(_self.speed);
                 _self.body.damping = 0.9;
             }
-            else if((_game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) 
-                        || _game.input.keyboard.isDown(Phaser.Keyboard.D)) && (this.currentDirection == null || this.currentDirection == "RIGHT"))
+            else if((_game.input.keyboard.isDown(_self.keys.right[0]) 
+                        || _game.input.keyboard.isDown(_self.keys.right[1])
+                        || _game.input.keyboard.isDown(_self.keys.right[2])) && (this.currentDirection == null || this.currentDirection == "RIGHT"))
             {
                 this.currentDirection = "RIGHT";
                 _self.animations.play('move_right', 5, true);
@@ -124,9 +132,20 @@ function Player (_game, _x, _y)
         {
             _self.isActivated = false;
         }
+
+        if(_game.input.keyboard.isDown(Phaser.Keyboard.F))
+        {
+            _self.ShuffleKeys();
+        }
+
+        Application.Game.camera.onFadeComplete.add(function(){
+            Application.Game.time.events.add( Phaser.Timer.SECOND * 10, function(){
+                Application.Game.camera.resetFX();
+            });
+        })
     };
 
-    _self.GetSoul = function(_body1, _body2)
+    _self.GetSoul = function()
     {
         if (_self.lastSoul + 50 < _game.time.now)
         {
@@ -134,6 +153,39 @@ function Player (_game, _x, _y)
             _self.lastSoul = _game.time.now;
         }
         
+    };
+
+    _self.Blindness = function()
+    {
+        var eugeneDial = new Dialogue(180,350,'eugeneDial',"Oh mon Dieu, j'ai tué quelqu'un! \nJe ne veux plus voir ça!");
+        
+        Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
+                        eugeneDial.setVisible(false);
+                        Application.Game.camera.fade("rgba(0,0,0,.5)", 1000);
+                    });
+    };
+
+    _self.ShuffleKeys = function()
+    {
+        var eugeneDial = new Dialogue(180,350,'eugeneDial',"Vus que tu ne fais pas comme je veux. \nMoi, non plus!");
+
+        Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
+                eugeneDial.setVisible(false);
+                Application.Game.camera.shake(0.02);
+            });
+
+        var up = _self.keys.up;
+        var down = _self.keys.down;
+        var left = _self.keys.left;
+        var right = _self.keys.right;
+
+        var keys = [up, down, left, right];
+
+        _self.keys.up = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+        _self.keys.down = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+        _self.keys.left = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+        _self.keys.right = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+
     }
     return _self;
 }

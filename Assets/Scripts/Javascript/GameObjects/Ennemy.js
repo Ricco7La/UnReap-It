@@ -1,5 +1,5 @@
-function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplitude, _areaDetection) {
-
+function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplitude, _areaDetection)
+{
     //console.log("CG",_path);
     var type = _type || "Vampire";
     var _self = _game.add.sprite(_path[0].x, _path[0].y, type);
@@ -10,7 +10,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
 
     _self.playerCG = null;
     _self.fovCG = null;
-    _self.FunctionOnSeeing = function() {}
+    _self.FunctionOnSeeing = function() {};
 
     // speed in pixel/second
     _self.speed = _speed || 50;
@@ -117,7 +117,8 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
             
             //console.log(offsetW,offsetH);
             var orientation = 1;
-            if (_self.angleOfView == 180 || _self.angleOfView == 270) {
+            if (_self.angleOfView == 180 || _self.angleOfView == 270)
+            {
                 orientation = -1;
             }
             _self.FOVCollider.body.x = _self.x - offsetW * 1/3 * orientation * Math.sin(angleRad) + w * 2/3 * Math.cos(angleRad) ;

@@ -18,6 +18,9 @@ Application.AnteBoss.prototype = {
 		var MapLayers = GenerateMap(this.game, this.Map, 'AnteBoss', 'All_Tiles', 'Tiles');
 
 		var Charon = new Boss(Application.Game,300,190);
+		Charon.body.setCollisionGroup(MapLayers.bossCG);
+		Charon.body.collides(MapLayers.playerCG,Application.resetLevel);
+		Charon.body.collides(MapLayers.tilesCG,Charon.collisionWithWall);
 
 		charonDial = new Dialogue(130,200,'charonDial',"HALTE LA !\nToutes âmes, morte ou vivante voulant passer doit payer\nson tribut!");
 		eugeneDial = new Dialogue(180,350,'eugeneDial',"Hey Charon vieille branche ! T'inquiète pas j'ai tout pré...\n*fouille fouille*\n Oh non... non non non non non");

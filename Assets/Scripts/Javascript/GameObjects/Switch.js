@@ -26,13 +26,11 @@ function Switch( _game, _x, _y, _type)
 
     _self.body.onBeginContact.add(function(){
         _self.canActivate = true;
-    })
+    });
 
     _self.body.onEndContact.add(function(){
         _self.canActivate = false;
-    })
-    //_self.animations.play("activate", 7, true);
-
+    });
 
     _self.update = function()
     {
@@ -55,8 +53,6 @@ function Switch( _game, _x, _y, _type)
                 
             }
         }
-    }
-
+    };
     return _self;
-
 }
