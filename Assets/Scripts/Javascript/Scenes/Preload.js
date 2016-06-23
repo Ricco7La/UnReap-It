@@ -56,9 +56,9 @@ Application.Preload.prototype = {
 		this.game.load.image('redParticles','Assets/Graphics/SFX/Particles/redParticles.png');
 		this.game.load.image('blueParticles','Assets/Graphics/SFX/Particles/blueParticles.png');
 
-		//Load Credit
-
+		//Load Credit-
 		this.game.load.image('credit','Assets/Graphics/SFX/Credit/FullGravesCredit.png');
+		this.game.load.image('logoCred','Assets/Graphics/SFX/Credit/Logo.jpg');
 
 		//Dialogue
 		this.game.load.image('eugeneDial','Assets/Graphics/CharacterDialogue/EugeneDial.png');
