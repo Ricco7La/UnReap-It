@@ -24,6 +24,7 @@
 	Game.state.add("AnteBoss", Application.AnteBoss);
 	Game.state.add("GameOver", Application.GameOver);
 	Game.state.add("Credit", Application.Credit);
+	Game.state.add("EndDemo", Application.EndDemo);
 
 	// lancer l'ecran de lancement du jeu
 	Game.state.start("Splash");
