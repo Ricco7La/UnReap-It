@@ -49,7 +49,7 @@ var Anim1 = function()
 {
 	Application.Game.camera.follow(null);
 	Application.Layers.Player.animations.play('move_left',7,true);
-	var newPos = Application.Layers.Player.x - Application.config.width * 1.5;
+	var newPos = Application.Layers.Player.x - Application.config.width * 1.1;
 	Application.Layers.Player.canMove = false;
 	eugeneDial = new Dialogue(180,350,'eugeneDial',"Oups ... Je crois que j'ai oublié d'eteindre mon four.");
 	

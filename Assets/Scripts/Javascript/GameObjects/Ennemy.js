@@ -294,6 +294,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
             _self.FOV.destroy();
             _self.FOVCollider.destroy();
             _self.destroy();
+            Math.Random.InArray(Application.Layers.Player.Afflictions)();
         })
     }
     _self.MoveToPathPoint();

@@ -45,7 +45,17 @@ function Player (_game, _x, _y)
     _self.keys.left = [Phaser.Keyboard.LEFT, Phaser.Keyboard.Q, Phaser.Keyboard.A];
     _self.keys.down = [Phaser.Keyboard.DOWN, Phaser.Keyboard.S, Phaser.Keyboard.S];
     _self.keys.right = [Phaser.Keyboard.RIGHT, Phaser.Keyboard.D, Phaser.Keyboard.D];
-    
+
+    _self.bmd = Application.Game.make.bitmapData(Application.Game.world.width, Application.Game.world.height);
+    _self.bmd.addToWorld();
+
+    _self.innerCircle = new Phaser.Circle(_self.body.x, _self.body.y, 100);
+    _self.outerCircle = new Phaser.Circle(_self.body.x, _self.body.y, Application.config.width * 3.5);
+    _self.circleLimit = _self.innerCircle.radius / _self.outerCircle.radius;
+
+    _self.isBlind = false;
+    _self.Afflictions = [];
+
     _self.update = function()
     {
         _self.scoreSouls.setText("Souls : " + Application.nbrSouls);
@@ -133,9 +143,14 @@ function Player (_game, _x, _y)
             _self.isActivated = false;
         }
 
-        if(_game.input.keyboard.isDown(Phaser.Keyboard.F))
+/*        if(_game.input.keyboard.isDown(Phaser.Keyboard.F))
         {
-            _self.ShuffleKeys();
+            _self.Blindness();
+        }*/
+
+        if(_self.isBlind)
+        {
+            _self.BlindnessView();
         }
 
         Application.Game.camera.onFadeComplete.add(function(){
@@ -161,9 +176,26 @@ function Player (_game, _x, _y)
         
         Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
                         eugeneDial.setVisible(false);
-                        Application.Game.camera.fade("rgba(0,0,0,.5)", 1000);
+                        _self.BlindnessView();
+                        _self.isBlind = true;
                     });
     };
+
+    _self.BlindnessView = function()
+    {
+        _self.innerCircle.x = _self.body.x;
+        _self.innerCircle.y = _self.body.y;
+        _self.outerCircle.x = _self.body.x;
+        _self.outerCircle.y = _self.body.y;
+        _self.grd = _self.bmd.context.createRadialGradient(_self.innerCircle.x, _self.innerCircle.y, _self.innerCircle.radius, _self.outerCircle.x, _self.outerCircle.y, _self.outerCircle.radius);
+
+        _self.grd.addColorStop(0, 'rgba(0,0,0,0)');
+        _self.grd.addColorStop(_self.circleLimit, 'rgba(0,0,0,1)');
+        _self.grd.addColorStop(1, 'rgba(0,0,0,1)');
+
+        _self.bmd.cls();
+        _self.bmd.circle(_self.outerCircle.x, _self.outerCircle.y, _self.outerCircle.radius, _self.grd);
+    }
 
     _self.ShuffleKeys = function()
     {
@@ -185,8 +217,10 @@ function Player (_game, _x, _y)
         _self.keys.down = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
         _self.keys.left = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
         _self.keys.right = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
-
     }
+
+    _self.Afflictions.push(_self.Blindness, _self.ShuffleKeys);
+
     return _self;
 }
 
