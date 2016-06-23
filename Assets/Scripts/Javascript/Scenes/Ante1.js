@@ -36,7 +36,7 @@ Application.Ante1.prototype = {
 	update : function()
 	{
 		Application.Timer.Update();
-		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.M) && ( this.lastInput + 500) < this.game.time.now )
+		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.M) && ( this.lastInput + 500) < this.game.time.now && this.indexDial < this.DialArray.length )
 		{
 			//console.log("ici")
 			this.lastInput = this.game.time.now;

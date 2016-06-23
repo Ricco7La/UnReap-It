@@ -64,7 +64,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         if (_self.FOVCollider.active) 
         {
             _self.FOV.clear();
-            _self.FOV.beginFill(0xFBFE00);
+            _self.FOV.beginFill(0xFBFE00, .5);
             _self.FOV.lineStyle(0, 0xffffff, 0);
             _self.FOV.alpha = 0.5;
             //_self.FOV.moveTo(_self.x, _self.y);
