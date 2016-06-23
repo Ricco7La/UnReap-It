@@ -18,9 +18,9 @@ Application.Ante1.prototype = {
 
 	
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
-		eugeneDial = new Dialogue(180,350,'eugeneDial',"Bien, si je ne me trompe pas, l'embarcadère de Charon \ndoit ce trouver au bout de ce cercle... \nEvitons d'attirer l'attention, j'aimerais eviter une effusion de \nsang inutile...");
-		medusaDial = new Dialogue(160,350,'medusaDial',"Il parait qu'Eugène a disparu des bureaux. \nOn a ordre de le ramener si jamais on le vois");
-		eugeneDial2 = new Dialogue(180,350,'eugeneDial',"HEIN QUOI ?! Déjà ? Il y'a balaine sous gravier \ns'ils savent déjà que je suis parti...\nSoyons discret");
+		eugeneDial = new Dialogue(180,350,'eugeneDial',"Bien, si je ne me trompe pas, l'embarcadère de Charon \ndoit se trouver au bout de ce cercle... \nEvitons d'attirer l'attention, j'aimerais eviter une\néffusion de sang inutile...");
+		medusaDial = new Dialogue(160,350,'medusaDial',"Il parait qu'Eugène a disparu des bureaux. \nOn a ordre de le ramener si jamais on le voit");
+		eugeneDial2 = new Dialogue(180,350,'eugeneDial',"HEIN QUOI ?! Déjà ? Il y'a baleine sous gravier \ns'ils savent déjà que je suis parti...\nSoyons discret");
 		medusaDial.setVisible(false);
 		eugeneDial.setVisible(false);
 		eugeneDial2.setVisible(false);
