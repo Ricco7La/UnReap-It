@@ -40,7 +40,6 @@ function Soul(game,x,y)
 
     _self.update = function() 
     {
-        console.log(_self.inCamera && _self.visible);
         _self.emitter.on = _self.inCamera && _self.visible ;
     }
 
