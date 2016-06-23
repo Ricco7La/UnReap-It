@@ -199,7 +199,7 @@ function Player (_game, _x, _y)
 
     _self.ShuffleKeys = function()
     {
-        var eugeneDial = new Dialogue(180,350,'eugeneDial',"Vus que tu ne fais pas comme je veux. \nMoi, non plus!");
+        var eugeneDial = new Dialogue(180,350,'eugeneDial',"Vu que tu ne fais pas comme je veux. \nMoi, non plus!");
 
         Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
                 eugeneDial.setVisible(false);
