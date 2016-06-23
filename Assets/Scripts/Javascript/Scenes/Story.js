@@ -58,14 +58,15 @@ Application.Story.prototype = {
 		//console.log('Story Screen');
 		background = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'background');
 		title = this.game.add.tileSprite(400,30,206,60,'title');
+		button = this.game.add.button(500, 400, 'button',actionOnClick,this);
 
-    	text = this.game.add.text(32, 350, '', { font: "13px Merriweather", fill: "#D6E7FF" });
+    	text = this.game.add.text(32, 350, '', { font: "13px Lithos Pro", fill: "#D6E7FF" });
     	text.stroke = "#000";
     	text.strokeThickness = 4;
     	//  Apply the shadow to the Fill only
    		text.setShadow(2, 2, "#333333", 2, false, true);
 
-   		button = this.game.add.button(500, 400, 'button',actionOnClick,this);
+   		
 
 
     	nextLine(this.game);
@@ -75,7 +76,7 @@ Application.Story.prototype = {
 
 	update : function()
 	{
-		text.position.y -= 0.1;
+		text.position.y -= 0.3;
 		if (text.position.y <= -520) 
 		{
 			this.state.start(Application.lvl[Application.indexLevel],true);

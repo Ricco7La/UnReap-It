@@ -11,7 +11,7 @@ var Application = {
 	Juicy : null,
 	nbrSoulsBeforeLvl : 0,
 	nbrSouls : 0,
-	lvl : ['Tuto','Ante1','Ante2','Ante3','AnteBoss'],
+	lvl : ['Tuto','Ante1','Ante2','Ante3','AnteBoss','EndDemo'],
 	indexLevel : 0,
 	EscapeAnimation : [],
 	startLevel0 : function () {
