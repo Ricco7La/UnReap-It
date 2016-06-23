@@ -51,10 +51,13 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var spikeCG = _Game.physics.p2.createCollisionGroup();
 	var teleportCG = _Game.physics.p2.createCollisionGroup();
 	var HoleCG = _Game.physics.p2.createCollisionGroup();
+	var bossCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
-
+	Layers["playerCG"] = playerCG;
+	Layers["bossCG"] = bossCG;
+	Layers["tilesCG"] = tilesCG;
 	/***** Charge Tile Layer from Tiled *****/
 	//console.log("Tiles");
 	var tilesBodies = [];
@@ -101,7 +104,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	for (prop of tilesBodies) 
 	{
 		prop.setCollisionGroup(tilesCG);
-		prop.collides([playerCG]);
+		prop.collides([playerCG,bossCG]);
 		prop.mass = 3;
 	}
 
@@ -351,6 +354,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	myPlayer.body.setCollisionGroup(playerCG);
 	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, HoleCG, fovCG, teleportCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
+	myPlayer.body.collides([bossCG],function(){console.log("outch")});
 	
 	Layers["Z-index"][5].add(myPlayer);
 	Layers["Player"] = myPlayer;

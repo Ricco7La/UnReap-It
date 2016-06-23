@@ -7,12 +7,20 @@ var _self = _game.add.sprite(_x, _y, "Charon");
     _self.animations.add('moveRight', [8,9,10,11]);
     _self.animations.add('moveUp', [12,13,14,15]);
     _self.speed = 1;
+    _self.life = 5;
+    _self.lastCollision = (_game.time.now - 5000);
+
     
     _self.animations.play('moveDown', 7, true);
 
     _game.physics.p2.enable(_self);
+    _self.body.mass = 2.5;
+    _self.body.fixedRotation = true;
+    _self.body.thrust(0);
+    _self.body.damping = 1;
 
-    _self.body.setRectangle(70,75,0);
+
+    _self.body.setRectangle(40,60,0);
 
     _self.body.debug = Application.debugMode;
 
@@ -24,7 +32,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
     {
         _self.charge();
 
-    },9000)
+    },5000)
 
     _self.update = function()
     {
@@ -62,12 +70,38 @@ var _self = _game.add.sprite(_x, _y, "Charon");
         {
             var px = player.position.x;
             var py = player.position.y;
-            _self.tween = _game.add.tween(_self.body).to( { x: px, y: py}, 2000, Phaser.Easing.Sinusoidal.In, true);
-            _self.tween.onComplete.add(_self.speed = 1)
-        },2000);
+            _self.tween = _game.add.tween(_self.body).to( { x: px, y: py}, 1000, Phaser.Easing.Circular.In, true);
+            _self.tween.onComplete.add(function()
+            {
+                _self.speed = 1;
+                setTimeout(function() 
+                {
+                    _self.charge();
+
+                },5000)
+
+            }
+                )
+        } ,1000);
     }
 
+    _self.collisionWithWall = function()
+    {
+        if (_self.lastCollision + 4500 < _game.time.now) 
+        {
+            console.log("life " + _self.life)
+            _self.life -= 1 ;
+            Application.Game.camera.shake(0.1,500);
+            _self.lastCollision = _game.time.now;
+            if (_self.life == 0) 
+            {
+                _self.destroy();
+            }
+        }
+    }
+    return _self;
 }
+
 
 
 

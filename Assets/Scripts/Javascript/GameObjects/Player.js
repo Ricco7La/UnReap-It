@@ -10,7 +10,7 @@ function Player (_game, _x, _y)
 
     _self.isActivated = false;
     _self.lastSoul = _game.time.now;
-    _self.speed = 300;
+    _self.speed = 120;
     _self.canMove = true;
 
     _self.anchor.set(0.5);

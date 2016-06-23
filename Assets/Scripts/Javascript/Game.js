@@ -33,6 +33,7 @@ var Application = {
 var Anim0 = function () 
 {
 	Application.Layers.Player.canMove = false;
+	Application.Layers.Player.body.damping = 1;
 	Application.Layers.Player.animations.play('move_down', 7, true);
 	var flash = Application.Juicy.createScreenFlash('rgba(255,255,255,1)');
 	Application.Game.add.existing(flash);
@@ -51,6 +52,8 @@ var Anim1 = function()
 	Application.Layers.Player.animations.play('move_left',7,true);
 	var newPos = Application.Layers.Player.x - Application.config.width * 1.1;
 	Application.Layers.Player.canMove = false;
+	Application.Layers.Player.body.damping = 1;
+	Application.Layers.Player.body.clearCollision();
 	eugeneDial = new Dialogue(180,350,'eugeneDial',"Oups ... Je crois que j'ai oublié d'eteindre mon four.");
 	
 	var tween = Application.Game.add.tween(Application.Layers.Player.body).to( { x: newPos }, 2500, Phaser.Easing.Quadratic.In, true);
