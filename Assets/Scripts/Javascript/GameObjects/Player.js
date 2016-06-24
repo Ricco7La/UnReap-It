@@ -173,6 +173,7 @@ function Player (_game, _x, _y)
     _self.Blindness = function()
     {
         var eugeneDial = new Dialogue(180,350,'eugeneDial',"Oh mon Dieu, j'ai tué quelqu'un! \nJe ne veux plus voir ça!");
+        eugeneDial.setVisible(true);
         
         Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
                         eugeneDial.setVisible(false);
@@ -200,6 +201,7 @@ function Player (_game, _x, _y)
     _self.ShuffleKeys = function()
     {
         var eugeneDial = new Dialogue(180,350,'eugeneDial',"Vu que tu ne fais pas comme je veux. \nMoi, non plus!");
+        eugeneDial.setVisible(true);
 
         Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
                 eugeneDial.setVisible(false);

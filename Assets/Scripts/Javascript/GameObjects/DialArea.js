@@ -1,57 +1,71 @@
-function DialArea( _game, _x, _y)
+function DialArea( _game, _name, _x, _y, _width, _height)
 {
 	var type = "";
     var _self = _game.add.sprite(_x, _y, type);
+    _self.name = _name;
 
-    _self.lastActivation = _game.time.now;
-    _self.isActivated = false;
-    _self.canActivate = false;
+    _self.alreadyDid = false;
 
     _self.anchor.set(0.5);
-
     _game.physics.p2.enable(_self);
-
     _self.body.fixedRotation = true;
     _self.body.static = true;
 
-    _self.animations.add("activate", [0,1,2]);
-    _self.animations.add("desactivate", [2,1,0]);
-
-    _self.body.setRectangle(16,16,0,5,0);
+    _self.body.setRectangle(_width, _height,0,0,0);
    
     _self.body.debug = Application.debugMode;
     _self.body.sprite = _self;
 
-    _self.animations.frame = 0;
-
-    _self.body.onBeginContact.add(function(){
-        _self.canActivate = true;
-    });
-
-    _self.body.onEndContact.add(function(){
-        _self.canActivate = false;
-    });
+    _self.lastInput = Application.Game.time.now;
+    _self.DialArray = [];
+    _self.indexDial = 0;
 
     _self.update = function()
     {
-        if( _self.canActivate && Application.Layers.Player.isActivated)
+        _self.LaunchDialogue();
+        _self.NextDialogue();
+        console.log(_self);
+    };
+
+    _self.CheckOverlap = function()
+    {
+        var dialBounds = _self.getBounds();
+        var playerBound =  Application.Layers.Player.getBounds();
+
+        return Phaser.Rectangle.intersects( dialBounds, playerBound);
+    };
+
+    _self.LaunchDialogue = function()
+    {
+        if(!_self.alreadyDid)
         {
-            if (_self.lastActivation + 50 < _game.time.now )
+            if(_self.CheckOverlap())
             {
-                if(_self.isActivated)
-                {
-                    _self.animations.play("desactivate", 7, false);
-                    _self.isActivated = false;
-                }
-                else
-                {
-                    _self.animations.play("activate", 7, false);
-                    _self.isActivated = true;
-                }
-                _self.lastActivation = _game.time.now;
-                
+                Application.Layers.Player.canMove = false;
+                Application.Layers.Player.body.setZeroVelocity();
+                _self.DialArray[_self.indexDial].setVisible(true);
+                _self.alreadyDid = true;
             }
         }
     };
+
+    _self.NextDialogue = function()
+    {
+        if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.M) && ( _self.lastInput + 500) < Application.Game.time.now && _self.indexDial < _self.DialArray.length )
+        {
+            _self.lastInput = Application.Game.time.now;
+            _self.DialArray[_self.indexDial].setVisible(false);
+            _self.indexDial ++;
+            if (_self.indexDial < _self.DialArray.length) 
+            {
+                _self.DialArray[_self.indexDial].setVisible(true);
+            }
+            else
+            {
+                Application.Layers.Player.canMove = true;
+            }
+        }   
+    };
+
     return _self;
 }
