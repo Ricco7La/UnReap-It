@@ -361,8 +361,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 
 	var pauseMenu = new PauseMenu(_Game);
 	
-/*	_Game.physics.p2.setPostBroadphaseCallback(function(){
-
+/*	_Game.physics.p2.setPostBroadphaseCallback(function(_body1, _body2){
 	}, self);*/
 
 	//console.log(Layers["Z-index"]);
