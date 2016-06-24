@@ -137,10 +137,12 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		if (p[0].properties && p[0].properties.z_index) 
 		{
 			//console.log("Custom z-index");
+			Layers["Z-index"][p[0].properties.z_index].add(ennemy.FOV);
 			Layers["Z-index"][p[0].properties.z_index].add(ennemy);
 		}
 		else
 		{
+			Layers["Z-index"][5].add(ennemy.FOV);
 			Layers["Z-index"][6].add(ennemy);
 		}
 

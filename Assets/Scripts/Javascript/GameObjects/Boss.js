@@ -28,35 +28,35 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     var player = Application.Layers.Player;
 
-    // setTimeout(function() 
-    // {
-    //     _self.charge();
+    setTimeout(function() 
+    {
+        _self.charge();
 
-    // },5000)
+    },5000)
 
     _self.update = function()
     {
-        // if (_self.position.y < player.position.y - 10) 
-        // {
-        //     _self.body.y += _self.speed;
-        //     _self.animations.play('moveDown',7,true);
-        //     // _self.body.damping = 0.9;
-        // }
-        // else if (_self.position.y > player.position.y + 10)
-        // {
-        //     _self.body.y -= _self.speed;
-        //     _self.animations.play('moveUp',7,true);
-        // }
-        // else if (_self.position.x < player.position.x)
-        // {
-        //     _self.body.x += _self.speed;
-        //     _self.animations.play('moveRight',7,true);
-        // }
-        // else if (_self.position.x > player.position.x)
-        // {
-        //     _self.body.x -= _self.speed;
-        //     _self.animations.play('moveLeft',7,true);
-        // }
+        if (_self.position.y < player.position.y - 10) 
+        {
+            _self.body.y += _self.speed;
+            _self.animations.play('moveDown',7,true);
+            // _self.body.damping = 0.9;
+        }
+        else if (_self.position.y > player.position.y + 10)
+        {
+            _self.body.y -= _self.speed;
+            _self.animations.play('moveUp',7,true);
+        }
+        else if (_self.position.x < player.position.x)
+        {
+            _self.body.x += _self.speed;
+            _self.animations.play('moveRight',7,true);
+        }
+        else if (_self.position.x > player.position.x)
+        {
+            _self.body.x -= _self.speed;
+            _self.animations.play('moveLeft',7,true);
+        }
 
         
     }
