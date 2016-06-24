@@ -31,7 +31,6 @@ var _self = _game.add.sprite(_x, _y, "Charon");
     setTimeout(function() 
     {
         _self.charge();
-
     },5000)
 
     _self.update = function()
