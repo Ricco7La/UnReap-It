@@ -7,7 +7,7 @@ Application.Ante1.prototype = {
 		Application.Game.sound.stopAll();
 		this.ambiant = this.game.add.audio('ambiant'); 
 		//console.log('Game Screen');
-		this.game.physics.startSystem(Phaser.Physics.P2JS);
+		//this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
 		this.game.physics.p2.setImpactEvents(true);
     	this.game.physics.p2.defaultRestitution = 1;

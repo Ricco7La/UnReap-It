@@ -15,6 +15,7 @@ var Application = {
 	indexLevel : 0,
 	EscapeAnimation : [],
 	startLevel0 : function () {
+		//Application.Game.physics.startSystem(Phaser.Physics.P2JS);
 		Application.indexLevel = 0;
 		Application.Game.state.start(Application.lvl[Application.indexLevel], true);
 	},

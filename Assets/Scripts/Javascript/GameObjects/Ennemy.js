@@ -49,6 +49,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     _self.tween = null;
 
     _self.FOV = _game.add.graphics(0, 0);
+    _self.bringToTop()
     _self.FOVCollider = _game.add.sprite(0, 0);
     _self.FOVCollider.active = true;
     
