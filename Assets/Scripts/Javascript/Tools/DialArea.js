@@ -1,4 +1,4 @@
-function DialArea( _game, _name, _x, _y, _width, _height)
+function DialArea( _game, _name, _x, _y, _width, _height, _callback)
 {
 	var type = "";
     var _self = _game.add.sprite(_x, _y, type);
@@ -67,6 +67,15 @@ function DialArea( _game, _name, _x, _y, _width, _height)
             }
         }   
     };
+
+    _self.Callback = function()
+    {
+        if (_self.indexDial == _self.DialArray.length -1)
+        {
+            _callback();
+            _self.indexDial ++;
+        }
+    }
 
     return _self;
 }
