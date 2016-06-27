@@ -265,6 +265,6 @@
   <object id="62" name="42" type="Left" x="96" y="192" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="DialAreas">
-  <object id="64" name="firstDial" x="240" y="493.333" width="128.667" height="30.6667"/>
+  <object id="64" name="firstDial" x="69" y="448.333" width="495" height="30.6667"/>
  </objectgroup>
 </map>

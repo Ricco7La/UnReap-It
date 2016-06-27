@@ -83,7 +83,10 @@ Application.AnteBoss.prototype = {
 		var eugeneDial4 = new Dialogue(180,350,'eugeneDial',"Faux ! C'est toi contre moi et mes " + Application.nbrSouls + " nouveaux copains !" );
 		
 		MapLayers.DialAreas.firstDial.DialArray.push(charonDial, eugeneDial, charonDial2, eugeneDial2, charonDial3, eugeneDial3, charonDial4, eugeneDial4);
-				
+		MapLayers.DialAreas.firstDial.callbackFunction = function () {
+			Charon.Start();
+			console.log("callback ok");
+		}
 	},
 	update : function()
 	{
