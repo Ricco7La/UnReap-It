@@ -21,6 +21,7 @@ Application.AnteBoss.prototype = {
 		var Charon = new Boss(Application.Game,300,190);
 		Charon.body.setCollisionGroup(MapLayers.bossCG);
 		Charon.body.collides(MapLayers.playerCG,Application.resetLevel);
+		Charon.body.collides(MapLayers.blockCG);
 		Charon.body.collides(MapLayers.tilesCG,Charon.collisionWithWall);
 
 		var dialArea = new DialArea(this.game, 310, 544, 100, 50);
