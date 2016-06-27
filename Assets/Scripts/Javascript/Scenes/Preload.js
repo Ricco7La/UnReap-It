@@ -56,6 +56,12 @@ Application.Preload.prototype = {
 		this.game.load.image('redParticles','Assets/Graphics/SFX/Particles/redParticles.png');
 		this.game.load.image('blueParticles','Assets/Graphics/SFX/Particles/blueParticles.png');
 
+		//Load Story
+		this.game.load.image('bulle1','Assets/Graphics/Title/bulle1.png');
+		this.game.load.image('bulle2','Assets/Graphics/Title/bulle2.png');
+		this.game.load.image('bulle3','Assets/Graphics/Title/bulle3.png');
+		this.game.load.image('bulle4','Assets/Graphics/Title/bulle4.png');
+
 		//Load Credit-
 		this.game.load.image('credit','Assets/Graphics/SFX/Credit/FullGravesCredit.png');
 		this.game.load.image('logoCred','Assets/Graphics/SFX/Credit/Logo.jpg');

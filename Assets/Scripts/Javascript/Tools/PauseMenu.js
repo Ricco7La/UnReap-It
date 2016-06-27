@@ -93,8 +93,8 @@ function PauseMenu (_game)
 	                	TO DO FOR NEXT PHASER UPDATE
 	                	SUBMIT ISSUE ON GITHUB 
 	                **/
-	                Application.Game.world.width = 640;
-	                Application.Game.world.height = 480;
+	                Application.Game.world.width = Application.config.width;
+	                Application.Game.world.height = Application.config.height;
 
 					Application.Game.state.start("Title");
 					Application.Game.input.keyboard.addCallbacks(this, null, null, function(){});

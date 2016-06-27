@@ -4,7 +4,7 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
     var x = _x + _w * 0.5;
     var y = _y + _h * 0.5;
     var _self = _game.add.sprite(x, y, type);
-    _self.upperPart = _game.add.sprite(x, y, type);
+    // _self.upperPart = _game.add.sprite(x, y, type);
     _self.SavedCollision = null;
     _self.isOpen = false;
     _self.doorType = type;

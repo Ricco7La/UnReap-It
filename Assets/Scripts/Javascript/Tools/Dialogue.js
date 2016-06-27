@@ -1,29 +1,36 @@
-function Dialogue(_x,_y,_charaDial,_text)
+function Dialogue(_x, _y, _charaDial, _text)
 {
 	
-	var boxDialogue = Application.Game.add.image(0,0,_charaDial);
- 	boxDialogue.dialogue = Application.Game.add.text(_x,_y, _text, { font: "13px Lithos Pro", fill: "#000", align: "left" });
- 	boxDialogue.dialogue.setShadow(3, 3, 'rgba(0,0,0,0.2)', 5);
-	boxDialogue.fixedToCamera = true;
-	boxDialogue.dialogue.fixedToCamera = true;
+	var _self = Application.Game.add.image(0,0,_charaDial);
+ 	_self.dialogue = Application.Game.add.text(_x,_y, _text, { font: "13px Lithos Pro", fill: "#000", align: "left" });
+ 	_self.dialogue.setShadow(3, 3, 'rgba(0,0,0,0.2)', 5);
+	_self.fixedToCamera = true;
+	_self.dialogue.fixedToCamera = true;
 
+	_self.visible = false;
+	_self.dialogue.visible = false;
 
-	boxDialogue.setVisible = function(bool)
+	_self.update = function() 
 	{
-		this.visible = bool;
-		this.dialogue.visible = bool;
-	}
+		_self.EndDialogue();
+	};
+	
+	_self.setVisible = function(_bool)
+	{
+		_self.visible = _bool;
+		_self.dialogue.visible = _bool;
+	};
 
-	boxDialogue.update = function() 
+	_self.EndDialogue = function()
 	{
 		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) 
 		{
-			console.log("kill dial")
-			boxDialogue.dialogue.destroy();
-			boxDialogue.destroy();
+			_self.dialogue.destroy();
+			_self.destroy();
+            Application.Layers.Player.canMove = true;
 		}
-	}
-	
-	return boxDialogue;
+	};
+
+	return _self;
 }
 
