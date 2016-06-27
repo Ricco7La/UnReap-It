@@ -26,6 +26,8 @@ Application.GameOver.prototype = {
 	 	this.start = this.game.add.text(110, this.game.world.centerY + 100, "Try Again", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
 		this.start.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 		this.start.inputEnabled = true;
+		console.log(Application.Timer)
+		Application.Timer.duration = 3000;
 		this.start.events.onInputOver.add(function(){ this.state.start("Title") },this);
 		console.log(this.game.input.mousePointer);
         

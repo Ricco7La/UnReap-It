@@ -72,7 +72,8 @@ Application.Title.prototype = {
 		this.credit.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 		this.credit.anchor.x = 0.5;
 		this.credit.inputEnabled = true;
-		this.credit.events.onInputOver.add(StartCredit,this);     
+		this.credit.events.onInputOver.add(StartCredit,this);
+		Application.Timer = new Timer(300000000000, false, this.updateCounter, Application.Game);
 	},
 
 	update : function()
