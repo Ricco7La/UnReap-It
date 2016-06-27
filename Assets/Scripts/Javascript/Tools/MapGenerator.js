@@ -352,7 +352,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			{
 				var wall = new BossWall( _Game, el.x, el.y, el.width,el.height, el.type);
 				wall.body.setCollisionGroup(blockCG);
-				wall.body.collides([playerCG]);	
+				wall.body.collides([playerCG, bossCG]);	
 				Layers["BossWall"].push(wall);		
 			}
 		}

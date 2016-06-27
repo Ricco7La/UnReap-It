@@ -72,6 +72,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             _self.tween = _game.add.tween(_self.body).to( { x: px, y: py}, 1000, Phaser.Easing.Circular.In, true);
             _self.tween.onComplete.add(function()
             {
+                _self.tween = null
                 _self.speed = 1;
                 setTimeout(function() 
                 {
@@ -79,8 +80,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
                 },5000)
 
-            }
-                )
+            })
         } ,1000);
     }
 

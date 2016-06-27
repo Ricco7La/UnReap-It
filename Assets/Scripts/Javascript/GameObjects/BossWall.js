@@ -24,7 +24,7 @@ function BossWall( _game, _x, _y, _w, _h, _type)
             _self.body.setRectangle(8, 64, 8, 0);
             break;
         case 'Down':
-            _self.body.setRectangle(32, 8, 0, 16);
+            _self.body.setRectangle(32, 8, 0, 10);
             break;
         case 'Left':
             _self.body.setRectangle(8, 32, -7, 0);
@@ -33,7 +33,7 @@ function BossWall( _game, _x, _y, _w, _h, _type)
             _self.body.setRectangle(8, 32, 8, 0);
             break;
         case 'Up':
-            _self.body.setRectangle(32, 16, 0, -6);
+            _self.body.setRectangle(32, 16, 0, -2);
             break;
     }
 
