@@ -345,7 +345,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	/* Boss Wall */
 	if (_Map.objects.BossWall) 
 	{
-		Layers["BossWall"] = [];
+		var array = [];
 		for (el of _Map.objects.BossWall) 
 		{
 			if (el.visible) 
@@ -353,9 +353,10 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				var wall = new BossWall( _Game, el.x, el.y, el.width,el.height, el.type);
 				wall.body.setCollisionGroup(blockCG);
 				wall.body.collides([playerCG, bossCG]);	
-				Layers["BossWall"].push(wall);		
+				array[el.name-1] = wall;		
 			}
 		}
+		Layers["BossWall"] = array;
 	}
 		
 	/* Dial Area */

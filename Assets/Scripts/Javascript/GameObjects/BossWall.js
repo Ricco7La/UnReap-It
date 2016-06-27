@@ -41,6 +41,14 @@ function BossWall( _game, _x, _y, _w, _h, _type)
     _self.body.debug = Application.debugMode;
     _self.body.sprite = _self;
 
+
+    _self.DestroyBySoul = function() 
+    {
+        _self.body.clearCollision();
+        _self.visible = false;
+
+    }
+
     return _self;
 
 }
