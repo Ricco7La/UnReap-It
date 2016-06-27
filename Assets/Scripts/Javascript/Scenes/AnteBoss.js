@@ -42,7 +42,8 @@ Application.AnteBoss.prototype = {
 		Application.Timer.Update();
 	},
 	render : function(){
-		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
+		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32, "rgb(255, 255, 255)", "18px Lithos Pro");
+		this.game.debug.text('Souls : ' + Application.nbrSouls, 32, 32, "rgb(255, 255, 255)", "18px Lithos Pro");
 	}
 
 }

@@ -1,6 +1,5 @@
 function Player (_game, _x, _y)
 {
-
     var _self = _game.add.sprite(_x, _y, "Player");
     _self.soundWalking = _game.add.audio('playerWalking');
     console.log(_self.soundWalking);
@@ -33,9 +32,6 @@ function Player (_game, _x, _y)
 
     _self.body.debug = Application.debugMode;
 
-    _self.scoreSouls = _game.add.text(50, 50, "Souls : 0", { font: "20px Merriweather", fill: "#ff1105", align: "center" });
-    _self.scoreSouls.fixedToCamera = true;
-
     _self.animations.play('move_down', 5, true);
 
     _self.actionKey = _game.input.keyboard.addKey(Phaser.Keyboard.E);
@@ -58,8 +54,6 @@ function Player (_game, _x, _y)
 
     _self.update = function()
     {
-        _self.scoreSouls.setText("Souls : " + Application.nbrSouls);
-
         // if(this.currentDirection != null && !_self.soundWalking.isPlaying)
         // {
         //      _self.soundWalking.play();
@@ -143,21 +137,10 @@ function Player (_game, _x, _y)
             _self.isActivated = false;
         }
 
-/*        if(_game.input.keyboard.isDown(Phaser.Keyboard.F))
-        {
-            _self.Blindness();
-        }*/
-
         if(_self.isBlind)
         {
             _self.BlindnessView();
         }
-
-        Application.Game.camera.onFadeComplete.add(function(){
-            Application.Game.time.events.add( Phaser.Timer.SECOND * 10, function(){
-                Application.Game.camera.resetFX();
-            });
-        })
     };
 
     _self.GetSoul = function()
