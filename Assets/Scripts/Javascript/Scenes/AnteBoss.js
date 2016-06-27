@@ -27,11 +27,51 @@ Application.AnteBoss.prototype = {
 				console.log("Collide Barriere");
 			}	
 		});
-		Charon.body.collides(MapLayers.tilesCG,function (argument) {
+		Charon.body.collides(MapLayers.tilesCG,function (_charon) {
 			if (_charon.sprite.tween) {
 				console.log("Collide water");
 			}
 		});
+
+		var BossWalls = MapLayers.BossWall;
+		for (var i = 0; i < Application.nbrSouls ; i++) 
+		{
+			var index = Math.Random.RangeInt(0, BossWalls.length - 1,true);
+			var wall = BossWalls[index];
+			if (wall == undefined) {
+				i--;
+				continue;
+			}
+			delete BossWalls[index];
+
+			var indexBefore = index-1;
+			var indexAfter = index+1;
+
+			if (index == 0) {
+				indexBefore = BossWalls.length-1;
+			}
+			else if (index == BossWalls.length-1) {
+				indexAfter = 0;
+			}
+			
+
+			var wallBefore = BossWalls[indexBefore];
+			delete BossWalls[indexBefore];
+			var wallAfter = BossWalls[indexAfter];
+			delete BossWalls[indexAfter];
+
+			console.log(wall);
+			console.log(wallBefore);
+			console.log(wallAfter);
+			wall.DestroyBySoul();
+			if (wallBefore) {
+				wallBefore.DestroyBySoul();
+			}
+			if (wallAfter) {
+				wallAfter.DestroyBySoul();
+			}
+
+		}
 
 		var dialArea = new DialArea(this.game, 310, 544, 100, 50);
 
