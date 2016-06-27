@@ -33,10 +33,15 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     var player = Application.Layers.Player;
 
-    setTimeout(function() 
+
+    _self.Start = function () 
     {
-        _self.charge();
-    },5000)
+        _self.CanMove(true);
+        setTimeout(function() 
+        {
+            _self.charge();
+        },5000)
+    }
 
     _self.update = function()
     {
