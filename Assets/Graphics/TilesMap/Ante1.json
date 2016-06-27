@@ -95,7 +95,7 @@
             {
              "collide":true,
              "worldSize":false,
-             "z_index":6
+             "z_index":4
             },
          "propertytypes":
             {
