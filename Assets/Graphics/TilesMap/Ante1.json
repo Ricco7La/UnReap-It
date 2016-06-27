@@ -8,12 +8,14 @@
          "properties":
             {
              "collide":false,
-             "worldSize":true
+             "worldSize":true,
+             "z_index":0
             },
          "propertytypes":
             {
              "collide":"bool",
-             "worldSize":"bool"
+             "worldSize":"bool",
+             "z_index":"int"
             },
          "type":"tilelayer",
          "visible":true,
