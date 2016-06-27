@@ -41,8 +41,8 @@ Application.Story.prototype = {
 
 	preload : function()
 	{
-		this.game.load.image('background','Assets/Graphics/Title/StoryLine.jpg');
-		this.game.load.image('title','Assets/Graphics/Title/Title.PNG');
+		// this.game.load.image('background','Assets/Graphics/Title/StoryLine.jpg');
+		// this.game.load.image('title','Assets/Graphics/Title/Title.PNG');
 		this.game.load.spritesheet('button', 'Assets/Graphics/Title/skip.png', 90, 43);
 	},
 

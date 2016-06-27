@@ -12,6 +12,7 @@
   <properties>
    <property name="collide" type="bool" value="false"/>
    <property name="worldSize" type="bool" value="true"/>
+   <property name="z_index" type="int" value="0"/>
   </properties>
   <data encoding="csv">
 18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,
