@@ -48,21 +48,36 @@ Application.Story.prototype = {
 
 	create: function()
 	{ 
-		//console.log('Story Screen');
+
+		// Image
 		this.bulle1 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle1');
-		this.bulle2 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle2');
 		this.bulle3 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle3');
+		this.text3 = this.game.add.tileSprite(0,0,Application.config.width, Application.config.height, 'text3');
+		this.bulle2 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle2');
 		this.bulle4 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle4');
-		this.title = this.game.add.tileSprite(400,30,206,60,'title');
-		this.button = this.game.add.button(500, 400, 'button',actionOnClick,this);
+
+		// Text 
+		this.text1 = this.game.add.tileSprite(200,20,334,200,'text1');
+   		this.text1.scale.setTo(0.7);
+   		this.text2 = this.game.add.tileSprite(50,180,388,180,'text2');
+		this.text2.scale.setTo(0.6);
+		// this.text3 = this.game.add.tileSprite(0,0,Application.config.width, Application.config.height, 'text3');
+		this.text4 = this.game.add.tileSprite(50,300,388,180,'text4');
+		this.text4.scale.setTo(0.6);
+
+		//console.log('Story Screen');
+		
 		this.lastInput = this.game.time.now;
 
-
+		this.text1.alpha = 0;
+		this.text2.alpha = 0;
+		this.text3.alpha = 0;
+		this.text4.alpha = 0;
 		this.bulle2.alpha = 0;
 		this.bulle3.alpha = 0;
 		this.bulle4.alpha = 0;
 
-		this.bulleArray = [this.bulle1,this.bulle2,this.bulle3,this.bulle4];
+		this.bulleArray = [this.bulle1,this.text1,this.bulle2,this.text2,this.bulle3,this.text3,this.bulle4,this.text4];
 		this.indexBulle = 1;
 
     	// text = this.game.add.text(32, 350, '', { font: "13px Lithos Pro", fill: "#D6E7FF" });
@@ -78,7 +93,7 @@ Application.Story.prototype = {
 
 	update : function()
 	{
-		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.M)  && ( this.lastInput + 500) < this.game.time.now )
+		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)  && ( this.lastInput + 500) < this.game.time.now )
 		{
 			console.log('function')
     		this.nextBulle();
@@ -100,6 +115,10 @@ Application.Story.prototype = {
 		if (this.indexBulle < this.bulleArray.length) 
 		{
 			Application.Game.add.tween(this.bulleArray[this.indexBulle]).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None,true);
+		}
+		else
+		{
+			Application.startLevel0();
 		}
 		this.indexBulle++;
 	
@@ -152,10 +171,7 @@ Application.Story.prototype = {
 
 // }
 
-function actionOnClick () 
-{
-    Application.startLevel0();
-}
+
 
 
 

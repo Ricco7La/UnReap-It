@@ -61,6 +61,10 @@ Application.Preload.prototype = {
 		this.game.load.image('bulle2','Assets/Graphics/Title/bulle2.png');
 		this.game.load.image('bulle3','Assets/Graphics/Title/bulle3.png');
 		this.game.load.image('bulle4','Assets/Graphics/Title/bulle4.png');
+		this.game.load.image('text1','Assets/Graphics/Title/BulleText1.png');
+		this.game.load.image('text2','Assets/Graphics/Title/BulleText2.png');
+		this.game.load.image('text3','Assets/Graphics/Title/BulleText3.png');
+		this.game.load.image('text4','Assets/Graphics/Title/BulleText4.png');
 
 		//Load Credit-
 		this.game.load.image('credit','Assets/Graphics/SFX/Credit/FullGravesCredit.png');
@@ -90,14 +94,12 @@ Application.Preload.prototype = {
 		this.game.load.audio('spikeOut', 'Assets/Audio/SFX/spikeOut.mp3');
 		this.game.load.audio('spikeIn', 'Assets/Audio/SFX/spikeIn.mp3');
 		this.game.load.audio('teleport', 'Assets/Audio/SFX/teleport.mp3');
+		this.game.load.audio('gameOver', 'Assets/Audio/SFX/gameOver.mp3');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
-		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
+		Application.Timer = new Timer(30000000000, false, this.updateCounter, Application.Game);
 		// Add the Juicy Plugins to Application.
 		Application.Juicy = this.game.plugins.add(new Phaser.Plugin.Juicy(this.game));
-
-		// Create the Timer(_duration, _repeat, _callback, _game)
-		Application.Timer = new Timer(30000, false, this.updateCounter, Application.Game);
 	},
   	create: function(){
   		//console.log("Preload finished")
@@ -107,6 +109,6 @@ Application.Preload.prototype = {
 
 	updateCounter : function() 
 	{
-		Application.Timer.Clear();
+		Application.Game.state.start('GameOver');
 	},
 }
