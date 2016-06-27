@@ -39,3 +39,7 @@ Layer Teleport
 ---------------
 	- type : Teleport or TeleportZone
 	- index : link 1 TeleportZone to 1 or more Teleport
+
+Layer DialAreas
+----------------
+	- name : the name of the dial area that you need to set for recognize it.

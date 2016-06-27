@@ -52,12 +52,14 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	var teleportCG = _Game.physics.p2.createCollisionGroup();
 	var HoleCG = _Game.physics.p2.createCollisionGroup();
 	var bossCG = _Game.physics.p2.createCollisionGroup();
+	var blockCG = _Game.physics.p2.createCollisionGroup();
 
 	_Game.physics.p2.updateBoundsCollisionGroup();
 
 	Layers["playerCG"] = playerCG;
 	Layers["bossCG"] = bossCG;
 	Layers["tilesCG"] = tilesCG;
+	Layers["blockCG"] = blockCG;
 	/***** Charge Tile Layer from Tiled *****/
 	//console.log("Tiles");
 	var tilesBodies = [];
@@ -240,10 +242,13 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					{
 						//console.log("Custom z-index");
 						Layers["Z-index"][el.properties.z_index].add(s);
+						Layers["Z-index"][el.properties.z_index + 1].add(s.upperPart);
 					}
 					else
 					{
 						Layers["Z-index"][5].add(s);
+						Layers["Z-index"][6].add(s.upperPart);
+						
 					}
 					var arrayCollision = [playerCG]
 					s.body.setCollisionGroup(doorCG);
@@ -337,6 +342,39 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		//console.log(TeleportArray);
 	}
 
+	/* Boss Wall */
+	if (_Map.objects.BossWall) 
+	{
+		Layers["BossWall"] = [];
+		for (el of _Map.objects.BossWall) 
+		{
+			if (el.visible) 
+			{
+				var wall = new BossWall( _Game, el.x, el.y, el.width,el.height, el.type);
+				wall.body.setCollisionGroup(blockCG);
+				wall.body.collides([playerCG, bossCG]);	
+				Layers["BossWall"].push(wall);		
+			}
+		}
+	}
+		
+	/* Dial Area */
+	if(_Map.objects.DialAreas)
+	{
+		//console.log("Teleporting");
+		var DialAreas = {};
+		for (el of _Map.objects.DialAreas) 
+		{
+			if (el.visible) 
+			{
+				var dialArea = new DialArea(_Game, el.name, el.x, el.y, el.width, el.height);
+				DialAreas[el.name] = dialArea;
+			}
+		}
+		Layers["DialAreas"] = DialAreas;
+		//console.log(TeleportArray);
+	}
+
 	/*  Exit  */
 	//console.log("Exit");
 	var Exit = _Map.objects.Exit[0]; //(x,y,width,height);
@@ -354,7 +392,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	//console.dir(StartPosition);
 	var myPlayer = new Player(_Game, StartPosition.x, StartPosition.y);
 	myPlayer.body.setCollisionGroup(playerCG);
-	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, HoleCG, fovCG, teleportCG]);
+	myPlayer.body.collides([tilesCG, ennemyCG, exitCG, switchCG, doorCG, spikeCG, HoleCG, fovCG, teleportCG, blockCG]);
 	myPlayer.body.collides([soulCG],myPlayer.GetSoul);
 	myPlayer.body.collides([bossCG],function(){console.log("outch")});
 	

@@ -4,7 +4,16 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
     var x = _x + _w * 0.5;
     var y = _y + _h * 0.5;
     var _self = _game.add.sprite(x, y, type);
-    // _self.upperPart = _game.add.sprite(x, y, type);
+
+    // to Improve
+    _self.upperPart = _game.add.sprite(x, y, type, 3);
+    _self.upperPart.anchor.set(0.5);
+    var cropRect = new Phaser.Rectangle(0, 0, _self.width, _self.height * 0.5);
+    _self.upperPart.crop(cropRect);
+    _self.addChild(_self.upperPart);
+    _self.upperPart.y -= _self.height * 0.25;
+    _self.upperPart.visible = false;
+
     _self.SavedCollision = null;
     _self.isOpen = false;
     _self.doorType = type;
@@ -41,7 +50,9 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
             }
             _self.body.removeCollisionGroup(_self.SavedCollision)
             _self.animations.play("open", 10, false);
+            _self.animations.currentAnim.onComplete.add(function () { _self.upperPart.visible = true;});
             _self.isOpen = true;
+            
         }
         else if ( !switchesBool && _self.isOpen ) 
         {
@@ -56,6 +67,7 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
             _self.body.collides(_self.SavedCollision);
             _self.animations.play("close", 10, false);
             _self.isOpen = false;
+            _self.upperPart.visible = false;
         }
     }
     _self.IsOpen = function()
