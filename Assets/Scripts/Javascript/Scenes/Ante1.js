@@ -7,7 +7,7 @@ Application.Ante1.prototype = {
 		Application.Game.sound.stopAll();
 		this.ambiant = this.game.add.audio('ambiant'); 
 		//console.log('Game Screen');
-		//this.game.physics.startSystem(Phaser.Physics.P2JS);
+		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
 		this.game.physics.p2.setImpactEvents(true);
     	this.game.physics.p2.defaultRestitution = 1;
@@ -35,7 +35,8 @@ Application.Ante1.prototype = {
 		
 	},
 	render : function(){
-		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
+		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32, "rgb(255, 255, 255)", "18px Lithos Pro");
+		this.game.debug.text('Souls : ' + Application.nbrSouls, 32, 32, "rgb(255, 255, 255)", "18px Lithos Pro");
 	}
 
 }

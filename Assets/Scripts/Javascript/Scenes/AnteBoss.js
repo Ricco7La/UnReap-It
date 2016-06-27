@@ -33,6 +33,46 @@ Application.AnteBoss.prototype = {
 			}
 		});
 
+		var BossWalls = MapLayers.BossWall;
+		for (var i = 0; i < Application.nbrSouls ; i++) 
+		{
+			var index = Math.Random.RangeInt(0, BossWalls.length - 1,true);
+			var wall = BossWalls[index];
+			if (wall == undefined) {
+				i--;
+				continue;
+			}
+			delete BossWalls[index];
+
+			var indexBefore = index-1;
+			var indexAfter = index+1;
+
+			if (index == 0) {
+				indexBefore = BossWalls.length-1;
+			}
+			else if (index == BossWalls.length-1) {
+				indexAfter = 0;
+			}
+			
+
+			var wallBefore = BossWalls[indexBefore];
+			delete BossWalls[indexBefore];
+			var wallAfter = BossWalls[indexAfter];
+			delete BossWalls[indexAfter];
+
+			console.log(wall);
+			console.log(wallBefore);
+			console.log(wallAfter);
+			wall.DestroyBySoul();
+			if (wallBefore) {
+				wallBefore.DestroyBySoul();
+			}
+			if (wallAfter) {
+				wallAfter.DestroyBySoul();
+			}
+
+		}
+
 		var dialArea = new DialArea(this.game, 310, 544, 100, 50);
 
 		var charonDial = new Dialogue(130,200,'charonDial',"HALTE LA !\nToutes âmes, morte ou vivante voulant passer doit\npayer son tribut!");
@@ -52,7 +92,8 @@ Application.AnteBoss.prototype = {
 		Application.Timer.Update();
 	},
 	render : function(){
-		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
+		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32, "rgb(255, 255, 255)", "18px Lithos Pro");
+		this.game.debug.text('Souls : ' + Application.nbrSouls, 32, 32, "rgb(255, 255, 255)", "18px Lithos Pro");
 	}
 
 }
