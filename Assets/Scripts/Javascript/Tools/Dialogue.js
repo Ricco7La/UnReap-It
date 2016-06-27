@@ -12,7 +12,7 @@ function Dialogue(_x, _y, _charaDial, _text)
 
 	_self.update = function() 
 	{
-		_self.EndDialogue();
+		//_self.EndDialogue();
 	};
 	
 	_self.setVisible = function(_bool)
@@ -23,7 +23,7 @@ function Dialogue(_x, _y, _charaDial, _text)
 
 	_self.EndDialogue = function()
 	{
-		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) 
+		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.M)) 
 		{
 			_self.dialogue.destroy();
 			_self.destroy();

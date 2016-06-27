@@ -357,6 +357,21 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 			}
 		}
 		
+	/* Dial Area */
+	if(_Map.objects.DialAreas)
+	{
+		//console.log("Teleporting");
+		var DialAreas = {};
+		for (el of _Map.objects.DialAreas) 
+		{
+			if (el.visible) 
+			{
+				var dialArea = new DialArea(_Game, el.name, el.x, el.y, el.width, el.height);
+				DialAreas[el.name] = dialArea;
+			}
+		}
+		Layers["DialAreas"] = DialAreas;
+		//console.log(TeleportArray);
 	}
 
 	/*  Exit  */
