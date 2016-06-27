@@ -14,6 +14,12 @@ Application.GameOver.prototype = {
 
 	create: function()
 	{ 
+		this.game.sound.stopAll();
+		Application.Game.world.width = Application.config.width;
+		Application.Game.world.height = Application.config.height;
+		Application.Game.camera.x = 0;
+		Application.Game.camera.y = 0;
+		this.game.sound.play('gameOver');
 		console.log('GameOver Screen');
 		var background = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'gameOver');
 
