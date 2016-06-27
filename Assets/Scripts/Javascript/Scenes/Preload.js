@@ -19,7 +19,7 @@ Application.Preload.prototype = {
 		this.game.load.tilemap('Ante1', 'Assets/Graphics/TilesMap/Ante1.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante2', 'Assets/Graphics/TilesMap/Ante2.json', null, Phaser.Tilemap.TILED_JSON);
 		this.game.load.tilemap('Ante3', 'Assets/Graphics/TilesMap/Ante3.json', null, Phaser.Tilemap.TILED_JSON);
-		this.game.load.tilemap('AnteBoss', 'Assets/Graphics/TilesMap/AnteBoss.json', null, Phaser.Tilemap.TILED_JSON);
+		this.game.load.tilemap('AnteBoss', 'Assets/Graphics/TilesMap/AnteBossV2.json', null, Phaser.Tilemap.TILED_JSON);
 		//Load Tiles
 		this.game.load.image('Tiles', 'Assets/Graphics/Tiles/All_Tiles.png', 32, 32);
 		// Load SpriteSheet Personnages
@@ -44,11 +44,21 @@ Application.Preload.prototype = {
 		this.game.load.spritesheet('Spikes', 'Assets/Graphics/Interact/Trap/Spike_32_32.png', 32, 32, 4);
 		this.game.load.spritesheet('Hole', 'Assets/Graphics/Interact/Trap/Hole_32_32.png', 32, 32, 4);
 		this.game.load.spritesheet('HiddenZone', 'Assets/Graphics/Interact/Door/HiddenZone_96_128.png', 96, 128, 4);
+		this.game.load.image('Wood', 'Assets/Graphics/SFX/Player/wood.png');
+
 		// Load SFX
 		this.game.load.image('SoulParticle', 'Assets/Graphics/SFX/Souls/SoulParticle.png');
 		this.game.load.image('SmokePuff', 'Assets/Graphics/SFX/Particles/smoke-puff.png');
 		this.game.load.image('Leaf', 'Assets/Graphics/SFX/Particles/leaf1.png');
-		this.game.load.image('Wood', 'Assets/Graphics/SFX/Player/wood.png');
+		this.game.load.image('CornerDL', 'Assets/Graphics/Interact/BossWall/CornerDL.png');
+		this.game.load.image('CornerDR', 'Assets/Graphics/Interact/BossWall/CornerDR.png');
+		this.game.load.image('CornerUL', 'Assets/Graphics/Interact/BossWall/CornerUL.png');
+		this.game.load.image('CornerUR', 'Assets/Graphics/Interact/BossWall/CornerUR.png');
+		this.game.load.image('Down', 'Assets/Graphics/Interact/BossWall/Down.png');
+		this.game.load.image('Left', 'Assets/Graphics/Interact/BossWall/Left.png');
+		this.game.load.image('Right', 'Assets/Graphics/Interact/BossWall/Right.png');
+		this.game.load.image('Up', 'Assets/Graphics/Interact/BossWall/Up.png');
+
 
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
@@ -61,6 +71,10 @@ Application.Preload.prototype = {
 		this.game.load.image('bulle2','Assets/Graphics/Title/bulle2.png');
 		this.game.load.image('bulle3','Assets/Graphics/Title/bulle3.png');
 		this.game.load.image('bulle4','Assets/Graphics/Title/bulle4.png');
+		this.game.load.image('text1','Assets/Graphics/Title/BulleText1.png');
+		this.game.load.image('text2','Assets/Graphics/Title/BulleText2.png');
+		this.game.load.image('text3','Assets/Graphics/Title/BulleText3.png');
+		this.game.load.image('text4','Assets/Graphics/Title/BulleText4.png');
 
 		//Load Credit-
 		this.game.load.image('credit','Assets/Graphics/SFX/Credit/FullGravesCredit.png');

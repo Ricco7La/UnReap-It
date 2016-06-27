@@ -48,37 +48,47 @@ Application.Story.prototype = {
 
 	create: function()
 	{ 
-		//console.log('Story Screen');
+
+		// Image
 		this.bulle1 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle1');
-		this.bulle2 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle2');
 		this.bulle3 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle3');
+		this.text3 = this.game.add.tileSprite(0,0,Application.config.width, Application.config.height, 'text3');
+		this.bulle2 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle2');
 		this.bulle4 = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'bulle4');
-		this.title = this.game.add.tileSprite(400,30,206,60,'title');
-		this.button = this.game.add.button(500, 400, 'button',actionOnClick,this);
+
+		// Text 
+		this.text1 = this.game.add.tileSprite(200,20,334,200,'text1');
+   		this.text1.scale.setTo(0.7);
+   		this.text2 = this.game.add.tileSprite(50,180,347,142,'text2');
+		this.text2.scale.setTo(0.6);
+		// this.text3 = this.game.add.tileSprite(0,0,Application.config.width, Application.config.height, 'text3');
+		this.text4 = this.game.add.tileSprite(50,300,347,142,'text4');
+		this.text4.scale.setTo(0.6);
+
+		//console.log('Story Screen');
+		
 		this.lastInput = this.game.time.now;
 
+		//make alpha 0
 
+		this.text1.alpha = 0;
+		this.text2.alpha = 0;
+		this.text3.alpha = 0;
+		this.text4.alpha = 0;
 		this.bulle2.alpha = 0;
 		this.bulle3.alpha = 0;
 		this.bulle4.alpha = 0;
 
-		this.bulleArray = [this.bulle1,this.bulle2,this.bulle3,this.bulle4];
+		// array
+
+		this.bulleArray = [this.bulle1,this.text1,this.bulle2,this.text2,this.bulle3,this.text3,this.bulle4,this.text4];
 		this.indexBulle = 1;
-
-    	// text = this.game.add.text(32, 350, '', { font: "13px Lithos Pro", fill: "#D6E7FF" });
-    	// text.stroke = "#000";
-    	// text.strokeThickness = 4;
-    	// //  Apply the shadow to the Fill only
-   		// text.setShadow(2, 2, "#333333", 2, false, true);
-
    		
-
-
 	},
 
 	update : function()
 	{
-		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.M)  && ( this.lastInput + 500) < this.game.time.now )
+		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)  && ( this.lastInput + 500) < this.game.time.now )
 		{
 			console.log('function')
     		this.nextBulle();
@@ -99,7 +109,11 @@ Application.Story.prototype = {
 		
 		if (this.indexBulle < this.bulleArray.length) 
 		{
-			Application.Game.add.tween(this.bulleArray[this.indexBulle]).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None,true);
+			Application.Game.add.tween(this.bulleArray[this.indexBulle]).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None,true);
+		}
+		else
+		{
+			Application.startLevel0();
 		}
 		this.indexBulle++;
 	
@@ -107,55 +121,6 @@ Application.Story.prototype = {
 
 }
 
-
-// function nextLine() {
-
-//     if (lineIndex === content.length)
-//     {
-//         //  We're finished
-//         return;
-//     }
-
-//     //  Split the current line on spaces, so one word per array element
-//     line = content[lineIndex].split(' ');
-
-//     //  Reset the word index to zero (the first word in the line)
-//     wordIndex = 0;
-
-//     //  Call the 'nextWord' function once for each word in the line (line.length)
-//     //console.log(Application)
-//     Application.Game.time.events.repeat(wordDelay, line.length, nextWord, this);
-
-//     //  Advance to the next line
-//     lineIndex++;
-
-// }
-
-// function nextWord() 
-// {
-
-//     //  Add the next word onto the text string, followed by a space
-//     text.text = text.text.concat(line[wordIndex] + " ");
-
-//     //  Advance the word index to the next word in the line
-//     wordIndex++;
-
-//     //  Last word?
-//     if (wordIndex === line.length)
-//     {
-//         //  Add a carriage return
-//         text.text = text.text.concat("\n");
-
-//         //  Get the next line after the lineDelay amount of ms has elapsed
-//         Application.Game.time.events.add(lineDelay, nextLine, this);
-//     }
-
-// }
-
-function actionOnClick () 
-{
-    Application.startLevel0();
-}
 
 
 

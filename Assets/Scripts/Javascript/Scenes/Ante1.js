@@ -7,7 +7,7 @@ Application.Ante1.prototype = {
 		Application.Game.sound.stopAll();
 		this.ambiant = this.game.add.audio('ambiant'); 
 		//console.log('Game Screen');
-		//this.game.physics.startSystem(Phaser.Physics.P2JS);
+		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
 		this.game.physics.p2.setImpactEvents(true);
     	this.game.physics.p2.defaultRestitution = 1;
@@ -19,13 +19,11 @@ Application.Ante1.prototype = {
 	
 		var MapLayers = GenerateMap(this.game, this.Map, 'Ante1', 'All_Tiles', 'Tiles');
 
-		var dialArea = new DialArea(this.game, 760, 1200, 100, 50);
-
 		var eugeneDial = new Dialogue(180,350,'eugeneDial',"Bien, si je ne me trompe pas, l'embarcadère de Charon \ndoit se trouver au bout de ce cercle... \nEvitons d'attirer l'attention, j'aimerais eviter une\néffusion de sang inutile...");
 		var medusaDial = new Dialogue(160,350,'medusaDial',"Il parait qu'Eugène a disparu des bureaux. \nOn a ordre de le ramener si jamais on le voit");
 		var eugeneDial2 = new Dialogue(180,350,'eugeneDial',"HEIN QUOI ?! Déjà ? Il y'a baleine sous gravier \ns'ils savent déjà que je suis parti...\nSoyons discret");
 		
-		dialArea.DialArray.push(eugeneDial,medusaDial,eugeneDial2);
+		MapLayers.DialAreas.firstDial.DialArray.push(eugeneDial, medusaDial, eugeneDial2);
 
 		this.ambiant.loopFull();
 				
@@ -37,7 +35,8 @@ Application.Ante1.prototype = {
 		
 	},
 	render : function(){
-		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32);
+		this.game.debug.text('Time : ' + Application.Timer.Display() , 480, 32, "rgb(255, 255, 255)", "18px Lithos Pro");
+		this.game.debug.text('Souls : ' + Application.nbrSouls, 32, 32, "rgb(255, 255, 255)", "18px Lithos Pro");
 	}
 
 }
