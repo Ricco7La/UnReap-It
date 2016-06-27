@@ -3,9 +3,9 @@ function Player (_game, _x, _y)
 
     var _self = _game.add.sprite(_x, _y, "Player");
     _self.soundWalking = _game.add.audio('playerWalking');
-    console.log(_self.soundWalking);
+    _self.soundWalking.volume = 0.1;
     _self.scale.setTo(0.75);
-
+    var canPlay = true;
     var currentDirection = null;
 
     _self.isActivated = false;
@@ -60,15 +60,6 @@ function Player (_game, _x, _y)
     {
         _self.scoreSouls.setText("Souls : " + Application.nbrSouls);
 
-        // if(this.currentDirection != null && !_self.soundWalking.isPlaying)
-        // {
-        //      _self.soundWalking.play();
-        // }
-        // else
-        // {
-        //     _self.soundWalking.stop();
-        // }
-
         if (_self.canMove)
         {
 
@@ -80,6 +71,13 @@ function Player (_game, _x, _y)
                 _self.animations.play('move_up', 5, true);
                 _self.body.moveUp(_self.speed);
                 _self.body.damping = 0.9;
+                if(canPlay)
+                {
+                    canPlay = false;
+                     _self.soundWalking.play();
+                    setTimeout(function(){ canPlay = true; }, 400);
+                }
+
             }
             else if((_game.input.keyboard.isDown(_self.keys.left[0]) 
                         || _game.input.keyboard.isDown(_self.keys.left[1]) 
@@ -89,6 +87,12 @@ function Player (_game, _x, _y)
                 _self.animations.play('move_left', 5, true);
                 _self.body.moveLeft(_self.speed);
                 _self.body.damping = 0.9;
+                if(canPlay)
+                {
+                    canPlay = false;
+                    _self.soundWalking.play();
+                    setTimeout(function(){ canPlay = true; }, 400);
+                }
             }
             else if((_game.input.keyboard.isDown(_self.keys.down[0]) 
                         || _game.input.keyboard.isDown(_self.keys.down[1])
@@ -98,6 +102,12 @@ function Player (_game, _x, _y)
                 _self.animations.play('move_down', 5, true);
                 _self.body.moveDown(_self.speed);
                 _self.body.damping = 0.9;
+                if(canPlay)
+                {
+                    canPlay = false;
+                    _self.soundWalking.play();
+                    setTimeout(function(){ canPlay = true; }, 400);
+                }
             }
             else if((_game.input.keyboard.isDown(_self.keys.right[0]) 
                         || _game.input.keyboard.isDown(_self.keys.right[1])
@@ -107,6 +117,12 @@ function Player (_game, _x, _y)
                 _self.animations.play('move_right', 5, true);
                 _self.body.moveRight(_self.speed);
                 _self.body.damping = 0.9;
+                if(canPlay)
+                {
+                    canPlay = false;
+                    _self.soundWalking.play();
+                    setTimeout(function(){ canPlay = true; }, 400);
+                }
             }
             else
             {

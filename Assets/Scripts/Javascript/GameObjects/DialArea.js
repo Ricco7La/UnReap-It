@@ -24,7 +24,6 @@ function DialArea( _game, _name, _x, _y, _width, _height)
     {
         _self.LaunchDialogue();
         _self.NextDialogue();
-        console.log(_self);
     };
 
     _self.CheckOverlap = function()
