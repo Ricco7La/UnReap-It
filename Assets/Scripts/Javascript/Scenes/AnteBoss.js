@@ -22,56 +22,19 @@ Application.AnteBoss.prototype = {
 		Charon.body.setCollisionGroup(MapLayers.bossCG);
 		Charon.body.collides(MapLayers.playerCG,Application.resetLevel);
 		Charon.body.collides(MapLayers.blockCG,function (_charon) {
+			console.log(_charon);
 			if (_charon.sprite.tween) {
 				_charon.sprite.tween.stop(true);
-				console.log("Collide Barriere");
 			}	
+			_charon.sprite.collisionWithWall();
 		});
 		Charon.body.collides(MapLayers.tilesCG,function (_charon) {
 			if (_charon.sprite.tween) {
-				console.log("Collide water");
+				_charon.sprite.collisionWithWater();
 			}
 		});
 
-		var BossWalls = MapLayers.BossWall;
-		for (var i = 0; i < Application.nbrSouls ; i++) 
-		{
-			var index = Math.Random.RangeInt(0, BossWalls.length - 1,true);
-			var wall = BossWalls[index];
-			if (wall == undefined) {
-				i--;
-				continue;
-			}
-			delete BossWalls[index];
-
-			var indexBefore = index-1;
-			var indexAfter = index+1;
-
-			if (index == 0) {
-				indexBefore = BossWalls.length-1;
-			}
-			else if (index == BossWalls.length-1) {
-				indexAfter = 0;
-			}
-			
-
-			var wallBefore = BossWalls[indexBefore];
-			delete BossWalls[indexBefore];
-			var wallAfter = BossWalls[indexAfter];
-			delete BossWalls[indexAfter];
-
-			console.log(wall);
-			console.log(wallBefore);
-			console.log(wallAfter);
-			wall.DestroyBySoul();
-			if (wallBefore) {
-				wallBefore.DestroyBySoul();
-			}
-			if (wallAfter) {
-				wallAfter.DestroyBySoul();
-			}
-
-		}
+		
 
 		var charonDial = new Dialogue(130,200,'charonDial',"HALTE LA !\nToutes âmes, morte ou vivante voulant passer doit\npayer son tribut!");
 		var eugeneDial = new Dialogue(180,350,'eugeneDial',"Hey Charon vieille branche !\nT'inquiète pas j'ai tout pré...*fouille fouille*\n Oh non... non non non non non");
@@ -83,7 +46,47 @@ Application.AnteBoss.prototype = {
 		var eugeneDial4 = new Dialogue(180,350,'eugeneDial',"Faux ! C'est toi contre moi et mes " + Application.nbrSouls + " nouveaux copains !" );
 		
 		MapLayers.DialAreas.firstDial.DialArray.push(charonDial, eugeneDial, charonDial2, eugeneDial2, charonDial3, eugeneDial3, charonDial4, eugeneDial4);
-		MapLayers.DialAreas.firstDial.callbackFunction = function () {
+		MapLayers.DialAreas.firstDial.callbackFunction = function () 
+		{
+			var BossWalls = MapLayers.BossWall;
+			for (var i = 0; i < Application.nbrSouls ; i++) 
+			{
+				var index = Math.Random.RangeInt(0, BossWalls.length - 1,true);
+				var wall = BossWalls[index];
+				if (wall == undefined) {
+					i--;
+					continue;
+				}
+				delete BossWalls[index];
+	
+				var indexBefore = index-1;
+				var indexAfter = index+1;
+	
+				if (index == 0) {
+					indexBefore = BossWalls.length-1;
+				}
+				else if (index == BossWalls.length-1) {
+					indexAfter = 0;
+				}
+				
+	
+				var wallBefore = BossWalls[indexBefore];
+				delete BossWalls[indexBefore];
+				var wallAfter = BossWalls[indexAfter];
+				delete BossWalls[indexAfter];
+	
+				console.log(wall);
+				console.log(wallBefore);
+				console.log(wallAfter);
+				wall.DestroyBySoul();
+				if (wallBefore) {
+					wallBefore.DestroyBySoul();
+				}
+				if (wallAfter) {
+					wallAfter.DestroyBySoul();
+				}
+	
+			}
 			Charon.Start();
 			console.log("callback ok");
 		}
