@@ -27,7 +27,7 @@ Application.GameOver.prototype = {
 		this.start.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
 		this.start.inputEnabled = true;
 		this.start.events.onInputOver.add(function(){ this.state.start("Title") },this);
-		console.log(this.game.input.mousePointer)		
+		console.log(this.game.input.mousePointer);
         
 	},
 
