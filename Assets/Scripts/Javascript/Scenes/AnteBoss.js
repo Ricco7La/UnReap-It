@@ -21,7 +21,17 @@ Application.AnteBoss.prototype = {
 		var Charon = new Boss(Application.Game,300,190);
 		Charon.body.setCollisionGroup(MapLayers.bossCG);
 		Charon.body.collides(MapLayers.playerCG,Application.resetLevel);
-		Charon.body.collides(MapLayers.tilesCG,Charon.collisionWithWall);
+		Charon.body.collides(MapLayers.blockCG,function (_charon) {
+			if (_charon.sprite.tween) {
+				_charon.sprite.tween.stop(true);
+				console.log("Collide Barriere");
+			}	
+		});
+		Charon.body.collides(MapLayers.tilesCG,function (argument) {
+			if (_charon.sprite.tween) {
+				console.log("Collide water");
+			}
+		});
 
 		var dialArea = new DialArea(this.game, 310, 544, 100, 50);
 
