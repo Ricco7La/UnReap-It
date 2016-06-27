@@ -69,6 +69,8 @@ Application.Story.prototype = {
 		
 		this.lastInput = this.game.time.now;
 
+		//make alpha 0
+
 		this.text1.alpha = 0;
 		this.text2.alpha = 0;
 		this.text3.alpha = 0;
@@ -77,18 +79,11 @@ Application.Story.prototype = {
 		this.bulle3.alpha = 0;
 		this.bulle4.alpha = 0;
 
+		// array
+
 		this.bulleArray = [this.bulle1,this.text1,this.bulle2,this.text2,this.bulle3,this.text3,this.bulle4,this.text4];
 		this.indexBulle = 1;
-
-    	// text = this.game.add.text(32, 350, '', { font: "13px Lithos Pro", fill: "#D6E7FF" });
-    	// text.stroke = "#000";
-    	// text.strokeThickness = 4;
-    	// //  Apply the shadow to the Fill only
-   		// text.setShadow(2, 2, "#333333", 2, false, true);
-
    		
-
-
 	},
 
 	update : function()
@@ -125,52 +120,6 @@ Application.Story.prototype = {
 	}
 
 }
-
-
-// function nextLine() {
-
-//     if (lineIndex === content.length)
-//     {
-//         //  We're finished
-//         return;
-//     }
-
-//     //  Split the current line on spaces, so one word per array element
-//     line = content[lineIndex].split(' ');
-
-//     //  Reset the word index to zero (the first word in the line)
-//     wordIndex = 0;
-
-//     //  Call the 'nextWord' function once for each word in the line (line.length)
-//     //console.log(Application)
-//     Application.Game.time.events.repeat(wordDelay, line.length, nextWord, this);
-
-//     //  Advance to the next line
-//     lineIndex++;
-
-// }
-
-// function nextWord() 
-// {
-
-//     //  Add the next word onto the text string, followed by a space
-//     text.text = text.text.concat(line[wordIndex] + " ");
-
-//     //  Advance the word index to the next word in the line
-//     wordIndex++;
-
-//     //  Last word?
-//     if (wordIndex === line.length)
-//     {
-//         //  Add a carriage return
-//         text.text = text.text.concat("\n");
-
-//         //  Get the next line after the lineDelay amount of ms has elapsed
-//         Application.Game.time.events.add(lineDelay, nextLine, this);
-//     }
-
-// }
-
 
 
 

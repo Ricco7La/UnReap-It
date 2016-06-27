@@ -9,6 +9,8 @@ var _self = _game.add.sprite(_x, _y, "Charon");
     _self.speed = 1;
     _self.life = 5;
     _self.lastCollision = (_game.time.now - 5000);
+    _self.lastInput = _game.time.now;
+
 
     
     _self.animations.play('moveDown', 7, true);
@@ -56,8 +58,11 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             _self.body.x -= _self.speed;
             _self.animations.play('moveLeft',7,true);
         }
+        if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.K)  && ( _self.lastInput + 500) <_game.time.now )
+        {
+           _self.collisionWithWater();
+        }
 
-        
     }
 
     _self.charge = function()
@@ -89,7 +94,6 @@ var _self = _game.add.sprite(_x, _y, "Charon");
         if (_self.lastCollision + 4500 < _game.time.now) 
         {
             console.log("life " + _self.life)
-            _self.life -= 1 ;
             Application.Game.camera.shake(0.1,500);
             _self.lastCollision = _game.time.now;
             if (_self.life == 0) 
@@ -98,7 +102,19 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             }
         }
     }
+
+
+    _self.collisionWithWater = function()
+    {
+            console.log("mouillé");
+            _self.life -= 1;
+            _self.tint = 0Xf00000;
+            setTimeout(function(){
+                _self.tint = 0Xffffff;
+            },500);       
+    }
     return _self;
+
 }
 
 
