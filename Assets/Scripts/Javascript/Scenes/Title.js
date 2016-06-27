@@ -98,7 +98,7 @@ Application.Title.prototype = {
 
 function StartGame (item)
 {
-	this.state.start("Tuto");
+	this.state.start("Story");
 }
 function StartCredit (item)
 {
