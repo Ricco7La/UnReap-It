@@ -59,10 +59,10 @@ Application.Story.prototype = {
 		// Text 
 		this.text1 = this.game.add.tileSprite(200,20,334,200,'text1');
    		this.text1.scale.setTo(0.7);
-   		this.text2 = this.game.add.tileSprite(50,180,388,180,'text2');
+   		this.text2 = this.game.add.tileSprite(50,180,347,142,'text2');
 		this.text2.scale.setTo(0.6);
 		// this.text3 = this.game.add.tileSprite(0,0,Application.config.width, Application.config.height, 'text3');
-		this.text4 = this.game.add.tileSprite(50,300,388,180,'text4');
+		this.text4 = this.game.add.tileSprite(50,300,347,142,'text4');
 		this.text4.scale.setTo(0.6);
 
 		//console.log('Story Screen');
@@ -109,7 +109,7 @@ Application.Story.prototype = {
 		
 		if (this.indexBulle < this.bulleArray.length) 
 		{
-			Application.Game.add.tween(this.bulleArray[this.indexBulle]).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None,true);
+			Application.Game.add.tween(this.bulleArray[this.indexBulle]).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None,true);
 		}
 		else
 		{

@@ -27,7 +27,7 @@ Application.AnteBoss.prototype = {
 				console.log("Collide Barriere");
 			}	
 		});
-		Charon.body.collides(MapLayers.tilesCG,function (argument) {
+		Charon.body.collides(MapLayers.tilesCG,function (_charon) {
 			if (_charon.sprite.tween) {
 				console.log("Collide water");
 			}
