@@ -6,6 +6,7 @@ var Application = {
 	},
 	Game : null,
 	debugMode: false,
+	godMode: true,
 	Layers: null,
 	Timer : null,
 	Juicy : null,
@@ -14,17 +15,23 @@ var Application = {
 	lvl : ['Tuto','Ante1','Ante2','Ante3','AnteBoss','EndDemo'],
 	indexLevel : 0,
 	EscapeAnimation : [],
-	startLevel0 : function () {
+	startLevel0 : function () 
+	{
 		//Application.Game.physics.startSystem(Phaser.Physics.P2JS);
 		Application.indexLevel = 0;
 		Application.Game.state.start(Application.lvl[Application.indexLevel], true);
 	},
-	resetLevel : function () {
-		Application.nbrSouls = Application.nbrSoulsBeforeLvl;
-		//Application.EscapeAnimation[3]();
-		Application.EscapeAnimation[Math.Random.RangeInt(0,Application.EscapeAnimation.length - 1,true)]();
+	resetLevel : function () 
+	{
+		if (!Application.godMode) 
+		{
+			Application.nbrSouls = Application.nbrSoulsBeforeLvl;
+			//Application.EscapeAnimation[3]();
+			Application.EscapeAnimation[Math.Random.RangeInt(0,Application.EscapeAnimation.length - 1,true)]();
+		}
 	},
-	nextLevel : function() {
+	nextLevel : function() 
+	{
 		Application.indexLevel ++;
 		Application.nbrSoulsBeforeLvl = Application.nbrSouls;
         Application.Game.state.start(Application.lvl[Application.indexLevel], true);
