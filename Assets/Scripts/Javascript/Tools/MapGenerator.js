@@ -356,6 +356,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				Layers["BossWall"].push(wall);		
 			}
 		}
+	}
 		
 	/* Dial Area */
 	if(_Map.objects.DialAreas)
