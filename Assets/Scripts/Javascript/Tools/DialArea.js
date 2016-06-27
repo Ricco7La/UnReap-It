@@ -1,8 +1,10 @@
-function DialArea( _game, _name, _x, _y, _width, _height)
+function DialArea( _game, _name, _x, _y, _width, _height, _callback)
 {
 	var type = "";
     var _self = _game.add.sprite(_x, _y, type);
     _self.name = _name;
+
+    _self.callbackFunction = _callback;
 
     _self.alreadyDid = false;
 
@@ -65,8 +67,18 @@ function DialArea( _game, _name, _x, _y, _width, _height)
             {
                 Application.Layers.Player.canMove = true;
             }
+            _self.Callback();
         }   
     };
+
+    _self.Callback = function()
+    {
+        if (_self.indexDial == _self.DialArray.length && _self.callbackFunction)
+        {
+            _self.callbackFunction();
+            //_self.indexDial ++;
+        }
+    }
 
     return _self;
 }

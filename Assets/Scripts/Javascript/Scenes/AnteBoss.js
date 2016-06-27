@@ -73,8 +73,6 @@ Application.AnteBoss.prototype = {
 
 		}
 
-		var dialArea = new DialArea(this.game, 310, 544, 100, 50);
-
 		var charonDial = new Dialogue(130,200,'charonDial',"HALTE LA !\nToutes âmes, morte ou vivante voulant passer doit\npayer son tribut!");
 		var eugeneDial = new Dialogue(180,350,'eugeneDial',"Hey Charon vieille branche !\nT'inquiète pas j'ai tout pré...*fouille fouille*\n Oh non... non non non non non");
 		var charonDial2 = new Dialogue(130,200,'charonDial',"J'attend ton tribut Eugène !\nSi tu n'as pas de quoi payer... TU NE PASSERA PAS !!!");
@@ -84,8 +82,11 @@ Application.AnteBoss.prototype = {
 		var charonDial4 = new Dialogue(130,200,'charonDial',"A nous deux !");
 		var eugeneDial4 = new Dialogue(180,350,'eugeneDial',"Faux ! C'est toi contre moi et mes " + Application.nbrSouls + " nouveaux copains !" );
 		
-		dialArea.DialArray.push(charonDial, eugeneDial, charonDial2, eugeneDial2, charonDial3, eugeneDial3, charonDial4, eugeneDial4);
-				
+		MapLayers.DialAreas.firstDial.DialArray.push(charonDial, eugeneDial, charonDial2, eugeneDial2, charonDial3, eugeneDial3, charonDial4, eugeneDial4);
+		MapLayers.DialAreas.firstDial.callbackFunction = function () {
+			Charon.Start();
+			console.log("callback ok");
+		}
 	},
 	update : function()
 	{

@@ -182,7 +182,7 @@
         }, 
         {
          "draworder":"topdown",
-         "height":20,
+         "height":0,
          "name":"BossWall",
          "objects":[
                 {
@@ -650,11 +650,34 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":20,
+         "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":0,
+         "name":"DialAreas",
+         "objects":[
+                {
+                 "height":30.6667,
+                 "id":64,
+                 "name":"firstDial",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":472,
+                 "x":92,
+                 "y":448.333
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":0,
          "x":0,
          "y":0
         }],
- "nextobjectid":64,
+ "nextobjectid":65,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tileheight":32,

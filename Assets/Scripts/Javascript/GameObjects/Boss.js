@@ -6,7 +6,10 @@ var _self = _game.add.sprite(_x, _y, "Charon");
     _self.animations.add('moveLeft', [4,5,6,7]);
     _self.animations.add('moveRight', [8,9,10,11]);
     _self.animations.add('moveUp', [12,13,14,15]);
-    _self.speed = 1;
+    // actual speed
+    _self.speed = 0;
+    //speed on move
+    _self.SpeedWalking = 1;
     _self.life = 5;
     _self.lastCollision = (_game.time.now - 5000);
     _self.lastInput = _game.time.now;
@@ -30,10 +33,15 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     var player = Application.Layers.Player;
 
-    setTimeout(function() 
+
+    _self.Start = function () 
     {
-        _self.charge();
-    },5000)
+        _self.CanMove(true);
+        setTimeout(function() 
+        {
+            _self.charge();
+        },5000)
+    }
 
     _self.update = function()
     {
@@ -78,7 +86,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             _self.tween.onComplete.add(function()
             {
                 _self.tween = null
-                _self.speed = 1;
+                _self.speed = _self.SpeedWalking;
                 setTimeout(function() 
                 {
                     _self.charge();
@@ -99,6 +107,17 @@ var _self = _game.add.sprite(_x, _y, "Charon");
         }
     }
 
+    _self.CanMove = function(bool) 
+    {
+        if (bool) 
+        {
+            _self.speed = _self.SpeedWalking;
+        }
+        else
+        {
+            _self.speed = 0;
+        }
+    }
 
     _self.collisionWithWater = function()
     {
