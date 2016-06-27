@@ -11,7 +11,7 @@ var Application = {
 	Timer : null,
 	Juicy : null,
 	nbrSoulsBeforeLvl : 0,
-	nbrSouls : 8,
+	nbrSouls : 0,
 	lvl : ['Tuto','Ante1','Ante2','Ante3','AnteBoss','EndDemo'],
 	indexLevel : 0,
 	EscapeAnimation : [],
