@@ -439,7 +439,7 @@
  </objectgroup>
  <objectgroup name="Souls">
   <object id="31" name="Model" x="172" y="168" visible="0"/>
-  <object id="44" name="Soul1" x="120" y="260" width="38.6667" height="28"/>
+  <object id="44" name="Soul1" x="129" y="448" width="38.6667" height="28"/>
   <object id="61" name="Soul2" x="890.666" y="257.333" width="38.6667" height="28"/>
  </objectgroup>
  <objectgroup name="Exit">

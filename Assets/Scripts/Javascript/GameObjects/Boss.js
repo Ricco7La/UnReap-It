@@ -121,6 +121,8 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.collisionWithWater = function()
     {
+        if (_self.lastCollision + 4500 < _game.time.now) 
+        {
             console.log("mouillé");
             _self.life -= 1;
             _self.tint = 0Xf00000;
@@ -130,7 +132,9 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             if (_self.life == 0) 
             {
                 _self.destroy();
-            }      
+            }
+            _self.lastCollision = _game.time.now; 
+        }     
     }
     return _self;
 

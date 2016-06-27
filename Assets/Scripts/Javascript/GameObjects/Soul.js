@@ -16,7 +16,7 @@ function Soul(game,x,y)
 
     var _self = game.add.sprite(x, y, "Soul");
     _self.sound = Application.Game.add.audio('soul');
-    _self.sound.volume = .1;
+    _self.sound.volume = .3;
     _self.scale.setTo(0.75);
     //console.log(_self)
 
