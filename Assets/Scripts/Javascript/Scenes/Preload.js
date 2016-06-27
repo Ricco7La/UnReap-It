@@ -61,6 +61,10 @@ Application.Preload.prototype = {
 		this.game.load.image('bulle2','Assets/Graphics/Title/bulle2.png');
 		this.game.load.image('bulle3','Assets/Graphics/Title/bulle3.png');
 		this.game.load.image('bulle4','Assets/Graphics/Title/bulle4.png');
+		this.game.load.image('text1','Assets/Graphics/Title/BulleText1.png');
+		this.game.load.image('text2','Assets/Graphics/Title/BulleText2.png');
+		this.game.load.image('text3','Assets/Graphics/Title/BulleText3.png');
+		this.game.load.image('text4','Assets/Graphics/Title/BulleText4.png');
 
 		//Load Credit-
 		this.game.load.image('credit','Assets/Graphics/SFX/Credit/FullGravesCredit.png');
