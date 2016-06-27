@@ -96,13 +96,9 @@ var _self = _game.add.sprite(_x, _y, "Charon");
     {
         if (_self.lastCollision + 4500 < _game.time.now) 
         {
-            console.log("life " + _self.life)
             Application.Game.camera.shake(0.1,500);
             _self.lastCollision = _game.time.now;
-            if (_self.life == 0) 
-            {
-                _self.destroy();
-            }
+            
         }
     }
 
@@ -125,7 +121,11 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             _self.tint = 0Xf00000;
             setTimeout(function(){
                 _self.tint = 0Xffffff;
-            },500);       
+            },500); 
+            if (_self.life == 0) 
+            {
+                _self.destroy();
+            }      
     }
     return _self;
 
