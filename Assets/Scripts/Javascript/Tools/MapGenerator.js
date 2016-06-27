@@ -240,10 +240,13 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 					{
 						//console.log("Custom z-index");
 						Layers["Z-index"][el.properties.z_index].add(s);
+						Layers["Z-index"][el.properties.z_index + 1].add(s.upperPart);
 					}
 					else
 					{
 						Layers["Z-index"][5].add(s);
+						Layers["Z-index"][6].add(s.upperPart);
+						
 					}
 					var arrayCollision = [playerCG]
 					s.body.setCollisionGroup(doorCG);
