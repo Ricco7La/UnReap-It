@@ -94,14 +94,12 @@ Application.Preload.prototype = {
 		this.game.load.audio('spikeOut', 'Assets/Audio/SFX/spikeOut.mp3');
 		this.game.load.audio('spikeIn', 'Assets/Audio/SFX/spikeIn.mp3');
 		this.game.load.audio('teleport', 'Assets/Audio/SFX/teleport.mp3');
+		this.game.load.audio('gameOver', 'Assets/Audio/SFX/gameOver.mp3');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
-		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
+		Application.Timer = new Timer(30000000000, false, this.updateCounter, Application.Game);
 		// Add the Juicy Plugins to Application.
 		Application.Juicy = this.game.plugins.add(new Phaser.Plugin.Juicy(this.game));
-
-		// Create the Timer(_duration, _repeat, _callback, _game)
-		Application.Timer = new Timer(30000, false, this.updateCounter, Application.Game);
 	},
   	create: function(){
   		//console.log("Preload finished")
@@ -111,6 +109,6 @@ Application.Preload.prototype = {
 
 	updateCounter : function() 
 	{
-		Application.Timer.Clear();
+		Application.Game.state.start('GameOver');
 	},
 }
