@@ -50,8 +50,9 @@ function Door( _game, _x, _y, _w, _h, _switches, _type)
             }
             _self.body.removeCollisionGroup(_self.SavedCollision)
             _self.animations.play("open", 10, false);
+            _self.animations.currentAnim.onComplete.add(function () { _self.upperPart.visible = true;});
             _self.isOpen = true;
-            _self.upperPart.visible = true;
+            
         }
         else if ( !switchesBool && _self.isOpen ) 
         {
