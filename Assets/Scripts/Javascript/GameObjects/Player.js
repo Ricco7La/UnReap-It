@@ -54,7 +54,7 @@ function Player (_game, _x, _y)
 
     _self.update = function()
     {
-        _self.scoreSouls.setText("Souls : " + Application.nbrSouls);
+        // _self.scoreSouls.setText("Souls : " + Application.nbrSouls);
 
         if (_self.canMove)
         {
