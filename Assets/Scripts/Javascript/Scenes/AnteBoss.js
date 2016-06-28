@@ -105,9 +105,26 @@ Application.AnteBoss.prototype = {
 						}
 						for (el of invisibleWall) 
 						{
-							img.body.setCollisionGroup(MapLayers.blockCG);
-							img.body.collides([MapLayers.playerCG, MapLayers.bossCG]);
-							console.log(el);
+							el.body.setCollisionGroup(MapLayers.blockCG);
+							el.body.collides([MapLayers.playerCG, MapLayers.bossCG]);
+							el.emitter = Application.Game.add.emitter(el.x, el.y, 500);
+							el.emitter.minParticleScale = 0.005;
+    						el.emitter.maxParticleScale = 0.05;
+						
+    						el.emitter.setRotation(0, 360);
+    						el.emitter.setAlpha(0.6);
+    						el.emitter.setScale(0.2, 0, 0.2, 0, 2000);
+    						el.emitter.gravity = 0;
+    						el.emitter.setXSpeed(-50,50);
+    						el.emitter.setYSpeed(-25,25);
+    						el.emitter.makeParticles('StyxBarrier');
+
+    						var startPos = el.emitter.x - 32;
+    						var endPos = el.emitter.x + 32;
+    						el.emitter.emitX = startPos;
+    						Application.Game.add.tween(el.emitter).to( { emitX: endPos }, 50, Phaser.Easing.Linear.None, true, 0, Number.MAX_VALUE, true);
+
+    						el.emitter.start(false, 500, 1);
 						}
 					}
 
