@@ -19,6 +19,7 @@ var Application = {
 	{
 		//Application.Game.physics.startSystem(Phaser.Physics.P2JS);
 		Application.indexLevel = 0;
+		Application.nbrSouls = 0;
 		Application.Game.state.start(Application.lvl[Application.indexLevel], true);
 	},
 	resetLevel : function () 
