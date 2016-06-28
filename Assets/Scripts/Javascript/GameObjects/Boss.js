@@ -1,4 +1,4 @@
-function Boss (_game, _x,_y) {
+function Boss (_game, _x, _y, _callbackOnDeath) {
 
 
 var _self = _game.add.sprite(_x, _y, "Charon");
@@ -99,6 +99,9 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.collisionWithWall = function()
     {
+        if (_self.tween) {
+                _self.tween.stop(true);
+        }   
         if (_self.lastCollision + 2500 < _game.time.now) 
         {
             Application.Game.camera.shake(0.1,500);
@@ -133,11 +136,15 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             },500); 
             if (_self.life == 0) 
             {
+                if (_callbackOnDeath) 
+                {
+                    _callbackOnDeath();
+                }
                 _self.destroy();
             }
-            _self.lastCollision = _game.time.now; 
+            _self.lastCollision = _game.time.now;
         }
-    }     
+    }
     return _self;
 
 }

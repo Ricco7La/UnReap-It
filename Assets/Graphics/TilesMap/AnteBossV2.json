@@ -79,7 +79,7 @@
         {
          "draworder":"topdown",
          "height":0,
-         "name":"Interractions",
+         "name":"InterractionsBoss",
          "objects":[
                 {
                  "height":33,
@@ -666,14 +666,26 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":472,
-                 "x":92,
+                 "width":495,
+                 "x":69,
                  "y":448.333
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
          "width":0,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "height":20,
+         "name":"Interractions",
+         "objects":[],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":20,
          "x":0,
          "y":0
         }],

@@ -58,6 +58,8 @@ Application.Preload.prototype = {
 		this.game.load.image('Left', 'Assets/Graphics/Interact/BossWall/Left.png');
 		this.game.load.image('Right', 'Assets/Graphics/Interact/BossWall/Right.png');
 		this.game.load.image('Up', 'Assets/Graphics/Interact/BossWall/Up.png');
+		this.game.load.image('StyxBarrier', 'Assets/Graphics/SFX/Particles/StyxBarrier.png');
+		
 
 
 		// Load Title
