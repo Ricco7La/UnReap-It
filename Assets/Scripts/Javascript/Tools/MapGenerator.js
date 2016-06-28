@@ -353,10 +353,21 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 				var wall = new BossWall( _Game, el.x, el.y, el.width,el.height, el.type);
 				wall.body.setCollisionGroup(blockCG);
 				wall.body.collides([playerCG, bossCG]);	
-				array[el.name-1] = wall;		
+				array[el.name-1] = wall;
+				if (el.type == "CornerDL" || el.type == "CornerDR" || el.type == "Down") {
+					Layers["Z-index"][6].add(wall);
+				}
+				else 
+				{
+					Layers["Z-index"][5].add(wall);
+				}
+						
 			}
 		}
 		Layers["BossWall"] = array;
+	}
+	if (_Map.objects.InterractionsBoss) {
+		Layers["BossInterractions"] = _Map.objects.InterractionsBoss
 	}
 		
 	/* Dial Area */
