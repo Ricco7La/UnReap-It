@@ -16,14 +16,23 @@ Application.AnteBoss.prototype = {
 
 		var MapLayers = GenerateMap(this.game, this.Map, 'AnteBoss', 'All_Tiles', 'Tiles');
 
-		var Charon = new Boss(Application.Game,300,190);
+		var invisibleWall = [];
+
+		var callbackOnDeath = function () {
+			for (el of invisibleWall) 
+			{
+				el.emitter.on = false;
+				el.body.clearCollision();
+			}
+		}
+		var Charon = new Boss(Application.Game,300,190,callbackOnDeath);
 		MapLayers["Z-index"][5].add(Charon);
 		Charon.body.setCollisionGroup(MapLayers.bossCG);
 		Charon.body.collides(MapLayers.playerCG,Application.resetLevel);
 		Charon.body.collides(MapLayers.blockCG,Charon.collisionWithWall);
 		Charon.body.collides(MapLayers.tilesCG,Charon.collisionWithWater);
 
-		var invisibleWall = [];
+		
 		for (el of MapLayers["BossInterractions"]) 
 		{
 			var img = this.game.add.sprite(el.x + el.width * 0.5, el.y + el.height * 0.5,"");

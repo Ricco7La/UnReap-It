@@ -1,4 +1,4 @@
-function Boss (_game, _x,_y) {
+function Boss (_game, _x, _y, _callbackOnDeath) {
 
 
 var _self = _game.add.sprite(_x, _y, "Charon");
@@ -136,6 +136,10 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             },500); 
             if (_self.life == 0) 
             {
+                if (_callbackOnDeath) 
+                {
+                    _callbackOnDeath();
+                }
                 _self.destroy();
             }
             _self.lastCollision = _game.time.now; 
