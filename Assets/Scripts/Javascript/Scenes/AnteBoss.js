@@ -25,7 +25,7 @@ Application.AnteBoss.prototype = {
 				el.body.clearCollision();
 			}
 		}
-		var Charon = new Boss(Application.Game,300,190,callbackOnDeath);
+		var Charon = new Boss(Application.Game,300,225,callbackOnDeath);
 		MapLayers["Z-index"][5].add(Charon);
 		Charon.body.setCollisionGroup(MapLayers.bossCG);
 		Charon.body.collides(MapLayers.playerCG,Application.resetLevel);
@@ -107,6 +107,7 @@ Application.AnteBoss.prototype = {
 					if (wallToDestroy == 0) {
 						soul.emitter.on = false;
 						soul.visible = false;
+						Application.Game.camera.shake(0.05,500);
 						Charon.Start();
 						for (var i = 0; i < bullets.length; i++) 
 						{

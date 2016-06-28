@@ -31,10 +31,6 @@ Application.Title.prototype = {
 		emitterBack.setXspeed = 50;
 		emitterBack.start(false, 1000, 100);
 
-
-
-
-
 	    emitterStart = this.game.add.emitter(this.game.world.centerX , this.game.world.centerY + 90 + 50,500,200);
 		emitterStart.makeParticles('redParticles');
 	    emitterStart.setRotation(50, 50);
@@ -98,7 +94,7 @@ Application.Title.prototype = {
 
 function StartGame (item)
 {
-	this.state.start("Story");
+	this.state.start("AnteBoss");
 }
 function StartCredit (item)
 {
