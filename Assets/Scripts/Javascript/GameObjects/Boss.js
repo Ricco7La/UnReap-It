@@ -136,7 +136,8 @@ var _self = _game.add.sprite(_x, _y, "Charon");
                 _self.destroy();
             }
             _self.lastCollision = _game.time.now; 
-        }     
+        }
+    }     
     return _self;
 
 }
