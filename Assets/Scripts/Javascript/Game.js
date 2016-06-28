@@ -5,7 +5,7 @@ var Application = {
 		height : 480
 	},
 	Game : null,
-	debugMode: true,
+	debugMode: false,
 	godMode: true,
 	Layers: null,
 	Timer : null,
