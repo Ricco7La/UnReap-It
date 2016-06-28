@@ -99,6 +99,9 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.collisionWithWall = function()
     {
+        if (_self.tween) {
+                _self.tween.stop(true);
+        }   
         if (_self.lastCollision + 2500 < _game.time.now) 
         {
             Application.Game.camera.shake(0.1,500);
