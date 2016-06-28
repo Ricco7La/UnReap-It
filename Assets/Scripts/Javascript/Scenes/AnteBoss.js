@@ -29,9 +29,8 @@ Application.AnteBoss.prototype = {
 			_charon.sprite.collisionWithWall();
 		});
 		Charon.body.collides(MapLayers.tilesCG,function (_charon) {
-			if (_charon.sprite.tween) {
 				_charon.sprite.collisionWithWater();
-			}
+			
 		});
 
 		

@@ -99,7 +99,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.collisionWithWall = function()
     {
-        if (_self.lastCollision + 4500 < _game.time.now) 
+        if (_self.lastCollision + 2500 < _game.time.now) 
         {
             Application.Game.camera.shake(0.1,500);
             _self.lastCollision = _game.time.now;
@@ -121,7 +121,8 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.collisionWithWater = function()
     {
-        if (_self.lastCollision + 4500 < _game.time.now) 
+        console.log('test');
+        if (_self.lastCollision + 2500 < _game.time.now) 
         {
             console.log("mouillé");
             _self.life -= 1;
