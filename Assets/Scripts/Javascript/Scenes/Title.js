@@ -9,7 +9,6 @@ Application.Title.prototype = {
 
 	preload : function()
 	{
-		
 	},
 
 	create: function()
@@ -99,7 +98,7 @@ Application.Title.prototype = {
 
 function StartGame (item)
 {
-	this.state.start("AnteBoss");
+	this.state.start("Ante2");
 }
 function StartCredit (item)
 {

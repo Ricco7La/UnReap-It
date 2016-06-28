@@ -30,6 +30,7 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 	//console.log("Map");
 	//console.log(_Map);
 
+
 	// Group for Z-index
 	Layers["Z-index"] = [];
 	Layers["BlockVision"] = [];

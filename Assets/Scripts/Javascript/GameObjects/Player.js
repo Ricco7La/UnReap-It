@@ -49,6 +49,7 @@ function Player (_game, _x, _y)
     _self.outerCircle = new Phaser.Circle(_self.body.x, _self.body.y, Application.config.width * 3.5);
     _self.circleLimit = _self.innerCircle.radius / _self.outerCircle.radius;
 
+    _self.lastAffliction = _game.time.now;
     _self.isBlind = false;
     _self.Afflictions = [];
 
@@ -96,8 +97,20 @@ function Player (_game, _x, _y)
             {
                 this.currentDirection = "DOWN";
                 _self.animations.play('move_down', 5, true);
-                _self.body.moveDown(_self.speed);
-                _self.body.damping = 0.9;
+
+                /** TO DO 
+                Problem with P2 physics (issue on phaser) with collideworld bound
+                **/
+
+                if(_self.y < Application.Game.world.height - _self.width * .75)
+                {
+                    _self.body.moveDown(_self.speed);
+                    _self.body.damping = 0.9;  
+                }
+                else
+                {
+                    _self.body.damping = 1;
+                }
                 if(canPlay)
                 {
                     canPlay = false;
@@ -173,14 +186,18 @@ function Player (_game, _x, _y)
 
     _self.Blindness = function()
     {
-        var eugeneDial = new Dialogue(180,350,'eugeneDial',"Oh mon Dieu, j'ai tué quelqu'un! \nJe ne veux plus voir ça!");
-        eugeneDial.setVisible(true);
-        
-        Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
-                        eugeneDial.setVisible(false);
-                        _self.BlindnessView();
-                        _self.isBlind = true;
-                    });
+        if(_self.lastAffliction + 2500 < _game.time.now)
+        {
+            var eugeneDial = new Dialogue(180,350,'eugeneDial',"Oh mon Dieu, j'ai tué quelqu'un! \nJe ne veux plus voir ça!");
+            eugeneDial.setVisible(true);
+            
+            Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
+                            eugeneDial.setVisible(false);
+                            _self.BlindnessView();
+                            _self.isBlind = true;
+                        });
+            _self.lastAffliction = _game.time.now;
+        }
     };
 
     _self.BlindnessView = function()
@@ -201,25 +218,29 @@ function Player (_game, _x, _y)
 
     _self.ShuffleKeys = function()
     {
-        var eugeneDial = new Dialogue(180,350,'eugeneDial',"Vu que tu ne fais pas comme je veux. \nMoi, non plus!");
-        eugeneDial.setVisible(true);
+        if(_self.lastAffliction + 2500 < _game.time.now)
+        {
+            var eugeneDial = new Dialogue(180,350,'eugeneDial',"Vu que tu ne fais pas comme je veux. \nMoi, non plus!");
+            eugeneDial.setVisible(true);
 
-        Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
-                eugeneDial.setVisible(false);
-                Application.Game.camera.shake(0.02);
-            });
+            Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
+                    eugeneDial.setVisible(false);
+                    Application.Game.camera.shake(0.02);
+                });
 
-        var up = _self.keys.up;
-        var down = _self.keys.down;
-        var left = _self.keys.left;
-        var right = _self.keys.right;
+            var up = _self.keys.up;
+            var down = _self.keys.down;
+            var left = _self.keys.left;
+            var right = _self.keys.right;
 
-        var keys = [up, down, left, right];
+            var keys = [up, down, left, right];
 
-        _self.keys.up = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
-        _self.keys.down = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
-        _self.keys.left = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
-        _self.keys.right = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+            _self.keys.up = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+            _self.keys.down = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+            _self.keys.left = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+            _self.keys.right = Phaser.ArrayUtils.removeRandomItem(keys, 0, keys.length);
+            _self.lastAffliction = _game.time.now;
+        }
     }
 
     _self.Afflictions.push(_self.Blindness, _self.ShuffleKeys);
