@@ -25,7 +25,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
     _self.body.damping = 1;
 
 
-    _self.body.setRectangle(40,60,0);
+    _self.body.setRectangle(50,60,0);
 
     _self.body.debug = Application.debugMode;
 
@@ -124,9 +124,10 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.collisionWithWater = function()
     {
-        console.log('test');
+
         if (_self.lastCollision + 2500 < _game.time.now) 
         {
+
             console.log("mouillé");
             _self.life -= 1;
             _self.tint = 0Xf00000;
@@ -139,7 +140,6 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             }
             _self.lastCollision = _game.time.now; 
         }     
-    }
     return _self;
 
 }
