@@ -9,7 +9,7 @@
             {
              "collide":false,
              "worldSize":true,
-             "z_index":0
+             "z_index":2
             },
          "propertytypes":
             {
