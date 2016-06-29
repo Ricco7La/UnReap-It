@@ -69,6 +69,12 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     _self.FOVCollider.body.debug = Application.debugMode;
     _self.FOVCollider.body.fixedRotation = true;
 
+    _self.exclamation = _self.addChild(_game.make.sprite(0, - _self.height * 0.75, "Exclamation"));
+    _self.exclamation.anchor.set(0.5);
+    _self.exclamation.scale.set(0.75);
+    _self.exclamation.alpha = 0;
+
+
     //var r = _game.physics.p2.hitTest(_self.position);
     //console.log(r);
 
@@ -153,6 +159,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
             _self.FOVCollider.body.setCollisionGroup(_self.fovCG);
             _self.FOVCollider.body.collides([_self.playerCG],function()
             {
+                 _game.add.tween(_self.exclamation).to( { alpha : 0.8}, 250, Phaser.Easing.Cubic.In, true);
                 _self.FunctionOnSeeing();
             });
     

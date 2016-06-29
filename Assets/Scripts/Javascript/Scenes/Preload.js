@@ -61,7 +61,9 @@ Application.Preload.prototype = {
 		this.game.load.image('StyxBarrier', 'Assets/Graphics/SFX/Particles/StyxBarrier.png');
 		this.game.load.image('DropWater', 'Assets/Graphics/SFX/Particles/dropWater.png');
 		this.game.load.image('RedStar', 'Assets/Graphics/SFX/Star.png');
+		this.game.load.image('Exclamation', 'Assets/Graphics/SFX/Alarm.png');
 		
+
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
 		this.game.load.image('title','Assets/Graphics/Title/Title.PNG');
@@ -126,7 +128,7 @@ Application.Preload.prototype = {
   	create: function(){
   		//console.log("Preload finished")
   		// go to title
-		this.state.start("AnteBoss");
+		this.state.start("Title");
 	},
 
 	updateCounter : function() 
