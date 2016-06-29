@@ -136,6 +136,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             },500); 
             if (_self.life == 0) 
             {
+                _self.Death();
                 if (_callbackOnDeath) 
                 {
                     _callbackOnDeath();
@@ -144,6 +145,27 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             }
             _self.lastCollision = _game.time.now;
         }
+    }
+
+    _self.Death = function()
+    {
+        console.log("Charon Die");
+        Application.Game.camera.shake(0.01,1000);
+        var nbrFlash = 0;
+        var flash = Application.Juicy.createScreenFlash('rgba(240,90,90,0.4)');
+        Application.Game.add.existing(flash);
+        flash.flash();
+        var flashReapet = setInterval(function()
+        {
+            Application.Game.add.existing(flash);
+            flash.flash();
+            nbrFlash ++;
+            if (nbrFlash == 4) 
+            {
+                clearInterval(flashReapet);
+            }
+        },200)
+
     }
     return _self;
 
