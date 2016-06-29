@@ -65,6 +65,8 @@ Application.Story.prototype = {
 		this.text4 = this.game.add.tileSprite(50,300,347,142,'text4');
 		this.text4.scale.setTo(0.6);
 
+		this.pressSpaceBar = this.game.add.text(550, Application.config.height - 20, "Press Space", { font: "12px Consolas", fill: "#fff", align: "left" });
+
 		//console.log('Story Screen');
 		
 		this.lastInput = this.game.time.now;

@@ -30,6 +30,7 @@ Application.Tuto.prototype = {
 	    var eugeneDial5 = new Dialogue(180,350,'eugeneDial',"5 : Il vous est possible d'annihiler les\nserviteurs de Lucifer grâce aux pièges");    
 	    var eugeneDial6 = new Dialogue(180,350,'eugeneDial',"Ca, jamais. Je n'ôterais plus la vie à qui que ce soit");
 	    MapLayers.DialAreas.thirdDial.DialArray.push( eugeneDial5, eugeneDial6);
+
 	},
 
 	update : function()
