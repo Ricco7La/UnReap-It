@@ -45,16 +45,17 @@ Application.AnteBoss.prototype = {
 			invisibleWall.push(img);
 		}
 
-		var charonDial = new Dialogue(130,200,'charonDial',"HALTE LA !\nToutes âmes, morte ou vivante voulant passer doit\npayer son tribut!");
-		var eugeneDial = new Dialogue(180,350,'eugeneDial',"Hey Charon vieille branche !\nT'inquiète pas j'ai tout pré...*fouille fouille*\n Oh non... non non non non non");
-		var charonDial2 = new Dialogue(130,200,'charonDial',"J'attend ton tribut Eugène !\nSi tu n'as pas de quoi payer... TU NE PASSERA PAS !!!");
-		var eugeneDial2 = new Dialogue(180,350,'eugeneDial',"SUPER ton imitation, j'adore, mais serieux\nj'ai oublié ma bourse au bureau !\n*Et je me vois mal y retourner*");
-		var charonDial3 = new Dialogue(130,200,'charonDial',"Tu connais les règles faucheuse,\n je ne te laisserais pas passer");
-		var eugeneDial3 = new Dialogue(180,350,'eugeneDial',"Si tu le prend comme ça,\nJe n'ai pas d'autre choix que de forcer le passage\na l'ancienne!");
-		var charonDial4 = new Dialogue(130,200,'charonDial',"A nous deux !");
-		var eugeneDial4 = new Dialogue(180,350,'eugeneDial',"Faux ! C'est toi contre moi et mes " + Application.nbrSouls + " nouveaux copains !" );
+		var charonDial = new Dialogue(130,200,'charonDial',["","HALTE LA !\nToutes âmes, morte ou vivante voulant passer doit\npayer son tribut!"]);
+		var eugeneDial = new Dialogue(180,350,'eugeneDial',["","Hey Charon vieille branche !\nT'inquiète pas j'ai tout pré...*fouille fouille*\n Oh non... non non non non non"]);
+		var charonDial2 = new Dialogue(130,200,'charonDial',["","J'attend ton tribut Eugène !\nSi tu n'as pas de quoi payer... TU NE PASSERA PAS !!!"]);
+		var eugeneDial2 = new Dialogue(180,350,'eugeneDial',["","SUPER ton imitation, j'adore, mais serieux\nj'ai oublié ma bourse au bureau !\n*Et je me vois mal y retourner*"]);
+		var charonDial3 = new Dialogue(130,200,'charonDial',["","Tu connais les règles faucheuse,\n je ne te laisserais pas passer"]);
+		var eugeneDial3 = new Dialogue(180,350,'eugeneDial',["","Si tu le prend comme ça,\nJe n'ai pas d'autre choix que de forcer le passage\na l'ancienne!"]);
+		var charonDial4 = new Dialogue(130,200,'charonDial',["","A nous deux !"]);
+		var eugeneDial4 = new Dialogue(180,350,'eugeneDial',["","Faux ! C'est toi contre moi et mes " + Application.nbrSouls + " nouveaux copains !"]);
 		
 		MapLayers.DialAreas.firstDial.DialArray.push(charonDial, eugeneDial, charonDial2, eugeneDial2, charonDial3, eugeneDial3, charonDial4, eugeneDial4);
+		
 		MapLayers.DialAreas.firstDial.callbackFunction = function () {
 			var BossWalls = MapLayers.BossWall;
 			var wallToDestroy = Application.nbrSouls;

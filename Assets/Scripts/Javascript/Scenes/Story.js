@@ -65,7 +65,6 @@ Application.Story.prototype = {
 		this.text4 = this.game.add.tileSprite(50,300,347,142,'text4');
 		this.text4.scale.setTo(0.6);
 
-		//console.log('Story Screen');
 		
 		this.lastInput = this.game.time.now;
 
@@ -90,7 +89,6 @@ Application.Story.prototype = {
 	{
 		if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)  && ( this.lastInput + 500) < this.game.time.now )
 		{
-			console.log('function')
     		this.nextBulle();
     	}
 
@@ -103,8 +101,7 @@ Application.Story.prototype = {
 	},
 
 	nextBulle : function()
-	{		
-		// Application.Game.add.tween(this.bulleArray[this.indexBulle]).to( { alpha: 1 }, 2000, Phaser.Easing.Linear.None,true);
+	{
 		this.lastInput = this.game.time.now;
 		
 		if (this.indexBulle < this.bulleArray.length) 

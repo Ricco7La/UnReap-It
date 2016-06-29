@@ -46,7 +46,8 @@ function DialArea( _game, _name, _x, _y, _width, _height, _callback)
             {
                 Application.Layers.Player.canMove = false;
                 Application.Layers.Player.body.setZeroVelocity();
-                _self.DialArray[_self.indexDial].setVisible(true);
+                _self.DialArray[_self.indexDial].SetVisible(true);
+                _self.DialArray[_self.indexDial].NextLine();
                 _self.alreadyDid = true;
             }
         }
@@ -57,17 +58,33 @@ function DialArea( _game, _name, _x, _y, _width, _height, _callback)
         if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && ( _self.lastInput + 500) < Application.Game.time.now && _self.indexDial < _self.DialArray.length && _self.alreadyDid)
         {
             _self.lastInput = Application.Game.time.now;
-            _self.DialArray[_self.indexDial].setVisible(false);
-            _self.indexDial ++;
-            if (_self.indexDial < _self.DialArray.length) 
+            console.log(_self.DialArray[_self.indexDial].endedWindow)
+            if(!_self.DialArray[_self.indexDial].endedWindow && _self.DialArray[_self.indexDial].index < _self.DialArray[_self.indexDial].content.length)
             {
-                _self.DialArray[_self.indexDial].setVisible(true);
+                console.log("finish him");
+                _self.DialArray[_self.indexDial].FinishLine();
+
+            }
+            else if (_self.DialArray[_self.indexDial].endedWindow && _self.DialArray[_self.indexDial].index < _self.DialArray[_self.indexDial].content.length-1)
+            {
+                _self.DialArray[_self.indexDial].NextLine();
             }
             else
             {
-                Application.Layers.Player.canMove = true;
+                console.log("dernier else")
+                _self.DialArray[_self.indexDial].SetVisible(false);
+                _self.indexDial ++;
+                if (_self.indexDial < _self.DialArray.length) 
+                {
+                    _self.DialArray[_self.indexDial].SetVisible(true);
+                    _self.DialArray[_self.indexDial].NextLine();
+                }
+                else
+                {
+                    Application.Layers.Player.canMove = true;
+                }
+                _self.Callback();
             }
-            _self.Callback();
         }   
     };
 
@@ -76,7 +93,6 @@ function DialArea( _game, _name, _x, _y, _width, _height, _callback)
         if (_self.indexDial == _self.DialArray.length && _self.callbackFunction)
         {
             _self.callbackFunction();
-            //_self.indexDial ++;
         }
     }
 
