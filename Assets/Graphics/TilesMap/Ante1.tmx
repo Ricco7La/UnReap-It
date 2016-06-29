@@ -281,32 +281,32 @@
   </object>
  </objectgroup>
  <objectgroup name="Ennemies">
-  <object id="5" name="0-0" type="Medusa" x="202" y="1044">
+  <object id="5" name="0-0" type="Medusa" x="200" y="1025">
    <properties>
     <property name="index" type="int" value="0"/>
     <property name="pathIndex" type="int" value="0"/>
     <property name="speed" type="int" value="200"/>
    </properties>
   </object>
-  <object id="8" name="0-1" x="404.667" y="1043.33">
+  <object id="8" name="0-1" x="416.667" y="1037.33">
    <properties>
     <property name="index" type="int" value="0"/>
     <property name="pathIndex" type="int" value="1"/>
    </properties>
   </object>
-  <object id="9" name="0-2" x="405.333" y="1199.33">
+  <object id="9" name="0-2" x="419.333" y="1214.33">
    <properties>
     <property name="index" type="int" value="0"/>
     <property name="pathIndex" type="int" value="2"/>
    </properties>
   </object>
-  <object id="10" name="0-3" x="112.667" y="1205.33">
+  <object id="10" name="0-3" x="85.667" y="1209.33">
    <properties>
     <property name="index" type="int" value="0"/>
     <property name="pathIndex" type="int" value="3"/>
    </properties>
   </object>
-  <object id="11" name="0-4" x="112" y="1042">
+  <object id="11" name="0-4" x="85" y="1023">
    <properties>
     <property name="index" type="int" value="0"/>
     <property name="pathIndex" type="int" value="4"/>
@@ -354,7 +354,7 @@
     <property name="pathIndex" type="int" value="2"/>
    </properties>
   </object>
-  <object id="21" name="2-3" x="306.667" y="166.667">
+  <object id="21" name="2-3" x="296.667" y="166.667">
    <properties>
     <property name="index" type="int" value="2"/>
     <property name="pathIndex" type="int" value="3"/>

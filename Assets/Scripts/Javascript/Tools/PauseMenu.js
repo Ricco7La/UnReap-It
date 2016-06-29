@@ -47,13 +47,13 @@ function PauseMenu (_game)
 	_self.back.fixedToCamera = true;
 	_self.back.visible = false;
 
-    _self.SetPause = function(_char)
+    _self.SetPause = function(e)
 	{
-        if( _char == "p" && !_self.isPaused)
+        if( (e.code == "KeyP" || e.code == "Escape") && !_self.isPaused)
         {
         	_self.ShowMenu();
         }
-        else if( _char == "p" && _self.isPaused)
+        else if( (e.code == "KeyP" || e.code == "Escape") && _self.isPaused)
         {
         	_self.HideMenu();
         }
@@ -141,7 +141,7 @@ function PauseMenu (_game)
     	_self.isPaused = false;
     };
 
-	_game.input.keyboard.addCallbacks(this, null, null, _self.SetPause);
+	_game.input.keyboard.addCallbacks(this, null, _self.SetPause, null);
     _game.input.onDown.add(_self.OnPauseMenu, self);
 
     return _self;

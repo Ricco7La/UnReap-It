@@ -58,10 +58,8 @@ function DialArea( _game, _name, _x, _y, _width, _height, _callback)
         if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) && ( _self.lastInput + 500) < Application.Game.time.now && _self.indexDial < _self.DialArray.length && _self.alreadyDid)
         {
             _self.lastInput = Application.Game.time.now;
-            console.log(_self.DialArray[_self.indexDial].endedWindow)
             if(!_self.DialArray[_self.indexDial].endedWindow && _self.DialArray[_self.indexDial].index < _self.DialArray[_self.indexDial].content.length)
             {
-                console.log("finish him");
                 _self.DialArray[_self.indexDial].FinishLine();
 
             }
@@ -71,7 +69,6 @@ function DialArea( _game, _name, _x, _y, _width, _height, _callback)
             }
             else
             {
-                console.log("dernier else")
                 _self.DialArray[_self.indexDial].SetVisible(false);
                 _self.indexDial ++;
                 if (_self.indexDial < _self.DialArray.length) 

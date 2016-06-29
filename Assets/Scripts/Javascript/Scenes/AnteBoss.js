@@ -6,6 +6,7 @@ Application.AnteBoss.prototype = {
 	create: function(){ 
 		console.log('Game Screen');
 		Application.Game.sound.stopAll();
+		this.ambiant = this.game.add.audio('BossSong'); 
 		this.game.physics.startSystem(Phaser.Physics.P2JS);
 		this.game.physics.p2.applyGravity = false;
 		this.game.physics.p2.setImpactEvents(true);
@@ -146,6 +147,7 @@ Application.AnteBoss.prototype = {
 			
 			console.log("callback ok");
 		};
+		this.ambiant.loopFull();
 	},
 	update : function()
 	{

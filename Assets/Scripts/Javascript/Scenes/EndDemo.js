@@ -15,6 +15,7 @@ Application.EndDemo.prototype = {
 	create: function()
 	{ 
 		//console.log('EndDemo Screen');
+		Application.Game.sound.stopAll();
 		var background = this.game.add.tileSprite(0, 0, Application.config.width, Application.config.height, 'background');
 		var title = this.game.add.tileSprite(400,30,206,60,'title');
 		this.game.sound.play('title');

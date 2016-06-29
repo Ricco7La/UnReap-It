@@ -18,12 +18,9 @@ function Soul(game,x,y)
     _self.sound = Application.Game.add.audio('soul');
     _self.sound.volume = .3;
     _self.scale.setTo(0.75);
-    //console.log(_self)
 
     _self.anchor.set(0.5);
     _self.emitter = emitter;
-    
-    //console.log(emitter);
 
     game.physics.p2.enable(_self);
 
@@ -46,16 +43,13 @@ function Soul(game,x,y)
     _self.Kill = function()
     {   
         _self.body.destroy();
-        //console.log("destroy")
         _self.loadTexture('AnimeSoul');
         var deathAnim = _self.animations.add('take');
         //_self.emitter.on = false;
         deathAnim.killOnComplete = true;
         _self.animations.play('take',12,false);
         var endPos = _self.y - 250;
-        //console.log(_self.x, "to", endPos)
         game.add.tween(_self).to( { y: endPos }, 1000, Phaser.Easing.Linear.Out, true);
-        console.log(_self.sound)
         _self.sound.play();
         // _self.destroy();
     }

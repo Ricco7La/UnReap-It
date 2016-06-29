@@ -32,8 +32,7 @@ Application.Story = function()
 // 	"",
 // 	"Mais pour ça, encore fallait-il réussir à s’introduire dans le cœur des enfers",
 // 	"sans se faire repérer avant que ",
-// 	"Lucifer ne signe l’accord final cédant l’enfer entier aux Chine-Igami."
- 
+// 	"Lucifer ne signe l’accord final cédant l’enfer entier aux Chine-Igami." 
 // ];
 
 
@@ -41,9 +40,7 @@ Application.Story.prototype = {
 
 	preload : function()
 	{
-		// this.game.load.image('background','Assets/Graphics/Title/StoryLine.jpg');
-		// this.game.load.image('title','Assets/Graphics/Title/Title.PNG');
-		this.game.load.spritesheet('button', 'Assets/Graphics/Title/skip.png', 90, 43);
+
 	},
 
 	create: function()
@@ -65,6 +62,9 @@ Application.Story.prototype = {
 		this.text4 = this.game.add.tileSprite(50,300,347,142,'text4');
 		this.text4.scale.setTo(0.6);
 
+		this.pressSpaceBar = this.game.add.text(550, Application.config.height - 20, "Press Space", { font: "12px Consolas", fill: "#fff", align: "left" });
+        var tween = this.game.add.tween(this.pressSpaceBar).to( { alpha: 0 }, 750, "Linear", true, 0, -1);
+        tween.yoyo(true, 0);
 		
 		this.lastInput = this.game.time.now;
 
