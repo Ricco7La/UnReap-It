@@ -2,6 +2,7 @@ function Boss (_game, _x, _y, _callbackOnDeath) {
 
 
 var _self = _game.add.sprite(_x, _y, "Charon");
+    _self.soundWalking = Application.Game.add.sound('BossWalking');
     _self.animations.add('moveDown', [0,1,2,3]);
     _self.animations.add('moveLeft', [4,5,6,7]);
     _self.animations.add('moveRight', [8,9,10,11]);
@@ -52,10 +53,12 @@ var _self = _game.add.sprite(_x, _y, "Charon");
         {
             _self.charge();
         },5000)
+        _self.soundWalking.loopFull(.4);
     }
 
     _self.update = function()
     {
+        
         if (_self.position.y < player.position.y - 10) 
         {
             _self.body.y += _self.speed;
@@ -77,7 +80,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             _self.body.x -= _self.speed;
             _self.animations.play('moveLeft',7,true);
         }
-        if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.K)  && ( _self.lastInput + 500) <_game.time.now )
+        if (Application.Game.input.keyboard.isDown(Phaser.Keyboard.K)  && ( _self.lastInput + 500) < _game.time.now )
         {
            _self.collisionWithWater();
         }
@@ -86,6 +89,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.charge = function()
     {
+        _self.game.sound.play('bossGrunt');
         _self.speed = 0; 
         _self.animations.stop();
         
@@ -115,6 +119,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
         }   
         if (_self.lastCollision + 2500 < _game.time.now) 
         {
+            Application.Game.sound.play('bossWall', .4);
             Application.Game.camera.shake(0.1,500);
             _self.lastCollision = _game.time.now;
             
@@ -138,7 +143,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
         if (_self.lastCollision + 2500 < _game.time.now) 
         {
-
+            Application.Game.sound.play('bossWaterHit', .4);
             _self.life -= 1;
             _self.tint = 0Xf00000;
             setTimeout(function(){
@@ -162,6 +167,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.Death = function()
     {
+        Application.Game.sound.play('bossWater', .4);
         Application.Game.camera.shake(0.01,1000);
         var nbrFlash = 0;
         var flash = Application.Juicy.createScreenFlash('rgba(240,90,90,0.4)');

@@ -4,11 +4,22 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     var type = _type || "Vampire";
     var _self = _game.add.sprite(_path[0].x, _path[0].y, type);
     var areaDetection = _areaDetection || .85;
+    if(_self.key != 'Medusa')
+    {
+        _self.moveSound = Application.Game.add.audio('fly');
+        _self.moveSound.volume = .5;
+    }
+    else
+    {
+        _self.moveSound = Application.Game.add.audio('snake');
+        _self.moveSound.volume = .2;
+    }
+    console.log(_self.key);
     _self.rangeView = _rangeView || 150;
     _self.amplitude = _amplitude || 30;
     _self.lastViewed = _game.time.now - 10000;
     _self.falling = Application.Game.add.audio('falling');
-
+    
     _self.playerCG = null;
     _self.fovCG = null;
     _self.FunctionOnSeeing = function() {};
@@ -63,16 +74,20 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
 
     _self.update = function()
     {
-        if (Math.abs(_self.x - Application.Layers.Player.x) < Application.config.width +100 && 
-            Math.abs(_self.y - Application.Layers.Player.y) < Application.config.height + 100) 
+        if(_self.inCamera && !_self.moveSound.isPlaying)
         {
-            _self.FOVCollider.active = true;
+            _self.moveSound.play();
         }
-        else
-        {
-            _self.FOVCollider.active = false;
-        }
-        if (_self.FOVCollider.active) 
+        // if (Math.abs(_self.x - Application.Layers.Player.x) < Application.config.width +100 && 
+        //     Math.abs(_self.y - Application.Layers.Player.y) < Application.config.height + 100) 
+        // {
+        //     _self.FOVCollider.active = true;
+        // }
+        // else
+        // {
+        //     _self.FOVCollider.active = false;
+        // }
+        if (true) 
         {
             _self.FOV.clear();
             _self.FOV.beginFill(0xFBFE00, .5);

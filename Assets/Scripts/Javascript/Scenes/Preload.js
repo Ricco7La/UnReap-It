@@ -108,17 +108,25 @@ Application.Preload.prototype = {
 		this.game.load.audio('teleport', 'Assets/Audio/SFX/teleport.mp3');
 		this.game.load.audio('gameOver', 'Assets/Audio/SFX/gameOver.mp3');
 		this.game.load.audio('falling', 'Assets/Audio/SFX/falling.mp3');
+		this.game.load.audio('snake', 'Assets/Audio/SFX/snake.mp3');
+		this.game.load.audio('fly', 'Assets/Audio/SFX/fly.mp3');
+		this.game.load.audio('BossSong', 'Assets/Audio/SFX/BossSong.mp3');
+		this.game.load.audio('bossWall', 'Assets/Audio/SFX/bossWall.mp3');
+		this.game.load.audio('bossWater', 'Assets/Audio/SFX/bossWater.mp3');
+		this.game.load.audio('bossWaterHit', 'Assets/Audio/SFX/bossWaterHit.mp3');
+		this.game.load.audio('BossWalking', 'Assets/Audio/SFX/BossWalking.mp3');
+		this.game.load.audio('bossGrunt', 'Assets/Audio/SFX/bossGrunt.wav');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
-		// Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
-		// console.log(Application.Timer)
+		Application.Timer = new Timer(300000000000000, false, this.updateCounter, Application.Game);
+		console.log(Application.Timer)
 		// Add the Juicy Plugins to Application.
 		Application.Juicy = this.game.plugins.add(new Phaser.Plugin.Juicy(this.game));
 	},
   	create: function(){
   		//console.log("Preload finished")
   		// go to title
-		this.state.start("Title");
+		this.state.start("AnteBoss");
 	},
 
 	updateCounter : function() 
