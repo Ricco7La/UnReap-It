@@ -2,6 +2,7 @@ Application.Preload = function(){}
 
 Application.Preload.prototype = {
 	preload: function(){ 
+		this.game.stage.backgroundColor = "#000";
 		//console.log("Preload preload")
 		// on crée un sprite pour la barre de chargement
         var loadingBar = this.add.sprite(Application.config.width / 2, Application.config.height / 2, "loading");
