@@ -19,17 +19,14 @@ Application.Tuto.prototype = {
 
 		this.sound.loopFull();
 
-	    var eugeneDial = new Dialogue(180,350,'eugeneDial',"Manuel de la traversée illégale des Enfers.\n1 : Si vous n'êtes pas convoqué par Lucifer, ou un de ses\ngardiens. Vous serez exécuter sur le champ.\n La fuite est donc votre seule échappatoire!");    
-	    var eugeneDial2 = new Dialogue(180,350,'eugeneDial',"2 : La majorité des portes s'ouvre à l'aide\ndes différents leviers prévu à cet effet.\n3 : Une porte peut necessiter l'activation\nde plusieurs leviers pour s'ouvrir.");
-	    MapLayers.DialAreas.firstDial.DialArray.push( eugeneDial, eugeneDial2);
+	    var eugeneDial = new Dialogue(180,350,'eugeneDial',["","Manuel de la traversée illégale des Enfers.\n1 : Si vous n'êtes pas convoqué par Lucifer, ou un de ses\ngardiens. Vous serez exécuté sur le champ.\n La fuite est donc votre seule échappatoire!","2 : La majorité des portes s'ouvre à l'aide\ndes différents leviers prévu à cet effet.\n3 : Une porte peut necessiter l'activation\nde plusieurs leviers pour s'ouvrir."]);    
+	    MapLayers.DialAreas.firstDial.DialArray.push( eugeneDial);
 
-	    var eugeneDial3 = new Dialogue(180,350,'eugeneDial',"4 : Toutes âmes trouvées durant la traversée des\ndifférents cercles de l'enfer est\nla propriété de notre maître Lucifer");    
-	    var eugeneDial4 = new Dialogue(180,350,'eugeneDial',"Ahahah, là il peut toujours rêver.\nJe vais les garder pour moi.");
-	    MapLayers.DialAreas.secondDial.DialArray.push( eugeneDial3, eugeneDial4);
+	    var eugeneDial3 = new Dialogue(180,350,'eugeneDial',["","4 : Toutes âmes trouvées durant la traversée des\ndifférents cercles de l'enfer est\nla propriété de notre maître Lucifer","Ahahah, là il peut toujours rêver.\nJe les garderai pour moi."]);
+	    MapLayers.DialAreas.secondDial.DialArray.push( eugeneDial3);
 
-	    var eugeneDial5 = new Dialogue(180,350,'eugeneDial',"5 : Il vous est possible d'annihiler les\nserviteurs de Lucifer grâce aux pièges");    
-	    var eugeneDial6 = new Dialogue(180,350,'eugeneDial',"Ca, jamais. Je n'ôterais plus la vie à qui que ce soit");
-	    MapLayers.DialAreas.thirdDial.DialArray.push( eugeneDial5, eugeneDial6);
+	    var eugeneDial5 = new Dialogue(180,350,'eugeneDial',["","5 : Il vous est possible d'annihiler les\nserviteurs de Lucifer grâce aux pièges","C'est parfait!\nDu moment que je n'ai plus à tuer d'humains."]);
+	    MapLayers.DialAreas.thirdDial.DialArray.push( eugeneDial5);
 
 	},
 

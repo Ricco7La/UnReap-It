@@ -65,7 +65,6 @@ Application.Story.prototype = {
 		this.pressSpaceBar = this.game.add.text(550, Application.config.height - 20, "Press Space", { font: "12px Consolas", fill: "#fff", align: "left" });
         var tween = this.game.add.tween(this.pressSpaceBar).to( { alpha: 0 }, 750, "Linear", true, 0, -1);
         tween.yoyo(true, 0);
-
 		
 		this.lastInput = this.game.time.now;
 
@@ -102,7 +101,9 @@ Application.Story.prototype = {
 	},
 
 	nextBulle : function()
-	{	
+	{
+		this.lastInput = this.game.time.now;
+		
 		if (this.indexBulle < this.bulleArray.length) 
 		{
 			Application.Game.add.tween(this.bulleArray[this.indexBulle]).to( { alpha: 1 }, 1000, Phaser.Easing.Linear.None,true);

@@ -188,11 +188,11 @@ function Player (_game, _x, _y)
     {
         if(_self.lastAffliction + 2500 < _game.time.now)
         {
-            var eugeneDial = new Dialogue(180,350,'eugeneDial',"Oh mon Dieu, j'ai tué quelqu'un! \nJe ne veux plus voir ça!");
-            eugeneDial.setVisible(true);
+            var eugeneDial = new AfflictionDialogue(180,350,'eugeneDial',"Oh mon Dieu, j'ai tué quelqu'un! \nJe ne veux plus voir ça!");
+            eugeneDial.SetVisible(true);
             
             Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
-                            eugeneDial.setVisible(false);
+                            eugeneDial.SetVisible(false);
                             _self.BlindnessView();
                             _self.isBlind = true;
                         });
@@ -220,11 +220,11 @@ function Player (_game, _x, _y)
     {
         if(_self.lastAffliction + 2500 < _game.time.now)
         {
-            var eugeneDial = new Dialogue(180,350,'eugeneDial',"Vu que tu ne fais pas comme je veux. \nMoi, non plus!");
-            eugeneDial.setVisible(true);
+            var eugeneDial = new AfflictionDialogue(180,350,'eugeneDial',"Vu que tu ne fais pas comme je veux. \nMoi, non plus!");
+            eugeneDial.SetVisible(true);
 
             Application.Game.time.events.add( Phaser.Timer.SECOND * 1.5, function(){
-                    eugeneDial.setVisible(false);
+                    eugeneDial.SetVisible(false);
                     Application.Game.camera.shake(0.02);
                 });
 
