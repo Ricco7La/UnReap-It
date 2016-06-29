@@ -111,6 +111,10 @@ Application.Preload.prototype = {
 		this.game.load.audio('snake', 'Assets/Audio/SFX/snake.mp3');
 		this.game.load.audio('fly', 'Assets/Audio/SFX/fly.mp3');
 		this.game.load.audio('BossSong', 'Assets/Audio/SFX/BossSong.mp3');
+		this.game.load.audio('bossWall', 'Assets/Audio/SFX/bossWall.mp3');
+		this.game.load.audio('bossWater', 'Assets/Audio/SFX/bossWater.mp3');
+		this.game.load.audio('bossWaterHit', 'Assets/Audio/SFX/bossWaterHit.mp3');
+		// this.game.load.audio('Test_walking', 'Assets/Audio/SFX/Test_walking.mp3');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		Application.Timer = new Timer(300000000000000, false, this.updateCounter, Application.Game);
@@ -121,7 +125,7 @@ Application.Preload.prototype = {
   	create: function(){
   		//console.log("Preload finished")
   		// go to title
-		this.state.start("Ante3");
+		this.state.start("Tuto");
 	},
 
 	updateCounter : function() 

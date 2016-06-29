@@ -78,16 +78,16 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         {
             _self.moveSound.play();
         }
-        if (Math.abs(_self.x - Application.Layers.Player.x) < Application.config.width +100 && 
-            Math.abs(_self.y - Application.Layers.Player.y) < Application.config.height + 100) 
-        {
-            _self.FOVCollider.active = true;
-        }
-        else
-        {
-            _self.FOVCollider.active = false;
-        }
-        if (_self.FOVCollider.active) 
+        // if (Math.abs(_self.x - Application.Layers.Player.x) < Application.config.width +100 && 
+        //     Math.abs(_self.y - Application.Layers.Player.y) < Application.config.height + 100) 
+        // {
+        //     _self.FOVCollider.active = true;
+        // }
+        // else
+        // {
+        //     _self.FOVCollider.active = false;
+        // }
+        if (true) 
         {
             _self.FOV.clear();
             _self.FOV.beginFill(0xFBFE00, .5);
