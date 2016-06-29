@@ -60,9 +60,8 @@ Application.Preload.prototype = {
 		this.game.load.image('Up', 'Assets/Graphics/Interact/BossWall/Up.png');
 		this.game.load.image('StyxBarrier', 'Assets/Graphics/SFX/Particles/StyxBarrier.png');
 		this.game.load.image('DropWater', 'Assets/Graphics/SFX/Particles/dropWater.png');
+		this.game.load.image('RedStar', 'Assets/Graphics/SFX/Star.png');
 		
-
-
 		// Load Title
 		this.game.load.image('background','Assets/Graphics/Title/Entered_Cave.jpg');
 		this.game.load.image('title','Assets/Graphics/Title/Title.PNG');
