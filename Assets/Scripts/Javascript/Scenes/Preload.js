@@ -108,6 +108,7 @@ Application.Preload.prototype = {
 		this.game.load.audio('spikeIn', 'Assets/Audio/SFX/spikeIn.mp3');
 		this.game.load.audio('teleport', 'Assets/Audio/SFX/teleport.mp3');
 		this.game.load.audio('gameOver', 'Assets/Audio/SFX/gameOver.mp3');
+		this.game.load.audio('falling', 'Assets/Audio/SFX/falling.mp3');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
 		// Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);

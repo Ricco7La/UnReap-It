@@ -41,11 +41,24 @@ function BossWall( _game, _x, _y, _w, _h, _type)
     _self.body.debug = Application.debugMode;
     _self.body.sprite = _self;
 
+    _self.emitter = Application.Game.add.emitter(_self.x, _self.y, 100);
+    _self.emitter.minParticleScale = 0.005;
+    _self.emitter.maxParticleScale = 0.05;
+
+    _self.emitter.setRotation(0, 360);
+    _self.emitter.setAlpha(0.6);
+    _self.emitter.setScale(0.05, 0, 0.05, 0, 1000);
+    _self.emitter.gravity = 0;
+    _self.emitter.setXSpeed(-50,50);
+    _self.emitter.setYSpeed(-50,50);
+    _self.emitter.makeParticles('SmokePuff');
+
 
     _self.DestroyBySoul = function() 
     {
         _self.body.clearCollision();
         _self.visible = false;
+        _self.emitter.start(true, 2000, null, 10);
 
     }
 

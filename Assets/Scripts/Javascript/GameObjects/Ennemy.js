@@ -7,6 +7,7 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
     _self.rangeView = _rangeView || 150;
     _self.amplitude = _amplitude || 30;
     _self.lastViewed = _game.time.now - 10000;
+    _self.falling = Application.Game.add.audio('falling');
 
     _self.playerCG = null;
     _self.fovCG = null;
@@ -62,6 +63,15 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
 
     _self.update = function()
     {
+        if (Math.abs(_self.x - Application.Layers.Player.x) < Application.config.width +100 && 
+            Math.abs(_self.y - Application.Layers.Player.y) < Application.config.height + 100) 
+        {
+            _self.FOVCollider.active = true;
+        }
+        else
+        {
+            _self.FOVCollider.active = false;
+        }
         if (_self.FOVCollider.active) 
         {
             _self.FOV.clear();
@@ -287,7 +297,8 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         var unscale = _game.add.tween(_self.scale).to( { x : 0, y : 0}, 2000, Phaser.Easing.Linear.None, true);
         var rotationScale = _game.add.tween(_self).to( { angle : 60000 }, 1800, Phaser.Easing.Linear.None, true );
         _self.FOV.visible = false;
-
+        _self.falling.volume = .4;
+        _self.falling.play();
         _self.FOVCollider.active = false;
         _self.FOVCollider.body.removeCollisionGroup([_self.playerCG],true);
         unscale.onComplete.add(function()
