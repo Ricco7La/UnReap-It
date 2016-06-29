@@ -2,7 +2,7 @@ function Boss (_game, _x, _y, _callbackOnDeath) {
 
 
 var _self = _game.add.sprite(_x, _y, "Charon");
-    // _self.soundWalking = Application.Game.add.sound('Test_walking');
+    _self.soundWalking = Application.Game.add.sound('BossWalking');
     _self.animations.add('moveDown', [0,1,2,3]);
     _self.animations.add('moveLeft', [4,5,6,7]);
     _self.animations.add('moveRight', [8,9,10,11]);
@@ -53,10 +53,12 @@ var _self = _game.add.sprite(_x, _y, "Charon");
         {
             _self.charge();
         },5000)
+        _self.soundWalking.loopFull(.4);
     }
 
     _self.update = function()
     {
+        
         if (_self.position.y < player.position.y - 10) 
         {
             _self.body.y += _self.speed;
@@ -87,7 +89,7 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     _self.charge = function()
     {
-        // _self.soundWalking.play();
+        _self.game.sound.play('bossGrunt');
         _self.speed = 0; 
         _self.animations.stop();
         
