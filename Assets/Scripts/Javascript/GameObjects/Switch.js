@@ -1,7 +1,8 @@
-function Switch( _game, _x, _y, _type)
+function Switch( _game, _x, _y, _type, _isInTuto)
 {
 	var type = _type || "Silver_Lever";
     var _self = _game.add.sprite(_x, _y, type);
+    var isInTuto = _isInTuto || false;
 
     _self.lastActivation = _game.time.now;
     _self.isActivated = false;
@@ -26,11 +27,38 @@ function Switch( _game, _x, _y, _type)
 
     _self.body.onBeginContact.add(function(){
         _self.canActivate = true;
+        if (isInTuto) {
+            _self.letter.visible = true;
+            _self.redStar.visible = true;
+        }
     });
 
     _self.body.onEndContact.add(function(){
         _self.canActivate = false;
+        if (isInTuto) {
+            _self.letter.visible = false;
+            _self.redStar.visible = false;
+        }
+        
+
     });
+
+    // E
+    if (isInTuto) {
+        _self.letter = _game.add.text(_self.x - 3,_self.y - _self.height, "E ", { font: "bold 14px Consolas", fill: "#F00", boundsAlignH: "center",boundsAlignH: "center" });
+        _self.redStar = _game.add.sprite(_self.x, _self.y - _self.height * 0.75, "RedStar");
+        _self.redStar.anchor.set(0.5);
+        _self.redStar.scale.set(0.5);
+        _self.letter.alpha = 0.5;
+        _self.letter.visible = false;
+        _self.redStar.visible = false;
+    
+        var tween = _game.add.tween(_self.redStar).to( { alpha: 0 }, 750, "Linear", true, 0, -1);
+        tween.yoyo(true, 0);
+        var tween2 = _game.add.tween(_self.letter).to( { alpha: 1 }, 150, "Linear", true, 0, -1);
+        tween2.yoyo(true, 0);
+    }
+
 
     _self.update = function()
     {
@@ -53,6 +81,7 @@ function Switch( _game, _x, _y, _type)
                 
             }
         }
+
     };
     return _self;
 }

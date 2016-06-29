@@ -209,7 +209,13 @@ function GenerateMap(_Game, _Map, _tilemap, _tilesetName, _tilesetFile )
 		{
 			if(el.name == "Switch")
 			{
-				var s = new Switch(_Game, el.x, el.y, el.type);
+				if (Application.lvl[Application.indexLevel] == "Tuto") {
+					var s = new Switch(_Game, el.x, el.y, el.type,true);
+				}
+				else {
+					var s = new Switch(_Game, el.x, el.y, el.type);
+				}
+				
 				s.body.setCollisionGroup(switchCG);
 				s.body.collides(playerCG);
 				if (el.properties && el.properties.z_index) 
