@@ -27,7 +27,6 @@ Application.Credit.prototype = {
     	    {
     	    	setTimeout(function()
 	    		{
-	    			console.log("fini")
     	       		_self.state.start("Title");
 	    		},3000)
     	    })	
@@ -36,8 +35,7 @@ Application.Credit.prototype = {
 
 	update : function()
 	{
-		this.background.position.y -= 1;
-		
+		this.background.position.y -= 1;	
 	},
 }
 
