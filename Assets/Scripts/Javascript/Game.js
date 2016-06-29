@@ -6,12 +6,12 @@ var Application = {
 	},
 	Game : null,
 	debugMode: false,
-	godMode: true,
+	godMode: false,
 	Layers: null,
 	Timer : null,
 	Juicy : null,
 	nbrSoulsBeforeLvl : 0,
-	nbrSouls : 10,
+	nbrSouls : 0,
 	lvl : ['Tuto','Ante1','Ante2','Ante3','AnteBoss','EndDemo'],
 	indexLevel : 0,
 	EscapeAnimation : [],
@@ -19,6 +19,8 @@ var Application = {
 	{
 		//Application.Game.physics.startSystem(Phaser.Physics.P2JS);
 		Application.indexLevel = 0;
+		Application.nbrSoulsBeforeLvl = 0;
+		Application.nbrSouls = 0;
 		Application.Game.state.start(Application.lvl[Application.indexLevel], true);
 	},
 	resetLevel : function () 

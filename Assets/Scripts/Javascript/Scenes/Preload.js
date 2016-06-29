@@ -59,6 +59,7 @@ Application.Preload.prototype = {
 		this.game.load.image('Right', 'Assets/Graphics/Interact/BossWall/Right.png');
 		this.game.load.image('Up', 'Assets/Graphics/Interact/BossWall/Up.png');
 		this.game.load.image('StyxBarrier', 'Assets/Graphics/SFX/Particles/StyxBarrier.png');
+		this.game.load.image('DropWater', 'Assets/Graphics/SFX/Particles/dropWater.png');
 		
 
 
@@ -109,8 +110,8 @@ Application.Preload.prototype = {
 		this.game.load.audio('gameOver', 'Assets/Audio/SFX/gameOver.mp3');
 
 		// Create the Timer(_duration, _repeat, _callback, _game)
-		Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
-		console.log(Application.Timer)
+		// Application.Timer = new Timer(3000, false, this.updateCounter, Application.Game);
+		// console.log(Application.Timer)
 		// Add the Juicy Plugins to Application.
 		Application.Juicy = this.game.plugins.add(new Phaser.Plugin.Juicy(this.game));
 	},

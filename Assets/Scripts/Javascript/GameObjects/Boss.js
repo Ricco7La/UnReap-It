@@ -33,6 +33,17 @@ var _self = _game.add.sprite(_x, _y, "Charon");
 
     var player = Application.Layers.Player;
 
+    _self.emitter = Application.Game.add.emitter(0, 0, 500);
+
+    _self.emitter.setRotation(0, 360);
+    _self.emitter.setAlpha(0.6);
+    _self.emitter.setScale(0.3, 0, 0.3, 0, 2500);
+    _self.emitter.gravity = 200;
+    _self.emitter.setXSpeed(-50,50);
+    _self.emitter.setYSpeed(-150,-100);
+    _self.emitter.makeParticles('DropWater');
+
+    _self.addChild(_self.emitter);
 
     _self.Start = function () 
     {
@@ -133,7 +144,10 @@ var _self = _game.add.sprite(_x, _y, "Charon");
             _self.tint = 0Xf00000;
             setTimeout(function(){
                 _self.tint = 0Xffffff;
-            },500); 
+            },500);
+
+            _self.emitter.start(true, 1375, null, 60);
+
             if (_self.life == 0) 
             {
                 if (_callbackOnDeath) 
