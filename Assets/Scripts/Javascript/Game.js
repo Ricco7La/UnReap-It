@@ -47,8 +47,8 @@ var Anim0 = function ()
 	Application.Layers.Player.animations.play('move_down', 7, true);
 	var flash = Application.Juicy.createScreenFlash('rgba(255,255,255,1)');
 	Application.Game.add.existing(flash);
-	eugeneDial = new Dialogue(180,350,'eugeneDial',"FIRE IN THE HOLE !");
-    eugeneDial.setVisible(true);
+	eugeneDial = new AfflictionDialogue(180,350,'eugeneDial',"FIRE IN THE HOLE !");
+    eugeneDial.SetVisible(true);
 	flash.flash(1,200,1,function () {
 		Application.Game.time.events.add(Phaser.Timer.SECOND * 1.5, function() {
 			Application.Game.state.start(Application.lvl[Application.indexLevel], true);
@@ -65,8 +65,8 @@ var Anim1 = function()
 	Application.Layers.Player.canMove = false;
 	Application.Layers.Player.body.damping = 1;
 	Application.Layers.Player.body.clearCollision();
-	eugeneDial = new Dialogue(180,350,'eugeneDial',"Oups ... Je crois que j'ai oublié d'eteindre mon four.");
-	eugeneDial.setVisible(true);
+	eugeneDial = new AfflictionDialogue(180,350,'eugeneDial',"Oups ... Je crois que j'ai oublié d'eteindre mon four.");
+	eugeneDial.SetVisible(true);
 	var tween = Application.Game.add.tween(Application.Layers.Player.body).to( { x: newPos }, 2500, Phaser.Easing.Quadratic.In, true);
 	tween.onComplete.add(function() {
 		Application.Game.state.start(Application.lvl[Application.indexLevel], true);
@@ -78,8 +78,8 @@ var Anim2 = function() {
 	emitter = Application.Game.add.emitter(Application.Layers.Player.x, Application.Layers.Player.y, 100);
 	Application.Layers.Player.canMove = false;
 	Application.Layers.Player.body.damping = 1;
-	eugeneDial = new Dialogue(180,350,'eugeneDial',"Kof, Kof, Kof! La fumée me pique les yeux ... \n \n Ah non, c'est vrai, je n'en ai plus.");
-    eugeneDial.setVisible(true);
+	eugeneDial = new AfflictionDialogue(180,350,'eugeneDial',"Kof, Kof, Kof! La fumée me pique les yeux ... \n \n Ah non, c'est vrai, je n'en ai plus.");
+    eugeneDial.SetVisible(true);
 	Application.Game.camera.unfollow();
 	
 	emitter.minParticleScale = 0.005;
@@ -121,8 +121,8 @@ var Anim3 = function()
 	Application.Layers.Player.body.damping = 1;
 	Application.Layers.Player.animations.stop();
 	Application.Layers.Player.animations.frame = 0;
-	eugeneDial = new Dialogue(180,350,'eugeneDial',"Shiniton : Henge Kawarimi no Jutsu");
-	eugeneDial.setVisible(true);
+	eugeneDial = new AfflictionDialogue(180,350,'eugeneDial',"Shiniton : Henge Kawarimi no Jutsu");
+	eugeneDial.SetVisible(true);
 	Application.Game.camera.unfollow();
 	
 	emitterLeaf.minParticleScale = 0.005;

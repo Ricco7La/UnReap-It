@@ -49,7 +49,6 @@ function PauseMenu (_game)
 
     _self.SetPause = function(e)
 	{
-        console.log(e.code);
         if( (e.code == "KeyP" || e.code == "Escape") && !_self.isPaused)
         {
         	_self.ShowMenu();

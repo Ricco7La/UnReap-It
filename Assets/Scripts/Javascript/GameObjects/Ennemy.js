@@ -14,7 +14,6 @@ function Ennemy (_game, _path, _type, _speed, _timeRotation, _rangeView, _amplit
         _self.moveSound = Application.Game.add.audio('snake');
         _self.moveSound.volume = .2;
     }
-    console.log(_self.key);
     _self.rangeView = _rangeView || 150;
     _self.amplitude = _amplitude || 30;
     _self.lastViewed = _game.time.now - 10000;
